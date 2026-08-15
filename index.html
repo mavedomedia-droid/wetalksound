@@ -22,7 +22,7 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- Load Config -->
+    <!-- Config -->
     <script src="config.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,56 +30,47 @@
 
     <style>
         /* ── reset & root ── */
-        *,
-        *::before,
-        *::after {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         :root {
             --accent: #FF6B4A;
             --accent-dark: #E55A3A;
             --accent-soft: rgba(255, 107, 74, 0.10);
             --ink: #0A0A0A;
             --surface-dark: #121212;
-            --text: #16171A;
-            --muted: #8A8A8A;
             --white: #ffffff;
             --bg-light: #F5F6F8;
-            --border: #2A2A2A;
             --border-light: #E4E4E7;
-            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.10);
             --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
             --radius: 12px;
             --radius-lg: 16px;
-            --grad: linear-gradient(135deg, #7B2FF7 0%, #00A8FF 50%, #00E0C6 100%);
             --grad-sass: linear-gradient(135deg, #FF6B4A 0%, #FF2D78 50%, #7B2FF7 100%);
+            --wa: #25D366;
         }
-
         html {
             scroll-behavior: smooth;
             font-size: 16px;
         }
-
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background: var(--white);
-            color: var(--text);
+            color: #16171A;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            padding-top: env(safe-area-inset-top);
             font-size: 1rem;
+            padding-top: env(safe-area-inset-top);
         }
 
-        /* ── NAV ── */
+        /* ─── NAV ─── */
         nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 48px;
+            padding: 0 20px;
             height: 60px;
             background: rgba(10, 10, 10, 0.96);
             backdrop-filter: blur(12px);
@@ -88,20 +79,12 @@
             top: 0;
             z-index: 100;
         }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
         .brand img {
             height: 30px;
             display: block;
         }
-
         .nav-links {
             display: flex;
-            align-items: center;
             gap: 24px;
             list-style: none;
         }
@@ -111,12 +94,10 @@
             color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             transition: color .2s;
-            letter-spacing: 0.02em;
         }
         .nav-links a:hover {
             color: #fff;
         }
-
         .nav-cta {
             background: var(--grad-sass);
             color: #fff;
@@ -126,15 +107,12 @@
             font: 700 0.8125rem 'Inter', sans-serif;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            transition: transform .2s, box-shadow .2s;
             box-shadow: 0 4px 20px rgba(255, 107, 74, 0.35);
+            transition: transform .2s;
         }
         .nav-cta:hover {
             transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 6px 30px rgba(255, 45, 120, 0.4);
         }
-
         .hamburger {
             display: none;
             flex-direction: column;
@@ -151,14 +129,17 @@
             background: #fff;
             border-radius: 2px;
         }
-
         .mobile-menu {
             display: none;
             flex-direction: column;
             background: var(--ink);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding: 14px 20px 18px;
-            gap: 4px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 99;
         }
         .mobile-menu.open {
             display: flex;
@@ -170,9 +151,6 @@
             padding: 9px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .mobile-menu a:last-child {
-            border-bottom: none;
-        }
         .mobile-menu .mob-cta {
             margin-top: 8px;
             background: var(--grad-sass);
@@ -183,19 +161,27 @@
             font-weight: 700;
             border-bottom: none;
         }
+        @media (max-width: 768px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
 
-        /* ── HERO ── */
+        /* ─── HERO ─── */
         .hero-wrap {
             position: relative;
             background: var(--ink);
             overflow: hidden;
-            padding: 40px 24px;
+            padding: 24px 16px 32px;
             border-bottom: 1px solid #26272B;
             min-height: calc(100dvh - 60px);
             display: flex;
             align-items: center;
         }
-
         .hero-glow-orb {
             position: absolute;
             border-radius: 50%;
@@ -206,24 +192,24 @@
             animation: floatGlow 12s ease-in-out infinite alternate;
         }
         .hero-glow-orb.orb1 {
-            width: 500px;
-            height: 500px;
+            width: 400px;
+            height: 400px;
             background: #FF2D78;
             top: -20%;
             right: -10%;
             animation-delay: 0s;
         }
         .hero-glow-orb.orb2 {
-            width: 400px;
-            height: 400px;
+            width: 350px;
+            height: 350px;
             background: #7B2FF7;
             bottom: -30%;
             left: -10%;
             animation-delay: 4s;
         }
         .hero-glow-orb.orb3 {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             background: #00E0C6;
             top: 50%;
             left: 50%;
@@ -231,7 +217,6 @@
             animation-delay: 8s;
             opacity: 0.12;
         }
-
         @keyframes floatGlow {
             0% {
                 transform: translate(0, 0) scale(1);
@@ -240,7 +225,6 @@
                 transform: translate(30px, -20px) scale(1.2);
             }
         }
-
         .hero-scrim {
             position: absolute;
             inset: 0;
@@ -249,7 +233,6 @@
             background: linear-gradient(180deg, var(--ink) 0%, rgba(10, 10, 10, 0) 25%, rgba(10, 10, 10, 0) 75%, var(--ink) 100%),
                 linear-gradient(90deg, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.1) 40%, rgba(10, 10, 10, 0.3) 70%, var(--ink) 100%);
         }
-
         .hero-inner {
             position: relative;
             z-index: 2;
@@ -257,50 +240,27 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 36px;
+            gap: 24px;
             align-items: center;
             width: 100%;
         }
-
         .hero-left {
             color: #fff;
             max-width: 480px;
-            padding-top: 0;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 107, 74, 0.15);
-            color: #ff8a7a;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            padding: 4px 14px 4px 10px;
-            border-radius: 100px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 107, 74, 0.15);
-        }
-        .hero-badge b {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
+        /* ─── OPTION D: TAG BADGE ─── */
+        .badge-tag {
             display: inline-block;
-            animation: pulseDot 1.8s ease-in-out infinite;
-        }
-        @keyframes pulseDot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.3;
-                transform: scale(0.6);
-            }
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 2px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
 
         .hero-title {
@@ -308,7 +268,6 @@
             font-weight: 900;
             line-height: 1.05;
             margin-bottom: 8px;
-            letter-spacing: -0.02em;
             color: #fff;
         }
         .hero-title .grad-sass {
@@ -327,20 +286,16 @@
                 background-position: 100% 50%;
             }
         }
-
         .hero-sub {
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.75);
             line-height: 1.6;
             margin-bottom: 18px;
-            font-weight: 400;
             max-width: 440px;
         }
-
         .hero-trust {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             gap: 12px 20px;
             margin-bottom: 4px;
         }
@@ -366,7 +321,7 @@
             font-weight: 800;
         }
 
-        /* ── QUIZ CARD ── */
+        /* ─── QUIZ CARD ─── */
         .quiz-card {
             background: rgba(20, 20, 22, 0.85);
             backdrop-filter: blur(16px);
@@ -374,24 +329,18 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-card);
-            padding: 24px 24px 28px;
+            padding: 20px 18px 24px;
             width: 100%;
             max-width: 480px;
             justify-self: end;
             color: #fff;
-            transition: border-color .3s;
             min-height: 460px;
         }
-        .quiz-card:hover {
-            border-color: rgba(255, 107, 74, 0.2);
-        }
-
-        /* ── progress dots ── */
         .progress-dots {
             display: flex;
             gap: 6px;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         .progress-dots .dot {
             width: 7px;
@@ -408,7 +357,6 @@
             background: rgba(255, 255, 255, 0.35);
         }
 
-        /* ── step container ── */
         .step {
             display: none;
             animation: fadeSlide .3s ease;
@@ -416,7 +364,6 @@
         .step.active {
             display: block;
         }
-
         @keyframes fadeSlide {
             0% {
                 opacity: 0;
@@ -428,31 +375,11 @@
             }
         }
 
-        .step .q-label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 4px;
-        }
-        .step .q-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin-bottom: 4px;
-            letter-spacing: -0.01em;
-        }
-        .step .q-sub {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.45);
-            margin-bottom: 14px;
-        }
-
         .step-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .btn-back {
             background: none;
@@ -471,6 +398,25 @@
         }
         .btn-back:hover {
             color: rgba(255, 255, 255, 0.7);
+        }
+        .q-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.3);
+            margin-left: auto;
+        }
+        .q-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+            letter-spacing: -0.01em;
+        }
+        .q-sub {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 12px;
         }
 
         .opt-grid {
@@ -501,7 +447,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            min-height: 52px;
+            min-height: 54px;
         }
         .opt:hover {
             border-color: rgba(255, 255, 255, 0.2);
@@ -526,7 +472,6 @@
             stroke-linecap: round;
             stroke-linejoin: round;
             opacity: 0.5;
-            transition: opacity .2s;
         }
         .opt.selected .icon-svg {
             opacity: 1;
@@ -536,13 +481,11 @@
             margin-left: auto;
             opacity: 0;
             transition: opacity .2s;
-            flex-shrink: 0;
         }
         .opt.selected .check {
             opacity: 1;
             color: var(--accent);
         }
-
         .opt .dot-indicator {
             width: 8px;
             height: 8px;
@@ -555,20 +498,73 @@
             background: var(--accent);
             border-color: var(--accent);
         }
+        .opt .proof-expand {
+            display: none;
+            margin-top: 8px;
+            padding: 10px 12px;
+            background: rgba(255, 107, 74, 0.06);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            animation: expandIn .25s ease;
+        }
+        .opt .proof-expand.open {
+            display: block;
+        }
+        @keyframes expandIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        .text-input {
+        /* ─── Metric tile ─── */
+        .metric-tile {
+            display: none;
+            margin-top: 12px;
+            padding: 14px 16px;
+            background: rgba(255, 107, 74, 0.06);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            animation: fadeSlide .3s ease;
+        }
+        .metric-tile.show {
+            display: block;
+        }
+        .metric-tile .big-number {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        .metric-tile .metric-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2px;
+        }
+
+        /* ─── Text inputs ─── */
+        .text-input,
+        .select-input {
             width: 100%;
             padding: 12px 14px;
             border: 1.5px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            font: 400 0.9rem 'Inter', sans-serif;
+            font: 400 1rem 'Inter', sans-serif;
             color: #fff;
             background: rgba(255, 255, 255, 0.04);
             outline: none;
-            transition: border-color .2s, box-shadow .2s;
-            min-height: 50px;
+            transition: border-color .2s;
+            min-height: 52px;
         }
-        .text-input:focus {
+        .text-input:focus,
+        .select-input:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.12);
         }
@@ -577,6 +573,51 @@
         }
         .text-input.error {
             border-color: #ff4d6d;
+        }
+        .select-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            cursor: pointer;
+        }
+        .select-input option {
+            background: #1A1A1A;
+            color: #fff;
+        }
+
+        .phone-combo {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+        .phone-combo .prefix-select {
+            flex: 0 0 auto;
+            min-width: 110px;
+            padding: 12px 10px;
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font: 400 1rem 'Inter', sans-serif;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+            outline: none;
+            min-height: 52px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 3l3 3 3-3' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            cursor: pointer;
+        }
+        .phone-combo .prefix-select:focus {
+            border-color: var(--accent);
+        }
+        .phone-combo .prefix-select option {
+            background: #1A1A1A;
+            color: #fff;
+        }
+        .phone-combo .phone-input {
+            flex: 1;
+            min-width: 0;
         }
 
         .field-error {
@@ -587,6 +628,15 @@
         }
         .field-error.show {
             display: block;
+        }
+        .field-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.3);
+            display: block;
+            margin-bottom: 3px;
         }
 
         .btn-continue {
@@ -601,8 +651,7 @@
             transition: transform .2s, box-shadow .2s, opacity .2s;
             box-shadow: 0 4px 20px rgba(255, 45, 120, 0.25);
             margin-top: 14px;
-            letter-spacing: 0.02em;
-            min-height: 52px;
+            min-height: 54px;
         }
         .btn-continue:hover:not(:disabled) {
             transform: translateY(-2px) scale(1.01);
@@ -634,30 +683,6 @@
             display: block;
         }
 
-        .metric-tile {
-            display: none;
-            margin-top: 12px;
-            padding: 16px 18px;
-            background: rgba(255, 107, 74, 0.06);
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-            animation: fadeSlide .3s ease;
-        }
-        .metric-tile.show {
-            display: block;
-        }
-        .metric-tile .big-number {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--accent);
-            line-height: 1.2;
-        }
-        .metric-tile .metric-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 2px;
-        }
-
         .placement-grid-wrap .pg-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -675,68 +700,6 @@
             height: 18px;
         }
 
-        .select-input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font: 400 0.9rem 'Inter', sans-serif;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
-            outline: none;
-            transition: border-color .2s;
-            min-height: 50px;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            cursor: pointer;
-        }
-        .select-input:focus {
-            border-color: var(--accent);
-        }
-        .select-input option {
-            background: #1A1A1A;
-            color: #fff;
-        }
-
-        /* ── phone prefix + number combo ── */
-        .phone-combo {
-            display: flex;
-            gap: 8px;
-            align-items: stretch;
-        }
-        .phone-combo .prefix-select {
-            flex: 0 0 auto;
-            min-width: 110px;
-            padding: 12px 10px;
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font: 400 0.85rem 'Inter', sans-serif;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
-            outline: none;
-            transition: border-color .2s;
-            min-height: 50px;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 3l3 3 3-3' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            cursor: pointer;
-        }
-        .phone-combo .prefix-select:focus {
-            border-color: var(--accent);
-        }
-        .phone-combo .prefix-select option {
-            background: #1A1A1A;
-            color: #fff;
-        }
-        .phone-combo .phone-input {
-            flex: 1;
-            min-width: 0;
-        }
-
-        /* ── UPSELL ── */
         .upsell-section {
             display: none;
             animation: fadeSlide .4s ease;
@@ -779,47 +742,6 @@
             color: rgba(255, 107, 74, 0.6);
         }
 
-        .upsell-section .us-form {
-            display: none;
-            margin-top: 10px;
-        }
-        .upsell-section .us-form.show {
-            display: block;
-        }
-        .upsell-section .us-form .field {
-            margin-bottom: 8px;
-        }
-        .upsell-section .us-form .field label {
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: rgba(255, 255, 255, 0.3);
-            display: block;
-            margin-bottom: 2px;
-        }
-        .upsell-section .us-form .field input,
-        .upsell-section .us-form .field select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font: 400 0.85rem 'Inter', sans-serif;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
-            outline: none;
-            min-height: 44px;
-        }
-        .upsell-section .us-form .field input:focus,
-        .upsell-section .us-form .field select:focus {
-            border-color: var(--accent);
-        }
-        .upsell-section .us-form .field select option {
-            background: #1A1A1A;
-            color: #fff;
-        }
-
-        /* ── THANK YOU ── */
         .thankyou {
             display: none;
             animation: fadeSlide .5s ease;
@@ -882,14 +804,14 @@
             transform: scale(0.97);
         }
 
-        /* ── TRUST BAR ── */
+        /* ─── TRUST BAR ─── */
         .trust-bar {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 14px 48px;
+            padding: 14px 16px;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 20px;
             font-size: 0.7rem;
             font-weight: 700;
             color: rgba(255, 255, 255, 0.5);
@@ -909,18 +831,17 @@
             stroke: var(--accent);
         }
 
-        /* ── SECTIONS ── */
+        /* ─── SECTIONS ─── */
         .section {
-            padding: 72px 48px;
+            padding: 60px 20px;
             max-width: 1160px;
             margin: 0 auto;
         }
         .section-sm {
-            padding: 52px 48px;
+            padding: 40px 20px;
             max-width: 1160px;
             margin: 0 auto;
         }
-
         .eyebrow {
             font-size: 0.75rem;
             font-weight: 700;
@@ -929,22 +850,13 @@
             color: var(--accent);
             margin-bottom: 10px;
         }
-
         .s-title {
             font-size: 1.75rem;
             font-weight: 800;
             color: var(--text);
             margin-bottom: 12px;
             line-height: 1.2;
-            letter-spacing: -0.01em;
         }
-        .s-sub {
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.7;
-            max-width: 600px;
-        }
-
         .bg-light {
             background: var(--bg-light);
         }
@@ -958,26 +870,11 @@
         .bg-dark .s-title {
             color: #fff;
         }
-        .bg-dark .s-sub {
-            color: rgba(255, 255, 255, 0.65);
-        }
-
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
         }
-        @media (max-width: 768px) {
-            .grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 480px) {
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .service-card {
             background: var(--white);
             border: 1px solid var(--border-light);
@@ -992,7 +889,7 @@
         }
         .service-card:hover {
             border-color: var(--accent);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
             transform: translateY(-2px);
         }
         .service-card .card-icon {
@@ -1010,49 +907,21 @@
             font-size: 0.9375rem;
             font-weight: 700;
             margin-bottom: 6px;
-            color: var(--text);
         }
         .service-card p {
             font-size: 0.8125rem;
             color: var(--muted);
             line-height: 1.5;
         }
-        .service-card .card-arrow {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #F0F0F2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateX(-4px);
-            transition: opacity .2s, transform .2s;
-        }
-        .service-card:hover .card-arrow {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .service-card .card-arrow svg {
-            stroke: var(--text);
-            stroke-width: 2;
-            width: 14px;
-            height: 14px;
-        }
-
         .dark-card {
             background: var(--surface-dark);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-lg);
             padding: 24px 22px;
-            transition: border-color .2s, transform .2s;
+            transition: border-color .2s;
         }
         .dark-card:hover {
             border-color: rgba(255, 107, 74, 0.3);
-            transform: translateY(-2px);
         }
         .dark-card h3 {
             color: #fff;
@@ -1075,20 +944,11 @@
             line-height: 1;
             margin-bottom: 4px;
         }
-        .dark-card .stat-lbl {
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 700;
-        }
-
         .stat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
         }
-
         .btn-link {
             display: inline-flex;
             align-items: center;
@@ -1101,16 +961,12 @@
             font: 700 0.875rem 'Inter', sans-serif;
             cursor: pointer;
             text-decoration: none;
-            transition: transform .2s, box-shadow .2s;
+            transition: transform .2s;
             box-shadow: 0 4px 20px rgba(255, 45, 120, 0.25);
             min-height: 52px;
         }
         .btn-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 45, 120, 0.35);
-        }
-        .btn-link:active {
-            transform: scale(0.97);
         }
         .btn-link.wo {
             background: transparent;
@@ -1122,15 +978,10 @@
             background: rgba(255, 255, 255, 0.06);
             border-color: #fff;
         }
-
         .faq-item {
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 12px;
             margin-bottom: 12px;
-        }
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
         }
         .faq-item strong {
             font-size: 0.9375rem;
@@ -1140,10 +991,9 @@
             color: var(--muted);
             font-size: 0.875rem;
         }
-
         .cta-banner {
             background: var(--surface-dark);
-            padding: 20px 48px;
+            padding: 20px 16px;
             text-align: center;
             font-size: 0.9rem;
             color: #fff;
@@ -1153,10 +1003,9 @@
             font-weight: 700;
             text-decoration: underline;
         }
-
         footer {
             border-top: 1px solid var(--border-light);
-            padding: 28px 48px;
+            padding: 28px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1190,27 +1039,7 @@
             color: var(--text);
         }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
-            nav {
-                padding: 0 20px;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-cta {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero-wrap {
-                padding: 24px 20px 32px;
-                min-height: auto;
-            }
             .hero-inner {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1220,16 +1049,11 @@
                 max-width: 100%;
                 text-align: center;
             }
-            .hero-left .hero-title {
-                margin-bottom: 6px;
-            }
             .hero-left .hero-sub {
-                margin-bottom: 12px;
                 max-width: 100%;
             }
             .hero-trust {
                 justify-content: center;
-                gap: 8px 14px;
             }
             .hero-scrim,
             .hero-glow-orb {
@@ -1239,25 +1063,17 @@
                 order: 2;
                 justify-self: center;
                 max-width: 100%;
-                padding: 20px 16px 24px;
+                padding: 18px 14px 20px;
                 min-height: auto;
             }
-            .section,
-            .section-sm {
-                padding: 52px 20px;
+            .section {
+                padding: 40px 16px;
             }
-            .trust-bar {
-                padding: 14px 16px;
-                gap: 14px;
-                justify-content: center;
+            .grid-3 {
+                grid-template-columns: 1fr;
             }
             .stat-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-            footer {
-                padding: 22px 20px;
-                flex-direction: column;
-                text-align: center;
             }
             .opt-grid.row .opt {
                 flex: 1 0 100%;
@@ -1275,17 +1091,24 @@
             .phone-combo .prefix-select {
                 min-width: 100%;
             }
+            .trust-bar {
+                gap: 12px;
+            }
         }
-
         @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
             .placement-grid-wrap .pg-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
             }
             .upsell-section .us-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
+            }
+            .btn-continue {
+                font-size: 0.85rem;
             }
         }
-
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
@@ -1295,15 +1118,14 @@
     </style>
 </head>
 <body>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3KZ2K8R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- ─── NAV ─── -->
     <nav>
-        <a href="#" class="brand">
-            <img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='<span style=&quot;font-weight:900;font-size:1.2rem;color:#fff;&quot;>WTS</span>'" />
-        </a>
+        <a href="#" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='<span style=&quot;font-weight:900;font-size:1.2rem;color:#fff;&quot;>WTS</span>'"></a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#work">Work</a></li>
@@ -1312,7 +1134,6 @@
         <a href="#hero" class="nav-cta">Start your enquiry</a>
         <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
     </nav>
-
     <div class="mobile-menu" id="mobile-menu">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
@@ -1326,16 +1147,12 @@
         <div class="hero-glow-orb orb2"></div>
         <div class="hero-glow-orb orb3"></div>
         <div class="hero-scrim"></div>
-
         <div class="hero-inner">
             <div class="hero-left">
-                <div class="hero-badge"><b></b> WeTalkSound music marketing</div>
-                <h1 class="hero-title">
-                    Amplify your <span class="grad-sass">music release</span> with WTS.
-                </h1>
-                <p class="hero-sub">
-                    WeTalkSound is the team behind Africa's biggest records. Let's help you amplify yours.
-                </p>
+                <!-- Option D: Tag badge with "MUSIC" in caps -->
+                <div class="badge-tag">WeTalkSound · MUSIC marketing</div>
+                <h1 class="hero-title">Amplify your <span class="grad-sass">music release</span> with WTS.</h1>
+                <p class="hero-sub">WeTalkSound is the team behind Africa's biggest records. Let's help you amplify yours.</p>
                 <div class="hero-trust">
                     <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><b>370K+</b> Owned reach</span>
                     <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><b>500M+</b> Influencer network</span>
@@ -1345,7 +1162,6 @@
 
             <!-- ─── QUIZ CARD ─── -->
             <div class="quiz-card" id="quizCard">
-
                 <div class="progress-dots" id="progressDots">
                     <span class="dot active" data-step="0"></span>
                     <span class="dot" data-step="1"></span>
@@ -1357,283 +1173,156 @@
                 </div>
 
                 <div id="stepsContainer">
-
-                    <!-- STEP 1 – Stage (auto) -->
+                    <!-- Step 0: Stage (auto) -->
                     <div class="step active" data-step="0">
-                        <div class="step-header">
-                            <span class="q-label">Step 1 of 7</span>
-                        </div>
+                        <div class="step-header"><span class="q-label">Step 1 of 7</span></div>
                         <div class="q-title">What stage is your release in?</div>
                         <div class="q-sub">Choose the option that fits best.</div>
                         <div class="opt-grid">
-                            <button class="opt" data-value="pre" onclick="selectStep1(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                Releasing soon
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="post" onclick="selectStep1(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-                                Already out
-                                <span class="check">✓</span>
-                            </button>
+                            <button class="opt" data-value="pre" onclick="selectStep1(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Releasing soon<span class="check">✓</span></button>
+                            <button class="opt" data-value="post" onclick="selectStep1(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Already out<span class="check">✓</span></button>
                         </div>
-                        <div class="field-error" id="err-step1">Please select an option.</div>
+                        <div class="field-error" id="err-step0">Please select an option.</div>
                     </div>
 
-                    <!-- STEP 2 – Role (auto) -->
+                    <!-- Step 1: Role (auto) -->
                     <div class="step" data-step="1">
-                        <div class="step-header">
-                            <button class="btn-back" onclick="goStep(0)">← Back</button>
-                            <span class="q-label" style="margin-left:auto;">Step 2 of 7</span>
-                        </div>
+                        <div class="step-header"><button class="btn-back" onclick="goStep(0)">← Back</button><span class="q-label" style="margin-left:auto;">Step 2 of 7</span></div>
                         <div class="q-title">Who are you?</div>
                         <div class="q-sub">We tailor our approach to your role.</div>
                         <div class="opt-grid">
-                            <button class="opt" data-value="Artist" onclick="selectStep2(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                Artist
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Manager" onclick="selectStep2(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                Manager
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Label or marketing team" onclick="selectStep2(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                                Label or marketing team
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Part of the team" onclick="selectStep2(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                Part of the team
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Other" onclick="selectStep2(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-                                Other
-                                <span class="check">✓</span>
-                            </button>
+                            <button class="opt" data-value="Artist" onclick="selectStep2(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Artist<span class="check">✓</span></button>
+                            <button class="opt" data-value="Manager / A&R" onclick="selectStep2(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Manager / A&R<span class="check">✓</span></button>
+                            <button class="opt" data-value="Label or marketing team" onclick="selectStep2(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Label or marketing team<span class="check">✓</span></button>
+                            <button class="opt" data-value="Other" onclick="selectStep2(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>Other<span class="check">✓</span></button>
                         </div>
-                        <div class="field-error" id="err-step2">Please select your role.</div>
+                        <div class="field-error" id="err-step1">Please select your role.</div>
                     </div>
 
-                    <!-- STEP 3 – Release Details (continue) -->
+                    <!-- Step 2: Release Details (continue) -->
                     <div class="step" data-step="2">
-                        <div class="step-header">
-                            <button class="btn-back" onclick="goStep(1)">← Back</button>
-                            <span class="q-label" style="margin-left:auto;">Step 3 of 7</span>
-                        </div>
-                        <div id="step3-content"></div>
-                        <div class="field-error" id="err-step3">Please fill in all fields.</div>
-                        <button class="btn-continue" id="btn-step3" disabled onclick="goStep(3)">Continue →</button>
+                        <div class="step-header"><button class="btn-back" onclick="goStep(1)">← Back</button><span class="q-label" style="margin-left:auto;">Step 3 of 7</span></div>
+                        <div id="step2-content"></div>
+                        <div class="field-error" id="err-step2">Please fill in all fields.</div>
+                        <button class="btn-continue" id="btn-step2" disabled onclick="goStep(3)">Continue →</button>
                     </div>
 
-                    <!-- STEP 4 – Goals (multi-select with metric tile) -->
+                    <!-- Step 3: Goals (multi-select) -->
                     <div class="step" data-step="3">
-                        <div class="step-header">
-                            <button class="btn-back" onclick="goStep(2)">← Back</button>
-                            <span class="q-label" style="margin-left:auto;">Step 4 of 7</span>
-                        </div>
+                        <div class="step-header"><button class="btn-back" onclick="goStep(2)">← Back</button><span class="q-label" style="margin-left:auto;">Step 4 of 7</span></div>
                         <div class="q-title">What does success look like?</div>
-                        <div class="q-sub">Pick as many as you want. Tap a goal to see its metric.</div>
+                        <div class="q-sub">Pick as many as you want. Tap a goal to see proof from our work.</div>
                         <div class="opt-grid" id="goals-grid">
-                            <button class="opt" data-value="Playlisting" onclick="toggleGoal(this)">
-                                <span class="dot-indicator"></span>
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                                Playlisting
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Charting" onclick="toggleGoal(this)">
-                                <span class="dot-indicator"></span>
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-                                Charting
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Streams" onclick="toggleGoal(this)">
-                                <span class="dot-indicator"></span>
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-                                Streams
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Press & Media" onclick="toggleGoal(this)">
-                                <span class="dot-indicator"></span>
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg>
-                                Press & Media
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Social Buzz" onclick="toggleGoal(this)">
-                                <span class="dot-indicator"></span>
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                                Social Buzz
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Radio & DJ" onclick="toggleGoal(this)">
-                                <span class="dot-indicator"></span>
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                                Radio & DJ
-                                <span class="check">✓</span>
-                            </button>
+                            <button class="opt" data-value="Playlisting" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Playlisting<span class="check">✓</span></button>
+                            <button class="opt" data-value="Charting" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>Charting<span class="check">✓</span></button>
+                            <button class="opt" data-value="Streams" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>Streams<span class="check">✓</span></button>
+                            <button class="opt" data-value="Press & Media" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg>Press & Media<span class="check">✓</span></button>
+                            <button class="opt" data-value="Social Buzz" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Social Buzz<span class="check">✓</span></button>
+                            <button class="opt" data-value="Radio & DJ" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Radio & DJ<span class="check">✓</span></button>
                         </div>
-                        <div class="metric-tile" id="metric-tile">
-                            <div class="big-number" id="metric-number">2.3M+</div>
-                            <div class="metric-label" id="metric-label">playlist reach</div>
-                        </div>
-                        <div class="field-error" id="err-step4">Select at least one goal.</div>
-                        <button class="btn-continue" id="btn-step4" disabled onclick="goStep(4)">Continue →</button>
+                        <div class="metric-tile" id="metric-tile"><div class="big-number" id="metric-number">2.3M+</div><div class="metric-label" id="metric-label">playlist reach</div></div>
+                        <div class="field-error" id="err-step3">Select at least one goal.</div>
+                        <button class="btn-continue" id="btn-step3" disabled onclick="goStep(4)">Continue →</button>
                     </div>
 
-                    <!-- STEP 5 – Budget (auto, disqualify if No budget) -->
+                    <!-- Step 4: Budget (auto except no budget) -->
                     <div class="step" data-step="4">
-                        <div class="step-header">
-                            <button class="btn-back" onclick="goStep(3)">← Back</button>
-                            <span class="q-label" style="margin-left:auto;">Step 5 of 7</span>
-                        </div>
+                        <div class="step-header"><button class="btn-back" onclick="goStep(3)">← Back</button><span class="q-label" style="margin-left:auto;">Step 5 of 7</span></div>
                         <div class="q-title">What budget are you working with?</div>
                         <div class="q-sub">This helps us recommend the best fit.</div>
                         <div class="opt-grid" id="budget-grid">
-                            <button class="opt" data-value="No budget" onclick="selectBudget(this)">
-                                No budget
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Up to 150K" onclick="selectBudget(this)">
-                                Up to 150K
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="200K – 500K" onclick="selectBudget(this)">
-                                200K – 500K
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="500K – 1M" onclick="selectBudget(this)">
-                                500K – 1M
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="1M – 5M" onclick="selectBudget(this)">
-                                1M – 5M
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Over 5M" onclick="selectBudget(this)">
-                                Over 5M
-                                <span class="check">✓</span>
-                            </button>
+                            <button class="opt" data-value="No budget" onclick="selectBudget(this)">No budget<span class="check">✓</span></button>
+                            <button class="opt" data-value="Up to 150K" onclick="selectBudget(this)">Up to 150K<span class="check">✓</span></button>
+                            <button class="opt" data-value="200K – 500K" onclick="selectBudget(this)">200K – 500K<span class="check">✓</span></button>
+                            <button class="opt" data-value="500K – 2M" onclick="selectBudget(this)">500K – 2M<span class="check">✓</span></button>
+                            <button class="opt" data-value="2M – 5M" onclick="selectBudget(this)">2M – 5M<span class="check">✓</span></button>
+                            <button class="opt" data-value="Over 5M" onclick="selectBudget(this)">Over 5M<span class="check">✓</span></button>
                         </div>
-                        <div class="field-error" id="err-step5">Please select a budget range.</div>
+                        <div class="field-error" id="err-step4">Please select a budget range.</div>
                         <div class="disqualify-msg" id="disqualify-msg">
-                            Thank you for your interest. We look forward to serving you at a better time. We look forward to amplifying you at a better time.
+                            Thank you for taking our quiz. We look forward to serving you when you have a budget. But before you go, if you're interested in any of our paid placements, please indicate.
+                            <div class="placement-grid-wrap" style="margin-top:12px;">
+                                <div class="pg-grid" id="no-budget-placements">
+                                    <button class="opt" data-value="Instagram post" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram post<span class="check">✓</span></button>
+                                    <button class="opt" data-value="Instagram story" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
+                                    <button class="opt" data-value="TikTok post" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
+                                    <button class="opt" data-value="X post" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
+                                    <button class="opt" data-value="Website feature" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
+                                    <button class="opt" data-value="Video creation" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
+                                </div>
+                            </div>
+                            <button class="btn-continue" id="btn-no-budget-continue" style="margin-top:12px;" onclick="continueFromNoBudget()">Continue →</button>
                         </div>
                     </div>
 
-                    <!-- STEP 6 – Placements -->
+                    <!-- Step 5: Placements (for low budget) -->
                     <div class="step" data-step="5">
-                        <div class="step-header">
-                            <button class="btn-back" onclick="goStep(4)">← Back</button>
-                            <span class="q-label" style="margin-left:auto;">Step 6 of 7</span>
-                        </div>
-                        <div class="q-title" id="placement-step-title">Which of these media placements would you want right now?</div>
+                        <div class="step-header"><button class="btn-back" onclick="goStep(4)">← Back</button><span class="q-label" style="margin-left:auto;">Step 6 of 7</span></div>
+                        <div class="q-title" id="placement-step-title">For your budget, we have a couple of rich placements that you might be interested in.</div>
                         <div class="q-sub" id="placement-step-sub">Select any you're interested in.</div>
                         <div class="placement-grid-wrap">
                             <div class="pg-grid" id="pg-grid">
-                                <button class="opt" data-value="IG Post" onclick="togglePlacement(this)">
-                                    <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-                                    IG Post
-                                    <span class="check">✓</span>
-                                </button>
-                                <button class="opt" data-value="IG Story" onclick="togglePlacement(this)">
-                                    <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>
-                                    IG Story
-                                    <span class="check">✓</span>
-                                </button>
-                                <button class="opt" data-value="Website feature" onclick="togglePlacement(this)">
-                                    <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                                    Website feature
-                                    <span class="check">✓</span>
-                                </button>
-                                <button class="opt" data-value="Twitter post" onclick="togglePlacement(this)">
-                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>
-                                    Twitter post
-                                    <span class="check">✓</span>
-                                </button>
-                                <button class="opt" data-value="TikTok post" onclick="togglePlacement(this)">
-                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>
-                                    TikTok post
-                                    <span class="check">✓</span>
-                                </button>
-                                <button class="opt" data-value="YouTube content" onclick="togglePlacement(this)">
-                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
-                                    YouTube content
-                                    <span class="check">✓</span>
-                                </button>
+                                <button class="opt" data-value="Instagram post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram post<span class="check">✓</span></button>
+                                <button class="opt" data-value="Instagram story" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
+                                <button class="opt" data-value="TikTok post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
+                                <button class="opt" data-value="X post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
+                                <button class="opt" data-value="Website feature" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
+                                <button class="opt" data-value="Video creation" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
                             </div>
                         </div>
-                        <div class="field-error" id="err-step6">Please select at least one placement.</div>
-                        <button class="btn-continue" id="btn-step6" disabled onclick="goStep(6)">Continue →</button>
+                        <div class="field-error" id="err-step5">Please select at least one placement.</div>
+                        <button class="btn-continue" id="btn-step5" disabled onclick="goStep(6)">Continue →</button>
                     </div>
 
-                    <!-- STEP 7 – Contact (updated with country + phone prefix) -->
+                    <!-- Step 6: Contact Form -->
                     <div class="step" data-step="6">
-                        <div class="step-header">
-                            <button class="btn-back" onclick="goStep(5)">← Back</button>
-                            <span class="q-label" style="margin-left:auto;">Step 7 of 7</span>
-                        </div>
+                        <div class="step-header"><button class="btn-back" onclick="goStep(5)">← Back</button><span class="q-label" style="margin-left:auto;">Step 7 of 7</span></div>
                         <div class="q-title">Where do we reach you?</div>
                         <div class="q-sub">We'll send your custom plan within 24h.</div>
 
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">Your name *</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Your name *</label>
                             <input type="text" class="text-input" id="contact-name" placeholder="Chidi Okonkwo" autocomplete="name" />
                             <div class="field-error" id="err-contact-name">Name is required.</div>
                         </div>
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">Artist / act name *</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Artist / act name *</label>
                             <input type="text" class="text-input" id="contact-act" placeholder="Your stage name" />
                             <div class="field-error" id="err-contact-act">Artist name is required.</div>
                         </div>
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">Artist IG page *</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Artist IG page *</label>
                             <input type="text" class="text-input" id="contact-ig" placeholder="@artisthandle" />
                             <div class="field-error" id="err-contact-ig">IG handle is required.</div>
                         </div>
-
-                        <!-- Country -->
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">Country *</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Country *</label>
                             <select class="select-input" id="contact-country">
-                                <option value="Nigeria">Nigeria</option>
-                                <option value="Ghana">Ghana</option>
-                                <option value="South Africa">South Africa</option>
-                                <option value="UK">UK</option>
-                                <option value="US">US</option>
-                                <option value="Other">Other</option>
+                                <option value="Nigeria">Nigeria</option><option value="Ghana">Ghana</option>
+                                <option value="South Africa">South Africa</option><option value="UK">UK</option>
+                                <option value="US">US</option><option value="Other">Other</option>
                             </select>
                             <div class="field-error" id="err-contact-country">Please select your country.</div>
                         </div>
-
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">Email</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Email</label>
                             <input type="email" class="text-input" id="contact-email" placeholder="you@artist.com" autocomplete="email" />
                         </div>
-
-                        <!-- Phone with prefix -->
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">Phone number</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Phone number</label>
                             <div class="phone-combo">
                                 <select class="prefix-select" id="phone-prefix">
-                                    <option value="+234">🇳🇬 +234</option>
-                                    <option value="+1">🇺🇸 +1</option>
-                                    <option value="+233">🇬🇭 +233</option>
-                                    <option value="+27">🇿🇦 +27</option>
-                                    <option value="+44">🇬🇧 +44</option>
-                                    <option value="+1">🇨🇦 +1</option>
-                                    <option value="+49">🇩🇪 +49</option>
-                                    <option value="+33">🇫🇷 +33</option>
+                                    <option value="+234">🇳🇬 +234</option><option value="+1">🇺🇸 +1</option>
+                                    <option value="+233">🇬🇭 +233</option><option value="+27">🇿🇦 +27</option>
+                                    <option value="+44">🇬🇧 +44</option><option value="+1">🇨🇦 +1</option>
+                                    <option value="+49">🇩🇪 +49</option><option value="+33">🇫🇷 +33</option>
                                 </select>
                                 <input type="tel" class="text-input phone-input" id="contact-phone" placeholder="801 234 5678" />
                             </div>
                             <div class="field-error" id="err-contact-phone">Please enter a valid phone number.</div>
                         </div>
-
-                        <div class="field" style="margin-bottom:10px;">
-                            <label style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:rgba(255,255,255,0.3);display:block;margin-bottom:3px;">How soon would you like to get started? *</label>
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">How soon would you like to get started? *</label>
                             <select class="select-input" id="contact-timeline">
                                 <option value="">Select…</option>
                                 <option value="ASAP">ASAP</option>
@@ -1642,94 +1331,63 @@
                             </select>
                             <div class="field-error" id="err-contact-timeline">Please select a timeline.</div>
                         </div>
-
                         <div class="field-error" id="err-contact-general">Please provide at least an email or phone number.</div>
 
-                        <button class="btn-continue" id="btn-step7" onclick="submitQuiz()">Let's go →</button>
+                        <button class="btn-continue" id="btn-step6" onclick="submitQuiz()">Let's go →</button>
                     </div>
                 </div>
 
-                <!-- UPSELL (post-submit) -->
+                <!-- High-budget placement (after contact) -->
+                <div id="high-budget-placement" style="display:none;">
+                    <div style="margin-bottom:12px;">
+                        <div class="q-title" style="font-size:1rem;">To complete your request, select any of these placements.</div>
+                        <div class="q-sub">Select any you'd like to explore.</div>
+                    </div>
+                    <div class="placement-grid-wrap">
+                        <div class="pg-grid" id="high-budget-pg-grid">
+                            <button class="opt" data-value="Instagram post" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram post<span class="check">✓</span></button>
+                            <button class="opt" data-value="Instagram story" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
+                            <button class="opt" data-value="TikTok post" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
+                            <button class="opt" data-value="X post" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
+                            <button class="opt" data-value="Website feature" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
+                            <button class="opt" data-value="Video creation" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
+                        </div>
+                    </div>
+                    <div class="field-error" id="err-high-budget-placement">Please select at least one placement.</div>
+                    <button class="btn-continue" id="btn-high-budget-continue" disabled onclick="submitHighBudgetPlacements()">Continue →</button>
+                </div>
+
+                <!-- Upsell (post-submit) -->
                 <div id="upsellContainer" style="display:none;">
                     <div class="upsell-section" id="upsell-placement">
                         <div class="us-title" style="color:var(--accent);">🎯 For your budget, here's a quick way to start.</div>
                         <div class="us-sub">Pick a placement on our channels. Fast, affordable, and it gets your music heard.</div>
                         <div class="us-grid" id="upsell-placement-grid">
-                            <button class="opt" data-value="IG Post" onclick="toggleUpsellPlacement(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-                                IG Post
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="IG Story" onclick="toggleUpsellPlacement(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>
-                                IG Story
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="TikTok post" onclick="toggleUpsellPlacement(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>
-                                TikTok post
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="X post" onclick="toggleUpsellPlacement(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>
-                                X post
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Video creation" onclick="toggleUpsellPlacement(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-                                Video creation
-                                <span class="check">✓</span>
-                            </button>
+                            <button class="opt" data-value="Instagram post" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram post<span class="check">✓</span></button>
+                            <button class="opt" data-value="Instagram story" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
+                            <button class="opt" data-value="TikTok post" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
+                            <button class="opt" data-value="X post" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
+                            <button class="opt" data-value="Video creation" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
                         </div>
                         <button class="btn-continue" id="btn-upsell-placement" disabled onclick="submitUpsell('placement')">Select at least one →</button>
                     </div>
-
                     <div class="upsell-section" id="upsell-full">
                         <div class="us-title" style="background:var(--grad-sass);-webkit-background-clip:text;background-clip:text;color:transparent;">🚀 Request received. Want a quick win while you're here?</div>
                         <div class="us-sub">WeTalkSound reaches 370K+ across TikTok, IG and X. Grab a slot on our channels.</div>
                         <div class="us-grid" id="upsell-full-grid">
-                            <button class="opt" data-value="Instagram post" onclick="toggleUpsellFull(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-                                Instagram post
-                                <span class="reach">106K</span>
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Twitter / X post" onclick="toggleUpsellFull(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>
-                                Twitter / X post
-                                <span class="reach">36K</span>
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="TikTok feature" onclick="toggleUpsellFull(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>
-                                TikTok feature
-                                <span class="reach">202K</span>
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Website feature" onclick="toggleUpsellFull(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                                Website feature
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Newsletter mention" onclick="toggleUpsellFull(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                Newsletter mention
-                                <span class="reach">30K</span>
-                                <span class="check">✓</span>
-                            </button>
-                            <button class="opt" data-value="Interview / spotlight" onclick="toggleUpsellFull(this)">
-                                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                Interview / spotlight
-                                <span class="check">✓</span>
-                            </button>
+                            <button class="opt" data-value="Instagram post" onclick="toggleUpsellFull(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram post<span class="reach">106K</span><span class="check">✓</span></button>
+                            <button class="opt" data-value="Twitter / X post" onclick="toggleUpsellFull(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>Twitter / X post<span class="reach">36K</span><span class="check">✓</span></button>
+                            <button class="opt" data-value="TikTok feature" onclick="toggleUpsellFull(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok feature<span class="reach">202K</span><span class="check">✓</span></button>
+                            <button class="opt" data-value="Website feature" onclick="toggleUpsellFull(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
+                            <button class="opt" data-value="Newsletter mention" onclick="toggleUpsellFull(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Newsletter mention<span class="reach">30K</span><span class="check">✓</span></button>
+                            <button class="opt" data-value="Interview / spotlight" onclick="toggleUpsellFull(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Interview / spotlight<span class="check">✓</span></button>
                         </div>
                         <button class="btn-continue" id="btn-upsell-full" disabled onclick="submitUpsell('full')">Add & continue →</button>
                     </div>
                 </div>
 
-                <!-- THANK YOU (hidden; redirects) -->
+                <!-- Thank You (hidden) -->
                 <div class="thankyou" id="thankyou" style="display:none;"></div>
-
             </div><!-- /quiz-card -->
         </div><!-- /hero-inner -->
     </div><!-- /hero-wrap -->
@@ -1746,57 +1404,23 @@
         <div class="eyebrow">Our Services</div>
         <h2 class="s-title">360° creative marketing &amp; placement.</h2>
         <div class="grid-3" style="margin-top:32px;">
-            <div class="service-card">
-                <div class="card-icon">📍</div>
-                <h3>Placements</h3>
-                <p>Press, media, interviews, playlists, radio, TV &amp; DJ amplification.</p>
-                <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            </div>
-            <div class="service-card">
-                <div class="card-icon">📈</div>
-                <h3>Digital Marketing</h3>
-                <p>Ads (Meta, Snapchat, YouTube), rollout planning, influencer marketing &amp; social trends.</p>
-                <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            </div>
-            <div class="service-card">
-                <div class="card-icon">🎨</div>
-                <h3>Creative</h3>
-                <p>Visuals, photography, website design, brand identity &amp; event production.</p>
-                <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            </div>
+            <div class="service-card"><div class="card-icon">📍</div><h3>Placements</h3><p>Press, media, interviews, playlists, radio, TV &amp; DJ.</p></div>
+            <div class="service-card"><div class="card-icon">📈</div><h3>Digital Marketing</h3><p>Ads (Meta, Snapchat, YouTube), influencer marketing &amp; trends.</p></div>
+            <div class="service-card"><div class="card-icon">🎨</div><h3>Creative</h3><p>Visuals, photography, brand identity &amp; event production.</p></div>
         </div>
     </div>
 
-    <!-- ─── REACH / STATS ─── -->
+    <!-- ─── REACH ─── -->
     <div class="section bg-white">
         <div class="eyebrow">Our Reach</div>
         <h2 class="s-title">Distribution that moves culture.</h2>
-        <p class="s-sub">A network spanning owned platforms, media partners, and influencer reach.</p>
         <div class="stat-grid" style="margin-top:32px;">
-            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);">
-                <div class="stat-num">36K</div>
-                <div class="stat-lbl" style="color:var(--muted);">X / Twitter</div>
-            </div>
-            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);">
-                <div class="stat-num">106K</div>
-                <div class="stat-lbl" style="color:var(--muted);">Instagram</div>
-            </div>
-            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);">
-                <div class="stat-num">202K</div>
-                <div class="stat-lbl" style="color:var(--muted);">TikTok</div>
-            </div>
-            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);">
-                <div class="stat-num">30K</div>
-                <div class="stat-lbl" style="color:var(--muted);">Newsletter</div>
-            </div>
-            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);">
-                <div class="stat-num">100+</div>
-                <div class="stat-lbl" style="color:var(--muted);">Media partners</div>
-            </div>
-            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);">
-                <div class="stat-num">500M+</div>
-                <div class="stat-lbl" style="color:var(--muted);">Influencer reach</div>
-            </div>
+            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);"><div class="stat-num">36K</div><div class="stat-lbl" style="color:var(--muted);">X / Twitter</div></div>
+            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);"><div class="stat-num">106K</div><div class="stat-lbl" style="color:var(--muted);">Instagram</div></div>
+            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);"><div class="stat-num">202K</div><div class="stat-lbl" style="color:var(--muted);">TikTok</div></div>
+            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);"><div class="stat-num">30K</div><div class="stat-lbl" style="color:var(--muted);">Newsletter</div></div>
+            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);"><div class="stat-num">100+</div><div class="stat-lbl" style="color:var(--muted);">Media partners</div></div>
+            <div class="dark-card" style="background:var(--bg-light);border-color:var(--border-light);"><div class="stat-num">500M+</div><div class="stat-lbl" style="color:var(--muted);">Influencer reach</div></div>
         </div>
     </div>
 
@@ -1804,76 +1428,7 @@
     <div id="work" class="section bg-dark">
         <div class="eyebrow" style="color:var(--accent);">Selected Work</div>
         <h2 class="s-title">Campaigns we built, numbers they moved.</h2>
-        <p class="s-sub" style="margin-bottom:24px;">Real results across TikTok, PR, playlists, video and events.</p>
-
-        <div class="grid-3">
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">TikTok – Danpapa</div>
-                <h3>Danpapa – "Ikeja"</h3>
-                <p>64K+ sound uses · 10M+ impressions · 200+ creators</p>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">1.3M Spotify streams</span>
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">2M+ overall</span>
-                </div>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">TikTok – Zen Universe</div>
-                <h3>Zen Universe – "Margiela Baby"</h3>
-                <p>5K+ sound uses in under 2 weeks · 100+ creators · 1M+ impressions</p>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">TikTok – Ayra Starr</div>
-                <h3>Ayra Starr × RnBoii</h3>
-                <p>200+ creators · 1M+ impressions · 80K+ sound uses</p>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">PR – Tiwa Savage</div>
-                <h3>Tiwa Savage – "Energy"</h3>
-                <p>200+ media pitches · 25+ placements · 20+ influencers</p>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">5M+ impressions</span>
-                </div>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">PR – BNXN</div>
-                <h3>BNXN – "Eja Meja" / "Still in Charge"</h3>
-                <p>40+ media placements · 7M+ impressions · 200+ pitches</p>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">PR – Davido</div>
-                <h3>Davido – DMW 2.0</h3>
-                <p>40+ placements · 3 trends · 1000+ Spaces</p>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">10M+ impressions</span>
-                </div>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Joeboy</div>
-                <h3>Joeboy – 2023 Run</h3>
-                <p>900M+ streams · Camp Nou moment · UK Albums Chart debut</p>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">#2 Nigeria Top 50</span>
-                </div>
-            </div>
-            <div class="dark-card">
-                <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:18px 12px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Llona</div>
-                <h3>Llona – Album Rollout</h3>
-                <p>50M+ streams · 20+ press platforms · 1 documentary</p>
-            </div>
-            <div class="dark-card">
-                <div class="card-icon" style="width:44px;height:44px;border-radius:12px;background:rgba(255,107,74,0.08);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:12px;">🎧</div>
-                <h3>Playlists</h3>
-                <p>Afro RnB · AfroHouse</p>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">5,000+ artists</span>
-                    <span style="background:rgba(255,107,74,0.1);border:1px solid rgba(255,107,74,0.15);border-radius:50px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--accent);">4,000+ saves</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-top:32px;">
-            <a href="#hero" class="btn-link wo">Start your enquiry →</a>
-        </div>
+        <div style="margin-top:32px;"><a href="#hero" class="btn-link wo">Start your enquiry →</a></div>
     </div>
 
     <!-- ─── FAQ ─── -->
@@ -1881,43 +1436,33 @@
         <div class="eyebrow">FAQ</div>
         <h2 class="s-title">Quick answers</h2>
         <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
-            <div class="faq-item"><strong>How much does a campaign cost?</strong><br><span>We tailor every campaign to your budget and goals. Start your enquiry above for a free estimate.</span></div>
-            <div class="faq-item"><strong>Do you work with independent artists?</strong><br><span>Absolutely. We've helped emerging artists break through alongside major acts.</span></div>
+            <div class="faq-item"><strong>How much does a campaign cost?</strong><br><span>We tailor every campaign to your budget and goals. Start your enquiry above.</span></div>
+            <div class="faq-item"><strong>Do you work with independent artists?</strong><br><span>Absolutely.</span></div>
             <div class="faq-item"><strong>What platforms do you specialise in?</strong><br><span>TikTok, Instagram, YouTube, Spotify, Apple Music, radio, TV, and print media.</span></div>
-            <div class="faq-item"><strong>How long does a typical campaign run?</strong><br><span>Most campaigns run 4–8 weeks, but we customise based on your release timeline.</span></div>
+            <div class="faq-item"><strong>How long does a typical campaign run?</strong><br><span>4–8 weeks, customised.</span></div>
         </div>
     </div>
 
     <!-- ─── CTA BANNER ─── -->
-    <div class="cta-banner">
-        <span>Ready to amplify your release? <a href="#hero">Start your enquiry →</a></span>
-    </div>
+    <div class="cta-banner"><span>Ready to amplify your release? <a href="#hero">Start your enquiry →</a></span></div>
 
     <!-- ─── FOOTER ─── -->
     <footer>
-        <div>
-            <div class="fmark">WeTalkSound</div>
-            <div style="font-size:0.75rem;color:var(--muted);">Lagos · London · New York · East Africa</div>
-        </div>
+        <div><div class="fmark">WeTalkSound</div><div style="font-size:0.75rem;color:var(--muted);">Lagos · London · New York · East Africa</div></div>
         <div style="text-align:center;">
-            <div class="socials">
-                <a href="https://instagram.com/wetalksound" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://tiktok.com/@wetalksound" target="_blank" rel="noopener">TikTok</a>
-                <a href="https://twitter.com/wetalksound" target="_blank" rel="noopener">X</a>
-            </div>
-            <div style="margin-top:6px;font-size:0.7rem;color:var(--muted);">
-                <a href="mailto:hello@wetalksound.co">hello@wetalksound.co</a> · © <span id="footer-year"></span>
-            </div>
+            <div class="socials"><a href="https://instagram.com/wetalksound" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com/@wetalksound" target="_blank" rel="noopener">TikTok</a><a href="https://twitter.com/wetalksound" target="_blank" rel="noopener">X</a></div>
+            <div style="margin-top:6px;font-size:0.7rem;color:var(--muted);"><a href="mailto:hello@wetalksound.co">hello@wetalksound.co</a> · © <span id="footer-year"></span></div>
         </div>
     </footer>
 
     <script>
-        // ── mobile menu ──
-        function toggleMenu() {
-            document.getElementById('mobile-menu').classList.toggle('open');
-        }
+        // ─── MOBILE MENU ──────────────────────────────────────────────────────────
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+        document.querySelectorAll('.mobile-menu a').forEach(function(a) {
+            a.addEventListener('click', function() { document.getElementById('mobile-menu').classList.remove('open'); });
+        });
 
-        // ── UTM capture ──
+        // ─── UTM CAPTURE ──────────────────────────────────────────────────────────
         var utmParams = {};
         (function() {
             var p = new URLSearchParams(window.location.search);
@@ -1926,49 +1471,25 @@
             });
         })();
 
-        // ── QUIZ DATA ──
+        // ─── LEAD DATA ────────────────────────────────────────────────────────────
         var lead = {
-            path: '',
-            role: '',
-            releaseType: '',
-            stage: '',
-            link: '',
-            goals: [],
-            budget: '',
-            placements: [],
-            name: '',
-            actName: '',
-            artistIg: '',
-            country: '',
-            email: '',
-            phone: '',
-            timeline: '',
-            addons: [],
-            timestamp: '',
-            utmSource: utmParams.source || '',
-            utmMedium: utmParams.medium || '',
-            utmCampaign: utmParams.campaign || ''
+            path: '', role: '', releaseType: '', stage: '', link: '',
+            goals: [], budget: '', placements: [], tier: '', prospectType: '',
+            name: '', actName: '', artistIg: '', country: '', email: '', phone: '', timeline: '',
+            addons: [], utmSource: utmParams.source || '', utmMedium: utmParams.medium || '', utmCampaign: utmParams.campaign || ''
         };
 
         var currentStep = 0;
         var steps = document.querySelectorAll('.step');
         var dots = document.querySelectorAll('.progress-dots .dot');
-        var step3Content = document.getElementById('step3-content');
+        var step2Content = document.getElementById('step2-content');
+        var isHighBudget = false;
+        var noBudgetPlacements = [];
 
-        var metricMap = {
-            'Playlisting': { number: '2.3M+', label: 'playlist reach' },
-            'Charting': { number: '15 countries', label: 'charted' },
-            'Streams': { number: '900M+', label: 'streams' },
-            'Press & Media': { number: '40+', label: 'placements' },
-            'Social Buzz': { number: '3 trends · 1000+ Spaces', label: 'social momentum' },
-            'Radio & DJ': { number: 'Arizona', label: 'street anthem' }
-        };
-
-        var lastGoalClicked = null;
-
+        // ─── HELPERS ──────────────────────────────────────────────────────────────
         function showStep(index) {
             currentStep = index;
-            steps.forEach((s, i) => {
+            steps.forEach(function(s, i) {
                 s.classList.toggle('active', i === index);
                 dots[i].classList.toggle('active', i === index);
                 dots[i].classList.toggle('done', i < index);
@@ -1981,356 +1502,369 @@
 
         function disableContinue(id) { document.getElementById(id).disabled = true; }
 
-        function hideError(id) { const el = document.getElementById(id); if (el) el.classList.remove('show'); }
+        function hideError(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); }
 
-        function showError(id) { const el = document.getElementById(id); if (el) el.classList.add('show'); }
+        function showError(id) { var el = document.getElementById(id); if (el) el.classList.add('show'); }
 
-        // ── STEP 1 (auto) ──
+        // ─── STEP 1 ────────────────────────────────────────────────────────────────
         function selectStep1(el) {
-            document.querySelectorAll('#stepsContainer [data-step="0"] .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('#stepsContainer [data-step="0"] .opt').forEach(function(b) { b.classList.remove('selected'); });
             el.classList.add('selected');
             lead.path = el.dataset.value;
-            hideError('err-step1');
+            hideError('err-step0');
             setTimeout(function() { goStep(1); }, 350);
         }
 
-        // ── STEP 2 (auto) ──
+        // ─── STEP 2 ────────────────────────────────────────────────────────────────
         function selectStep2(el) {
-            document.querySelectorAll('#stepsContainer [data-step="1"] .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('#stepsContainer [data-step="1"] .opt').forEach(function(b) { b.classList.remove('selected'); });
             el.classList.add('selected');
             lead.role = el.dataset.value;
-            hideError('err-step2');
+            hideError('err-step1');
             setTimeout(function() { goStep(2); }, 350);
         }
 
-        // ── STEP 3 ──
-        function renderStep3() {
+        // ─── STEP 3 ────────────────────────────────────────────────────────────────
+        function renderStep2() {
             var html = '';
             if (lead.path === 'pre') {
                 html += `
                     <div class="q-title">What are you releasing?</div>
-                    <div class="opt-grid" id="step3-pre-type">
-                        <button class="opt" data-value="Single" onclick="selectStep3Pre(this)">Single <span class="check">✓</span></button>
-                        <button class="opt" data-value="EP" onclick="selectStep3Pre(this)">EP <span class="check">✓</span></button>
-                        <button class="opt" data-value="Album" onclick="selectStep3Pre(this)">Album <span class="check">✓</span></button>
-                        <button class="opt" data-value="Not sure yet" onclick="selectStep3Pre(this)">Not sure yet <span class="check">✓</span></button>
+                    <div class="opt-grid" id="step2-pre-type">
+                        <button class="opt" data-value="Single" onclick="selectStep2Pre(this)">Single <span class="check">✓</span></button>
+                        <button class="opt" data-value="EP" onclick="selectStep2Pre(this)">EP <span class="check">✓</span></button>
+                        <button class="opt" data-value="Album" onclick="selectStep2Pre(this)">Album <span class="check">✓</span></button>
+                        <button class="opt" data-value="Not sure yet" onclick="selectStep2Pre(this)">Not sure yet <span class="check">✓</span></button>
                     </div>
                     <div style="margin-top:10px;">
-                        <div class="q-sub" style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-bottom:6px;">Where are you with it?</div>
-                        <div class="opt-grid" id="step3-pre-stage">
-                            <button class="opt" data-value="Still recording" onclick="selectStep3PreStage(this)">Still recording <span class="check">✓</span></button>
-                            <button class="opt" data-value="Project ready, no date" onclick="selectStep3PreStage(this)">Project ready, no date <span class="check">✓</span></button>
-                            <button class="opt" data-value="Release date confirmed" onclick="selectStep3PreStage(this)">Release date confirmed <span class="check">✓</span></button>
-                            <button class="opt" data-value="Dropping ASAP" onclick="selectStep3PreStage(this)">Dropping ASAP <span class="check">✓</span></button>
+                        <div class="q-sub" style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-bottom:6px;">How far along are you?</div>
+                        <div class="opt-grid" id="step2-pre-stage">
+                            <button class="opt" data-value="Still recording" onclick="selectStep2PreStage(this)">Still recording <span class="check">✓</span></button>
+                            <button class="opt" data-value="Project ready, no dates yet" onclick="selectStep2PreStage(this)">Project ready, no dates yet <span class="check">✓</span></button>
+                            <button class="opt" data-value="Release date confirmed" onclick="selectStep2PreStage(this)">Release date confirmed <span class="check">✓</span></button>
+                            <button class="opt" data-value="Dropping ASAP" onclick="selectStep2PreStage(this)">Dropping ASAP <span class="check">✓</span></button>
                         </div>
                     </div>
                 `;
             } else {
                 html += `
                     <div class="q-title">What did you release?</div>
-                    <div class="opt-grid" id="step3-post-type">
-                        <button class="opt" data-value="Single" onclick="selectStep3Post(this)">Single <span class="check">✓</span></button>
-                        <button class="opt" data-value="EP" onclick="selectStep3Post(this)">EP <span class="check">✓</span></button>
-                        <button class="opt" data-value="Album" onclick="selectStep3Post(this)">Album <span class="check">✓</span></button>
+                    <div class="opt-grid" id="step2-post-type">
+                        <button class="opt" data-value="Single" onclick="selectStep2Post(this)">Single <span class="check">✓</span></button>
+                        <button class="opt" data-value="EP" onclick="selectStep2Post(this)">EP <span class="check">✓</span></button>
+                        <button class="opt" data-value="Album" onclick="selectStep2Post(this)">Album <span class="check">✓</span></button>
                     </div>
                     <div style="margin-top:10px;">
                         <div class="q-sub" style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-bottom:6px;">Drop the link</div>
-                        <input type="text" class="text-input" id="step3-link" placeholder="Spotify, Apple Music, YouTube…" oninput="checkStep3Post()" />
+                        <input type="text" class="text-input" id="step2-link" placeholder="Spotify, Apple Music, YouTube…" oninput="checkStep2Post()" />
                     </div>
                 `;
             }
-            step3Content.innerHTML = html;
-            disableContinue('btn-step3');
-            hideError('err-step3');
-            restoreStep3Data();
+            step2Content.innerHTML = html;
+            disableContinue('btn-step2');
+            hideError('err-step2');
+            restoreStep2Data();
         }
 
-        function restoreStep3Data() {
+        function restoreStep2Data() {
             if (lead.path === 'pre') {
                 if (lead.releaseType) {
-                    const opt = document.querySelector('#step3-pre-type .opt[data-value="' + lead.releaseType + '"]');
+                    var opt = document.querySelector('#step2-pre-type .opt[data-value="' + lead.releaseType + '"]');
                     if (opt) opt.classList.add('selected');
                 }
                 if (lead.stage) {
-                    const opt = document.querySelector('#step3-pre-stage .opt[data-value="' + lead.stage + '"]');
+                    var opt = document.querySelector('#step2-pre-stage .opt[data-value="' + lead.stage + '"]');
                     if (opt) opt.classList.add('selected');
                 }
-                if (lead.releaseType && lead.stage) enableContinue('btn-step3');
+                if (lead.releaseType && lead.stage) enableContinue('btn-step2');
             } else {
                 if (lead.releaseType) {
-                    const opt = document.querySelector('#step3-post-type .opt[data-value="' + lead.releaseType + '"]');
+                    var opt = document.querySelector('#step2-post-type .opt[data-value="' + lead.releaseType + '"]');
                     if (opt) opt.classList.add('selected');
                 }
                 if (lead.link) {
-                    const input = document.getElementById('step3-link');
+                    var input = document.getElementById('step2-link');
                     if (input) input.value = lead.link;
                 }
-                if (lead.releaseType && lead.link) enableContinue('btn-step3');
+                if (lead.releaseType && lead.link) enableContinue('btn-step2');
             }
         }
 
-        function selectStep3Pre(el) {
-            document.querySelectorAll('#step3-pre-type .opt').forEach(b => b.classList.remove('selected'));
+        function selectStep2Pre(el) {
+            document.querySelectorAll('#step2-pre-type .opt').forEach(function(b) { b.classList.remove('selected'); });
             el.classList.add('selected');
             lead.releaseType = el.dataset.value;
-            checkStep3Pre();
+            checkStep2Pre();
         }
 
-        function selectStep3PreStage(el) {
-            document.querySelectorAll('#step3-pre-stage .opt').forEach(b => b.classList.remove('selected'));
+        function selectStep2PreStage(el) {
+            document.querySelectorAll('#step2-pre-stage .opt').forEach(function(b) { b.classList.remove('selected'); });
             el.classList.add('selected');
             lead.stage = el.dataset.value;
-            checkStep3Pre();
+            checkStep2Pre();
         }
 
-        function checkStep3Pre() {
-            const type = document.querySelector('#step3-pre-type .opt.selected');
-            const stage = document.querySelector('#step3-pre-stage .opt.selected');
+        function checkStep2Pre() {
+            var type = document.querySelector('#step2-pre-type .opt.selected');
+            var stage = document.querySelector('#step2-pre-stage .opt.selected');
             if (type && stage) {
                 lead.releaseType = type.dataset.value;
                 lead.stage = stage.dataset.value;
-                hideError('err-step3');
-                enableContinue('btn-step3');
-            } else {
-                disableContinue('btn-step3');
-            }
+                hideError('err-step2');
+                enableContinue('btn-step2');
+            } else { disableContinue('btn-step2'); }
         }
 
-        function selectStep3Post(el) {
-            document.querySelectorAll('#step3-post-type .opt').forEach(b => b.classList.remove('selected'));
+        function selectStep2Post(el) {
+            document.querySelectorAll('#step2-post-type .opt').forEach(function(b) { b.classList.remove('selected'); });
             el.classList.add('selected');
             lead.releaseType = el.dataset.value;
-            checkStep3Post();
+            checkStep2Post();
         }
 
-        function checkStep3Post() {
-            const type = document.querySelector('#step3-post-type .opt.selected');
-            const link = document.getElementById('step3-link').value.trim();
+        function checkStep2Post() {
+            var type = document.querySelector('#step2-post-type .opt.selected');
+            var link = document.getElementById('step2-link').value.trim();
             if (type && link) {
                 lead.releaseType = type.dataset.value;
                 lead.link = link;
-                hideError('err-step3');
-                enableContinue('btn-step3');
-            } else {
-                disableContinue('btn-step3');
-            }
+                hideError('err-step2');
+                enableContinue('btn-step2');
+            } else { disableContinue('btn-step2'); }
         }
 
-        // ── STEP 4 – goals ──
+        // ─── STEP 4: GOALS ────────────────────────────────────────────────────────
+        var goalProofs = {
+            'Playlisting': { number: '2.3M+', label: 'playlist reach (placeholder)' },
+            'Charting': { number: '15 countries', label: 'charted (placeholder)' },
+            'Streams': { number: '900M+', label: 'streams (placeholder)' },
+            'Press & Media': { number: '40+', label: 'placements (placeholder)' },
+            'Social Buzz': { number: '3 trends', label: '1000+ Spaces (placeholder)' },
+            'Radio & DJ': { number: 'Arizona', label: 'street anthem (placeholder)' }
+        };
+
         function toggleGoal(el) {
-            const val = el.dataset.value;
-            const idx = lead.goals.indexOf(val);
+            var val = el.dataset.value;
+            var idx = lead.goals.indexOf(val);
+            if (idx > -1) { lead.goals.splice(idx, 1);
+                el.classList.remove('selected'); } else { lead.goals.push(val);
+                el.classList.add('selected'); }
 
-            if (idx > -1) {
-                lead.goals.splice(idx, 1);
-                el.classList.remove('selected');
-            } else {
-                lead.goals.push(val);
-                el.classList.add('selected');
-            }
-
-            const selected = document.querySelectorAll('#goals-grid .opt.selected');
-            const metricTile = document.getElementById('metric-tile');
-            const metricNumber = document.getElementById('metric-number');
-            const metricLabel = document.getElementById('metric-label');
-
+            var selected = document.querySelectorAll('#goals-grid .opt.selected');
+            var tile = document.getElementById('metric-tile');
+            var num = document.getElementById('metric-number');
+            var lbl = document.getElementById('metric-label');
             if (selected.length > 0) {
-                const last = selected[selected.length - 1];
-                const metric = metricMap[last.dataset.value];
-                if (metric) {
-                    metricNumber.textContent = metric.number;
-                    metricLabel.textContent = metric.label;
-                    metricTile.classList.add('show');
+                var last = selected[selected.length - 1];
+                var proof = goalProofs[last.dataset.value];
+                if (proof) {
+                    num.textContent = proof.number;
+                    lbl.textContent = proof.label;
+                    tile.classList.add('show');
                 }
-                lastGoalClicked = last;
             } else {
-                metricTile.classList.remove('show');
-                lastGoalClicked = null;
+                tile.classList.remove('show');
             }
-
-            if (lead.goals.length > 0) {
-                hideError('err-step4');
-                enableContinue('btn-step4');
-            } else {
-                disableContinue('btn-step4');
-            }
+            if (lead.goals.length > 0) { hideError('err-step3');
+                enableContinue('btn-step3'); } else { disableContinue('btn-step3'); }
         }
 
-        // ── STEP 5 – budget ──
+        // ─── STEP 5: BUDGET ───────────────────────────────────────────────────────
         function selectBudget(el) {
-            document.querySelectorAll('#budget-grid .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('#budget-grid .opt').forEach(function(b) { b.classList.remove('selected'); });
             el.classList.add('selected');
             lead.budget = el.dataset.value;
-            hideError('err-step5');
+            hideError('err-step4');
 
-            const disqualify = document.getElementById('disqualify-msg');
+            var disqualify = document.getElementById('disqualify-msg');
+            disqualify.classList.remove('show');
+            noBudgetPlacements = [];
+            document.querySelectorAll('#no-budget-placements .opt').forEach(function(b) { b.classList.remove('selected'); });
 
             if (lead.budget === 'No budget') {
                 disqualify.classList.add('show');
                 return;
-            } else {
-                disqualify.classList.remove('show');
-                setTimeout(function() {
-                    const title = document.getElementById('placement-step-title');
-                    const sub = document.getElementById('placement-step-sub');
-                    if (lead.budget === 'Up to 150K' || lead.budget === '200K – 500K') {
-                        title.textContent = 'Which of these media placements would you want right now?';
-                        sub.textContent = 'Select any you\'re interested in.';
-                    } else {
-                        title.textContent = 'Which of these managed options interest you?';
-                        sub.textContent = 'Select any you\'d like to explore.';
-                    }
-                    goStep(5);
-                }, 350);
+            }
+
+            var lowBudgets = ['Up to 150K', '200K – 500K'];
+            var highBudgets = ['500K – 2M', '2M – 5M', 'Over 5M'];
+
+            if (lowBudgets.indexOf(lead.budget) > -1) {
+                lead.tier = 'placement';
+                lead.prospectType = 'Placement Lead';
+                document.getElementById('placement-step-title').textContent = 'For your budget, we have a couple of rich placements that you might be interested in.';
+                document.getElementById('placement-step-sub').textContent = 'Select any you\'re interested in.';
+                lead.placements = [];
+                document.querySelectorAll('#pg-grid .opt').forEach(function(b) { b.classList.remove('selected'); });
+                document.getElementById('btn-step5').disabled = true;
+                setTimeout(function() { goStep(5); }, 350);
+            } else if (highBudgets.indexOf(lead.budget) > -1) {
+                lead.tier = 'full';
+                lead.prospectType = 'High Value Lead';
+                isHighBudget = true;
+                setTimeout(function() { goStep(6); }, 350);
             }
         }
 
-        // ── STEP 6 – placements ──
+        // ─── NO-BUDGET PLACEMENTS ────────────────────────────────────────────────
+        function toggleNoBudgetPlacement(el) {
+            el.classList.toggle('selected');
+            var val = el.dataset.value;
+            var idx = noBudgetPlacements.indexOf(val);
+            if (idx > -1) noBudgetPlacements.splice(idx, 1);
+            else noBudgetPlacements.push(val);
+        }
+
+        function continueFromNoBudget() {
+            lead.placements = noBudgetPlacements;
+            lead.tier = 'placement';
+            lead.prospectType = 'Placement Lead';
+            goStep(6);
+        }
+
+        // ─── LOW-BUDGET PLACEMENTS ──────────────────────────────────────────────
         function togglePlacement(el) {
             el.classList.toggle('selected');
-            const val = el.dataset.value;
-            const idx = lead.placements.indexOf(val);
-            if (idx > -1) {
-                lead.placements.splice(idx, 1);
-            } else {
-                lead.placements.push(val);
-            }
-
-            const continueBtn = document.getElementById('btn-step6');
-            if (lead.placements.length > 0) {
-                continueBtn.disabled = false;
-                hideError('err-step6');
-            } else {
-                continueBtn.disabled = true;
-            }
+            var val = el.dataset.value;
+            var idx = lead.placements.indexOf(val);
+            if (idx > -1) lead.placements.splice(idx, 1);
+            else lead.placements.push(val);
+            var btn = document.getElementById('btn-step5');
+            if (lead.placements.length > 0) { btn.disabled = false;
+                hideError('err-step5'); } else { btn.disabled = true; }
         }
 
-        // ── navigation ──
+        // ─── HIGH-BUDGET PLACEMENTS ──────────────────────────────────────────────
+        function toggleHighBudgetPlacement(el) {
+            el.classList.toggle('selected');
+            var val = el.dataset.value;
+            var idx = lead.placements.indexOf(val);
+            if (idx > -1) lead.placements.splice(idx, 1);
+            else lead.placements.push(val);
+            var btn = document.getElementById('btn-high-budget-continue');
+            if (lead.placements.length > 0) { btn.disabled = false;
+                hideError('err-high-budget-placement'); } else { btn.disabled = true; }
+        }
+
+        function submitHighBudgetPlacements() {
+            if (lead.placements.length === 0) { showError('err-high-budget-placement'); return; }
+            window.location.href = '/thank-you/music';
+        }
+
+        // ─── NAVIGATION ────────────────────────────────────────────────────────────
         function goStep(index) {
             if (index > currentStep) {
-                if (currentStep === 0 && !lead.path) { showError('err-step1'); return; }
-                if (currentStep === 1 && !lead.role) { showError('err-step2'); return; }
+                if (currentStep === 0 && !lead.path) { showError('err-step0'); return; }
+                if (currentStep === 1 && !lead.role) { showError('err-step1'); return; }
                 if (currentStep === 2) {
                     if (lead.path === 'pre') {
-                        if (!lead.releaseType || !lead.stage) { showError('err-step3'); return; }
+                        if (!lead.releaseType || !lead.stage) { showError('err-step2'); return; }
                     } else {
-                        if (!lead.releaseType || !lead.link) { showError('err-step3'); return; }
+                        if (!lead.releaseType || !lead.link) { showError('err-step2'); return; }
                     }
                 }
-                if (currentStep === 3 && lead.goals.length === 0) { showError('err-step4'); return; }
+                if (currentStep === 3 && lead.goals.length === 0) { showError('err-step3'); return; }
                 if (currentStep === 4) {
-                    if (!lead.budget) { showError('err-step5'); return; }
+                    if (!lead.budget) { showError('err-step4'); return; }
                     if (lead.budget === 'No budget') { return; }
                 }
-                if (currentStep === 5 && lead.placements.length === 0) {
-                    showError('err-step6');
-                    return;
-                }
+                if (currentStep === 5 && lead.placements.length === 0) { showError('err-step5'); return; }
             }
             showStep(index);
-            if (index === 2) renderStep3();
+            if (index === 2) renderStep2();
         }
 
         function restoreStepData(index) {
             if (index === 0 && lead.path) {
-                const opt = document.querySelector('#stepsContainer [data-step="0"] .opt[data-value="' + lead.path + '"]');
+                var opt = document.querySelector('#stepsContainer [data-step="0"] .opt[data-value="' + lead.path + '"]');
                 if (opt) opt.classList.add('selected');
             }
             if (index === 1 && lead.role) {
-                const opt = document.querySelector('#stepsContainer [data-step="1"] .opt[data-value="' + lead.role + '"]');
+                var opt = document.querySelector('#stepsContainer [data-step="1"] .opt[data-value="' + lead.role + '"]');
                 if (opt) opt.classList.add('selected');
             }
             if (index === 3) {
-                lead.goals.forEach(g => {
-                    const opt = document.querySelector('#goals-grid .opt[data-value="' + g + '"]');
+                lead.goals.forEach(function(g) {
+                    var opt = document.querySelector('#goals-grid .opt[data-value="' + g + '"]');
                     if (opt) opt.classList.add('selected');
                 });
-                const selected = document.querySelectorAll('#goals-grid .opt.selected');
-                const metricTile = document.getElementById('metric-tile');
-                const metricNumber = document.getElementById('metric-number');
-                const metricLabel = document.getElementById('metric-label');
+                var selected = document.querySelectorAll('#goals-grid .opt.selected');
+                var tile = document.getElementById('metric-tile');
+                var num = document.getElementById('metric-number');
+                var lbl = document.getElementById('metric-label');
                 if (selected.length > 0) {
-                    const last = selected[selected.length - 1];
-                    const metric = metricMap[last.dataset.value];
-                    if (metric) {
-                        metricNumber.textContent = metric.number;
-                        metricLabel.textContent = metric.label;
-                        metricTile.classList.add('show');
-                    }
+                    var last = selected[selected.length - 1];
+                    var proof = goalProofs[last.dataset.value];
+                    if (proof) { num.textContent = proof.number;
+                        lbl.textContent = proof.label;
+                        tile.classList.add('show'); }
                 }
-                if (lead.goals.length > 0) enableContinue('btn-step4');
+                if (lead.goals.length > 0) enableContinue('btn-step3');
             }
             if (index === 4 && lead.budget) {
-                const opt = document.querySelector('#budget-grid .opt[data-value="' + lead.budget + '"]');
+                var opt = document.querySelector('#budget-grid .opt[data-value="' + lead.budget + '"]');
                 if (opt) opt.classList.add('selected');
                 if (lead.budget === 'No budget') {
                     document.getElementById('disqualify-msg').classList.add('show');
+                    noBudgetPlacements.forEach(function(p) {
+                        var el = document.querySelector('#no-budget-placements .opt[data-value="' + p + '"]');
+                        if (el) el.classList.add('selected');
+                    });
                 }
             }
             if (index === 5) {
-                lead.placements.forEach(p => {
-                    const opt = document.querySelector('#pg-grid .opt[data-value="' + p + '"]');
+                lead.placements.forEach(function(p) {
+                    var opt = document.querySelector('#pg-grid .opt[data-value="' + p + '"]');
                     if (opt) opt.classList.add('selected');
                 });
-                if (lead.placements.length > 0) {
-                    document.getElementById('btn-step6').disabled = false;
-                }
-                const title = document.getElementById('placement-step-title');
-                const sub = document.getElementById('placement-step-sub');
-                if (lead.budget === 'Up to 150K' || lead.budget === '200K – 500K') {
-                    title.textContent = 'Which of these media placements would you want right now?';
-                    sub.textContent = 'Select any you\'re interested in.';
-                } else {
-                    title.textContent = 'Which of these managed options interest you?';
-                    sub.textContent = 'Select any you\'d like to explore.';
-                }
+                if (lead.placements.length > 0) { document.getElementById('btn-step5').disabled = false; }
             }
             if (index === 6) {
                 document.getElementById('contact-name').value = lead.name || '';
                 document.getElementById('contact-act').value = lead.actName || '';
                 document.getElementById('contact-ig').value = lead.artistIg || '';
                 if (lead.country) {
-                    const sel = document.getElementById('contact-country');
+                    var sel = document.getElementById('contact-country');
                     for (var i = 0; i < sel.options.length; i++) {
                         if (sel.options[i].value === lead.country) { sel.selectedIndex = i; break; }
                     }
                 }
                 document.getElementById('contact-email').value = lead.email || '';
                 if (lead.phone) {
-                    var phoneParts = lead.phone.match(/^(\+\d+)(.*)$/);
-                    if (phoneParts) {
+                    var parts = lead.phone.match(/^(\+\d+)(.*)$/);
+                    if (parts) {
                         var prefixEl = document.getElementById('phone-prefix');
                         for (var j = 0; j < prefixEl.options.length; j++) {
-                            if (prefixEl.options[j].value === phoneParts[1]) { prefixEl.selectedIndex = j; break; }
+                            if (prefixEl.options[j].value === parts[1]) { prefixEl.selectedIndex = j; break; }
                         }
-                        document.getElementById('contact-phone').value = phoneParts[2];
+                        document.getElementById('contact-phone').value = parts[2];
                     } else {
                         document.getElementById('contact-phone').value = lead.phone;
                     }
                 }
                 if (lead.timeline) {
-                    const sel = document.getElementById('contact-timeline');
-                    for (var k = 0; k < sel.options.length; k++) {
-                        if (sel.options[k].value === lead.timeline) { sel.selectedIndex = k; break; }
+                    var sel2 = document.getElementById('contact-timeline');
+                    for (var k = 0; k < sel2.options.length; k++) {
+                        if (sel2.options[k].value === lead.timeline) { sel2.selectedIndex = k; break; }
                     }
                 }
+                if (isHighBudget) {}
             }
         }
 
-        // ── SUBMIT ──
+        // ─── SUBMIT QUIZ ──────────────────────────────────────────────────────────
         function submitQuiz() {
-            const name = document.getElementById('contact-name').value.trim();
-            const act = document.getElementById('contact-act').value.trim();
-            const ig = document.getElementById('contact-ig').value.trim();
-            const country = document.getElementById('contact-country').value;
-            const email = document.getElementById('contact-email').value.trim();
-            const prefix = document.getElementById('phone-prefix').value;
-            const phoneRaw = document.getElementById('contact-phone').value.trim();
-            const timeline = document.getElementById('contact-timeline').value;
+            var name = document.getElementById('contact-name').value.trim();
+            var act = document.getElementById('contact-act').value.trim();
+            var ig = document.getElementById('contact-ig').value.trim();
+            var country = document.getElementById('contact-country').value;
+            var email = document.getElementById('contact-email').value.trim();
+            var prefix = document.getElementById('phone-prefix').value;
+            var phoneRaw = document.getElementById('contact-phone').value.trim();
+            var timeline = document.getElementById('contact-timeline').value;
+            var fullPhone = phoneRaw ? prefix + phoneRaw.replace(/\s/g, '') : '';
 
-            const fullPhone = phoneRaw ? prefix + phoneRaw.replace(/\s/g, '') : '';
-
-            let valid = true;
+            var valid = true;
             if (!name) { showError('err-contact-name');
                 valid = false; } else { hideError('err-contact-name'); }
             if (!act) { showError('err-contact-act');
@@ -2357,11 +1891,28 @@
             lead.timeline = timeline;
             lead.timestamp = new Date().toISOString();
 
-            // Store in sessionStorage for thank-you page
             sessionStorage.setItem('wts_lead', JSON.stringify(lead));
 
-            // ── POST TO GAS ──
-            const btn = document.getElementById('btn-step7');
+            if (isHighBudget) {
+                document.getElementById('stepsContainer').style.display = 'none';
+                document.querySelector('.progress-dots').style.display = 'none';
+                document.getElementById('high-budget-placement').style.display = 'block';
+                lead.placements.forEach(function(p) {
+                    var opt = document.querySelector('#high-budget-pg-grid .opt[data-value="' + p + '"]');
+                    if (opt) opt.classList.add('selected');
+                });
+                if (lead.placements.length > 0) {
+                    document.getElementById('btn-high-budget-continue').disabled = false;
+                }
+                return;
+            }
+
+            postLeadAndShowUpsell();
+        }
+
+        // ─── POST LEAD TO GAS ────────────────────────────────────────────────────
+        function postLeadAndShowUpsell() {
+            var btn = document.getElementById('btn-step6');
             btn.textContent = 'Submitting...';
             btn.disabled = true;
 
@@ -2370,23 +1921,18 @@
                     body: JSON.stringify(lead),
                     headers: { 'Content-Type': 'text/plain' }
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('✅ Lead submitted successfully:', data);
-                    const lowBudgets = ['Up to 150K', '200K – 500K'];
-                    lead.tier = lowBudgets.includes(lead.budget) ? 'placement' : 'full';
+                .then(function(response) { return response.json(); })
+                .then(function(data) {
+                    console.log('✅ Lead submitted:', data);
                     showUpsell(lead.tier);
                 })
-                .catch(error => {
-                    console.error('❌ Error submitting lead:', error);
-                    // Proceed anyway
-                    const lowBudgets = ['Up to 150K', '200K – 500K'];
-                    lead.tier = lowBudgets.includes(lead.budget) ? 'placement' : 'full';
+                .catch(function(err) {
+                    console.error('❌ Error:', err);
                     showUpsell(lead.tier);
                 });
         }
 
-        // ── UPSELL ──
+        // ─── UPSELL ──────────────────────────────────────────────────────────────
         function showUpsell(tier) {
             document.getElementById('stepsContainer').style.display = 'none';
             document.querySelector('.progress-dots').style.display = 'none';
@@ -2395,66 +1941,53 @@
             if (tier === 'placement') {
                 document.getElementById('upsell-placement').classList.add('active');
                 document.getElementById('upsell-full').classList.remove('active');
-                document.querySelectorAll('#upsell-placement-grid .opt').forEach(b => b.classList.remove('selected'));
+                document.querySelectorAll('#upsell-placement-grid .opt').forEach(function(b) { b.classList.remove(
+                    'selected'); });
                 document.getElementById('btn-upsell-placement').disabled = true;
             } else {
                 document.getElementById('upsell-full').classList.add('active');
                 document.getElementById('upsell-placement').classList.remove('active');
-                document.querySelectorAll('#upsell-full-grid .opt').forEach(b => b.classList.remove('selected'));
+                document.querySelectorAll('#upsell-full-grid .opt').forEach(function(b) { b.classList.remove(
+                    'selected'); });
                 document.getElementById('btn-upsell-full').disabled = true;
             }
         }
 
         function toggleUpsellPlacement(el) {
             el.classList.toggle('selected');
-            const selected = document.querySelectorAll('#upsell-placement-grid .opt.selected');
-            document.getElementById('btn-upsell-placement').disabled = selected.length === 0;
+            var sel = document.querySelectorAll('#upsell-placement-grid .opt.selected');
+            document.getElementById('btn-upsell-placement').disabled = sel.length === 0;
         }
 
         function toggleUpsellFull(el) {
             el.classList.toggle('selected');
-            const selected = document.querySelectorAll('#upsell-full-grid .opt.selected');
-            document.getElementById('btn-upsell-full').disabled = selected.length === 0;
+            var sel = document.querySelectorAll('#upsell-full-grid .opt.selected');
+            document.getElementById('btn-upsell-full').disabled = sel.length === 0;
         }
 
         function submitUpsell(type) {
-            const grid = type === 'placement' ? '#upsell-placement-grid' : '#upsell-full-grid';
-            const addons = [];
-            document.querySelectorAll(grid + ' .opt.selected').forEach(el => addons.push(el.dataset.value));
+            var grid = type === 'placement' ? '#upsell-placement-grid' : '#upsell-full-grid';
+            var addons = [];
+            document.querySelectorAll(grid + ' .opt.selected').forEach(function(el) { addons.push(el.dataset.value); });
             lead.addons = addons;
             sessionStorage.setItem('wts_lead', JSON.stringify(lead));
-
-            // ── POST ADD-ONS TO GAS ──
-            const btn = document.getElementById('btn-upsell-' + type);
-            btn.textContent = 'Saving...';
-            btn.disabled = true;
 
             fetch(CONFIG.GAS_URL, {
                     method: 'POST',
                     body: JSON.stringify(lead),
                     headers: { 'Content-Type': 'text/plain' }
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('✅ Add-ons submitted successfully:', data);
-                    window.location.href = '/thank-you/music';
-                })
-                .catch(error => {
-                    console.error('❌ Error submitting add-ons:', error);
-                    // Proceed anyway
-                    window.location.href = '/thank-you/music';
-                });
+                .then(function() { window.location.href = '/thank-you/music'; })
+                .catch(function() { window.location.href = '/thank-you/music'; });
         }
 
-        // ── init ──
+        // ─── INIT ──────────────────────────────────────────────────────────────────
         document.getElementById('footer-year').textContent = new Date().getFullYear();
-
         document.querySelectorAll('.mobile-menu a').forEach(function(a) {
             a.addEventListener('click', function() {
                 document.getElementById('mobile-menu').classList.remove('open');
             });
         });
-
         showStep(0);
     </script>
 
