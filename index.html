@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>WeTalkSound — Amplify Your Music Release</title>
-    <meta name="description" content="WeTalkSound is the team behind Africa's biggest records. Let's help you amplify yours." />
+    <meta name="description" content="WeTalkSound is the team behind Afrobeats' biggest records. Let's help you amplify yours." />
     <meta name="theme-color" content="#0A0A0A" />
 
     <!-- Google Tag Manager -->
@@ -82,6 +82,11 @@
         .brand img {
             height: 30px;
             display: block;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
         .nav-links {
             display: flex;
@@ -249,7 +254,7 @@
             max-width: 480px;
         }
 
-        /* ─── OPTION D: TAG BADGE ─── */
+        /* ─── BADGE ─── */
         .badge-tag {
             display: inline-block;
             font-size: 0.6rem;
@@ -262,7 +267,6 @@
             border-radius: 4px;
             margin-bottom: 10px;
         }
-
         .hero-title {
             font-size: clamp(2rem, 4.5vw, 2.8rem);
             font-weight: 900;
@@ -374,7 +378,6 @@
                 transform: translateY(0);
             }
         }
-
         .step-header {
             display: flex;
             align-items: center;
@@ -498,58 +501,7 @@
             background: var(--accent);
             border-color: var(--accent);
         }
-        .opt .proof-expand {
-            display: none;
-            margin-top: 8px;
-            padding: 10px 12px;
-            background: rgba(255, 107, 74, 0.06);
-            border-radius: 6px;
-            border-left: 3px solid var(--accent);
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-            width: 100%;
-            animation: expandIn .25s ease;
-        }
-        .opt .proof-expand.open {
-            display: block;
-        }
-        @keyframes expandIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-6px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        /* ─── Metric tile ─── */
-        .metric-tile {
-            display: none;
-            margin-top: 12px;
-            padding: 14px 16px;
-            background: rgba(255, 107, 74, 0.06);
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-            animation: fadeSlide .3s ease;
-        }
-        .metric-tile.show {
-            display: block;
-        }
-        .metric-tile .big-number {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--accent);
-            line-height: 1.2;
-        }
-        .metric-tile .metric-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 2px;
-        }
-
-        /* ─── Text inputs ─── */
         .text-input,
         .select-input {
             width: 100%;
@@ -698,6 +650,30 @@
         .placement-grid-wrap .pg-grid .opt .icon-svg {
             width: 18px;
             height: 18px;
+        }
+
+        .metric-tile {
+            display: none;
+            margin-top: 12px;
+            padding: 14px 16px;
+            background: rgba(255, 107, 74, 0.06);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            animation: fadeSlide .3s ease;
+        }
+        .metric-tile.show {
+            display: block;
+        }
+        .metric-tile .big-number {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        .metric-tile .metric-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2px;
         }
 
         .upsell-section {
@@ -860,9 +836,6 @@
         .bg-light {
             background: var(--bg-light);
         }
-        .bg-white {
-            background: var(--white);
-        }
         .bg-dark {
             background: var(--ink);
             color: #fff;
@@ -913,6 +886,7 @@
             color: var(--muted);
             line-height: 1.5;
         }
+        /* No arrows */
         .dark-card {
             background: var(--surface-dark);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1075,9 +1049,6 @@
             .stat-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .opt-grid.row .opt {
-                flex: 1 0 100%;
-            }
             .placement-grid-wrap .pg-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1108,6 +1079,9 @@
             .btn-continue {
                 font-size: 0.85rem;
             }
+            .opt-grid.row .opt {
+                flex: 1 0 100%;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -1125,7 +1099,7 @@
 
     <!-- ─── NAV ─── -->
     <nav>
-        <a href="#" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='<span style=&quot;font-weight:900;font-size:1.2rem;color:#fff;&quot;>WTS</span>'"></a>
+        <a href="#hero" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='<span style=&quot;font-weight:900;font-size:1.2rem;color:#fff;&quot;>WTS</span>'"></a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#work">Work</a></li>
@@ -1135,9 +1109,9 @@
         <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
     </nav>
     <div class="mobile-menu" id="mobile-menu">
+        <a href="#hero">Home</a>
         <a href="#services">Services</a>
         <a href="#work">Work</a>
-        <a href="#hero">Start</a>
         <a href="#hero" class="mob-cta">Start your enquiry</a>
     </div>
 
@@ -1149,10 +1123,9 @@
         <div class="hero-scrim"></div>
         <div class="hero-inner">
             <div class="hero-left">
-                <!-- Option D: Tag badge with "MUSIC" in caps -->
                 <div class="badge-tag">WeTalkSound · MUSIC marketing</div>
                 <h1 class="hero-title">Amplify your <span class="grad-sass">music release</span> with WTS.</h1>
-                <p class="hero-sub">WeTalkSound is the team behind Africa's biggest records. Let's help you amplify yours.</p>
+                <p class="hero-sub">WeTalkSound is the team behind Afrobeats' biggest records. Let's help you amplify yours.</p>
                 <div class="hero-trust">
                     <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><b>370K+</b> Owned reach</span>
                     <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><b>500M+</b> Influencer network</span>
@@ -1173,7 +1146,7 @@
                 </div>
 
                 <div id="stepsContainer">
-                    <!-- Step 0: Stage (auto) -->
+                    <!-- Step 0: Stage -->
                     <div class="step active" data-step="0">
                         <div class="step-header"><span class="q-label">Step 1 of 7</span></div>
                         <div class="q-title">What stage is your release in?</div>
@@ -1185,7 +1158,7 @@
                         <div class="field-error" id="err-step0">Please select an option.</div>
                     </div>
 
-                    <!-- Step 1: Role (auto) -->
+                    <!-- Step 1: Role -->
                     <div class="step" data-step="1">
                         <div class="step-header"><button class="btn-back" onclick="goStep(0)">← Back</button><span class="q-label" style="margin-left:auto;">Step 2 of 7</span></div>
                         <div class="q-title">Who are you?</div>
@@ -1199,7 +1172,7 @@
                         <div class="field-error" id="err-step1">Please select your role.</div>
                     </div>
 
-                    <!-- Step 2: Release Details (continue) -->
+                    <!-- Step 2: Release Details -->
                     <div class="step" data-step="2">
                         <div class="step-header"><button class="btn-back" onclick="goStep(1)">← Back</button><span class="q-label" style="margin-left:auto;">Step 3 of 7</span></div>
                         <div id="step2-content"></div>
@@ -1207,25 +1180,63 @@
                         <button class="btn-continue" id="btn-step2" disabled onclick="goStep(3)">Continue →</button>
                     </div>
 
-                    <!-- Step 3: Goals (multi-select) -->
+                    <!-- Step 3: Goals (Vertical list with detailed proof) -->
                     <div class="step" data-step="3">
                         <div class="step-header"><button class="btn-back" onclick="goStep(2)">← Back</button><span class="q-label" style="margin-left:auto;">Step 4 of 7</span></div>
                         <div class="q-title">What does success look like?</div>
                         <div class="q-sub">Pick as many as you want. Tap a goal to see proof from our work.</div>
                         <div class="opt-grid" id="goals-grid">
-                            <button class="opt" data-value="Playlisting" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Playlisting<span class="check">✓</span></button>
-                            <button class="opt" data-value="Charting" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>Charting<span class="check">✓</span></button>
-                            <button class="opt" data-value="Streams" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>Streams<span class="check">✓</span></button>
-                            <button class="opt" data-value="Press & Media" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg>Press & Media<span class="check">✓</span></button>
-                            <button class="opt" data-value="Social Buzz" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Social Buzz<span class="check">✓</span></button>
-                            <button class="opt" data-value="Radio & DJ" onclick="toggleGoal(this)"><span class="dot-indicator"></span><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Radio & DJ<span class="check">✓</span></button>
+                            <button class="opt" data-value="TikTok Campaign" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                TikTok Campaign
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="Playlisting" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                Playlisting
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="Press & Media" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                Press &amp; Media
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="Social Buzz" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                Social Buzz
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="Ads" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                Ads
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="360 Marketing" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                360 Marketing
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="Radio & DJ" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                Radio &amp; DJ
+                                <span class="check">✓</span>
+                            </button>
+                            <button class="opt" data-value="Creative Direction" onclick="toggleGoal(this)">
+                                <span class="dot-indicator"></span>
+                                Creative Direction
+                                <span class="check">✓</span>
+                            </button>
                         </div>
-                        <div class="metric-tile" id="metric-tile"><div class="big-number" id="metric-number">2.3M+</div><div class="metric-label" id="metric-label">playlist reach</div></div>
+
+                        <div class="metric-tile" id="metric-tile">
+                            <div class="big-number" id="metric-number">64K+</div>
+                            <div class="metric-label" id="metric-label">sounds · 2M+ streams for Danpapa's Ikeja</div>
+                        </div>
                         <div class="field-error" id="err-step3">Select at least one goal.</div>
                         <button class="btn-continue" id="btn-step3" disabled onclick="goStep(4)">Continue →</button>
                     </div>
 
-                    <!-- Step 4: Budget (auto except no budget) -->
+                    <!-- Step 4: Budget -->
                     <div class="step" data-step="4">
                         <div class="step-header"><button class="btn-back" onclick="goStep(3)">← Back</button><span class="q-label" style="margin-left:auto;">Step 5 of 7</span></div>
                         <div class="q-title">What budget are you working with?</div>
@@ -1247,15 +1258,13 @@
                                     <button class="opt" data-value="Instagram story" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
                                     <button class="opt" data-value="TikTok post" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
                                     <button class="opt" data-value="X post" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
-                                    <button class="opt" data-value="Website feature" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
-                                    <button class="opt" data-value="Video creation" onclick="toggleNoBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
                                 </div>
                             </div>
                             <button class="btn-continue" id="btn-no-budget-continue" style="margin-top:12px;" onclick="continueFromNoBudget()">Continue →</button>
                         </div>
                     </div>
 
-                    <!-- Step 5: Placements (for low budget) -->
+                    <!-- Step 5: Placements (low budget) -->
                     <div class="step" data-step="5">
                         <div class="step-header"><button class="btn-back" onclick="goStep(4)">← Back</button><span class="q-label" style="margin-left:auto;">Step 6 of 7</span></div>
                         <div class="q-title" id="placement-step-title">For your budget, we have a couple of rich placements that you might be interested in.</div>
@@ -1266,15 +1275,13 @@
                                 <button class="opt" data-value="Instagram story" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
                                 <button class="opt" data-value="TikTok post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
                                 <button class="opt" data-value="X post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
-                                <button class="opt" data-value="Website feature" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
-                                <button class="opt" data-value="Video creation" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
                             </div>
                         </div>
                         <div class="field-error" id="err-step5">Please select at least one placement.</div>
                         <button class="btn-continue" id="btn-step5" disabled onclick="goStep(6)">Continue →</button>
                     </div>
 
-                    <!-- Step 6: Contact Form -->
+                    <!-- Step 6: Contact -->
                     <div class="step" data-step="6">
                         <div class="step-header"><button class="btn-back" onclick="goStep(5)">← Back</button><span class="q-label" style="margin-left:auto;">Step 7 of 7</span></div>
                         <div class="q-title">Where do we reach you?</div>
@@ -1304,6 +1311,13 @@
                             </select>
                             <div class="field-error" id="err-contact-country">Please select your country.</div>
                         </div>
+
+                        <!-- Untitled / SoundCloud link -->
+                        <div style="margin-bottom:10px;">
+                            <label class="field-label">Untitled / SoundCloud link <span style="font-weight:400;color:rgba(255,255,255,0.2);">(optional)</span></label>
+                            <input type="url" class="text-input" id="contact-soundcloud" placeholder="https://soundcloud.com/your-unreleased-track" />
+                        </div>
+
                         <div style="margin-bottom:10px;">
                             <label class="field-label">Email</label>
                             <input type="email" class="text-input" id="contact-email" placeholder="you@artist.com" autocomplete="email" />
@@ -1349,15 +1363,13 @@
                             <button class="opt" data-value="Instagram story" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
                             <button class="opt" data-value="TikTok post" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
                             <button class="opt" data-value="X post" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
-                            <button class="opt" data-value="Website feature" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website feature<span class="check">✓</span></button>
-                            <button class="opt" data-value="Video creation" onclick="toggleHighBudgetPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
                         </div>
                     </div>
                     <div class="field-error" id="err-high-budget-placement">Please select at least one placement.</div>
                     <button class="btn-continue" id="btn-high-budget-continue" disabled onclick="submitHighBudgetPlacements()">Continue →</button>
                 </div>
 
-                <!-- Upsell (post-submit) -->
+                <!-- Upsell -->
                 <div id="upsellContainer" style="display:none;">
                     <div class="upsell-section" id="upsell-placement">
                         <div class="us-title" style="color:var(--accent);">🎯 For your budget, here's a quick way to start.</div>
@@ -1367,7 +1379,6 @@
                             <button class="opt" data-value="Instagram story" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram story<span class="check">✓</span></button>
                             <button class="opt" data-value="TikTok post" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post<span class="check">✓</span></button>
                             <button class="opt" data-value="X post" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post<span class="check">✓</span></button>
-                            <button class="opt" data-value="Video creation" onclick="toggleUpsellPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video creation<span class="check">✓</span></button>
                         </div>
                         <button class="btn-continue" id="btn-upsell-placement" disabled onclick="submitUpsell('placement')">Select at least one →</button>
                     </div>
@@ -1386,7 +1397,6 @@
                     </div>
                 </div>
 
-                <!-- Thank You (hidden) -->
                 <div class="thankyou" id="thankyou" style="display:none;"></div>
             </div><!-- /quiz-card -->
         </div><!-- /hero-inner -->
@@ -1404,9 +1414,46 @@
         <div class="eyebrow">Our Services</div>
         <h2 class="s-title">360° creative marketing &amp; placement.</h2>
         <div class="grid-3" style="margin-top:32px;">
-            <div class="service-card"><div class="card-icon">📍</div><h3>Placements</h3><p>Press, media, interviews, playlists, radio, TV &amp; DJ.</p></div>
-            <div class="service-card"><div class="card-icon">📈</div><h3>Digital Marketing</h3><p>Ads (Meta, Snapchat, YouTube), influencer marketing &amp; trends.</p></div>
-            <div class="service-card"><div class="card-icon">🎨</div><h3>Creative</h3><p>Visuals, photography, brand identity &amp; event production.</p></div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg></div>
+                <h3>TikTok Campaign</h3>
+                <p>64K+ sound uses, 2M+ streams for Danpapa's Ikeja.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+                <h3>Playlisting</h3>
+                <p>Combined playlist strength of 5K+ artists.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg></div>
+                <h3>Press and PR</h3>
+                <p>100+ placements secured for Joeboy's album run.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg></div>
+                <h3>Twitter Influencer Conversations</h3>
+                <p>Tiwa Savage's "On A Low" album trending on release.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+                <h3>Ads</h3>
+                <p>Snapchat, IG, Facebook, YouTube – 2M+ streams for Danpapa's Ikeja.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                <h3>360 Marketing</h3>
+                <p>End‑to‑end marketing for Zen Universe's Flowstate album.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                <h3>Radio &amp; DJ Seeding</h3>
+                <p>Seeded "Hei God" on radio across Nigeria.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg></div>
+                <h3>Creative Direction</h3>
+                <p>End‑to‑end creative direction for Reminisce's ATSG.</p>
+            </div>
         </div>
     </div>
 
@@ -1475,7 +1522,7 @@
         var lead = {
             path: '', role: '', releaseType: '', stage: '', link: '',
             goals: [], budget: '', placements: [], tier: '', prospectType: '',
-            name: '', actName: '', artistIg: '', country: '', email: '', phone: '', timeline: '',
+            name: '', actName: '', artistIg: '', country: '', email: '', phone: '', timeline: '', soundcloud: '',
             addons: [], utmSource: utmParams.source || '', utmMedium: utmParams.medium || '', utmCampaign: utmParams.campaign || ''
         };
 
@@ -1505,6 +1552,51 @@
         function hideError(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); }
 
         function showError(id) { var el = document.getElementById(id); if (el) el.classList.add('show'); }
+
+        // ─── GOALS PROOF MAP (detailed with artist names) ────────────────────────
+        var goalProofs = {
+            'TikTok Campaign': { number: '64K+', label: 'sounds · 2M+ streams for Danpapa\'s Ikeja' },
+            'Playlisting': { number: '5K+', label: 'playlist strength' },
+            'Press & Media': { number: '100+', label: 'placements for Joeboy\'s album run' },
+            'Social Buzz': { number: 'Trending', label: 'Tiwa Savage\'s "On A Low" on release' },
+            'Ads': { number: '2M+', label: 'streams for Danpapa\'s Ikeja' },
+            '360 Marketing': { number: 'End-to-end', label: 'marketing for Zen Universe\'s Flowstate' },
+            'Radio & DJ': { number: 'Seeded', label: '"Hei God" on radio across Nigeria' },
+            'Creative Direction': { number: 'End-to-end', label: 'creative direction for Reminisce\'s ATSG' }
+        };
+
+        // ─── GOAL TOGGLE ──────────────────────────────────────────────────────────
+        function toggleGoal(el) {
+            var val = el.dataset.value;
+            var idx = lead.goals.indexOf(val);
+            if (idx > -1) {
+                lead.goals.splice(idx, 1);
+                el.classList.remove('selected');
+            } else {
+                lead.goals.push(val);
+                el.classList.add('selected');
+            }
+
+            // Update metric tile (last clicked)
+            var selected = document.querySelectorAll('#goals-grid .opt.selected');
+            var tile = document.getElementById('metric-tile');
+            var num = document.getElementById('metric-number');
+            var lbl = document.getElementById('metric-label');
+            if (selected.length > 0) {
+                var last = selected[selected.length - 1];
+                var proof = goalProofs[last.dataset.value];
+                if (proof) {
+                    num.textContent = proof.number;
+                    lbl.textContent = proof.label;
+                    tile.classList.add('show');
+                }
+            } else {
+                tile.classList.remove('show');
+            }
+
+            if (lead.goals.length > 0) { hideError('err-step3');
+                enableContinue('btn-step3'); } else { disableContinue('btn-step3'); }
+        }
 
         // ─── STEP 1 ────────────────────────────────────────────────────────────────
         function selectStep1(el) {
@@ -1631,42 +1723,6 @@
                 hideError('err-step2');
                 enableContinue('btn-step2');
             } else { disableContinue('btn-step2'); }
-        }
-
-        // ─── STEP 4: GOALS ────────────────────────────────────────────────────────
-        var goalProofs = {
-            'Playlisting': { number: '2.3M+', label: 'playlist reach (placeholder)' },
-            'Charting': { number: '15 countries', label: 'charted (placeholder)' },
-            'Streams': { number: '900M+', label: 'streams (placeholder)' },
-            'Press & Media': { number: '40+', label: 'placements (placeholder)' },
-            'Social Buzz': { number: '3 trends', label: '1000+ Spaces (placeholder)' },
-            'Radio & DJ': { number: 'Arizona', label: 'street anthem (placeholder)' }
-        };
-
-        function toggleGoal(el) {
-            var val = el.dataset.value;
-            var idx = lead.goals.indexOf(val);
-            if (idx > -1) { lead.goals.splice(idx, 1);
-                el.classList.remove('selected'); } else { lead.goals.push(val);
-                el.classList.add('selected'); }
-
-            var selected = document.querySelectorAll('#goals-grid .opt.selected');
-            var tile = document.getElementById('metric-tile');
-            var num = document.getElementById('metric-number');
-            var lbl = document.getElementById('metric-label');
-            if (selected.length > 0) {
-                var last = selected[selected.length - 1];
-                var proof = goalProofs[last.dataset.value];
-                if (proof) {
-                    num.textContent = proof.number;
-                    lbl.textContent = proof.label;
-                    tile.classList.add('show');
-                }
-            } else {
-                tile.classList.remove('show');
-            }
-            if (lead.goals.length > 0) { hideError('err-step3');
-                enableContinue('btn-step3'); } else { disableContinue('btn-step3'); }
         }
 
         // ─── STEP 5: BUDGET ───────────────────────────────────────────────────────
@@ -1823,6 +1879,7 @@
                 document.getElementById('contact-name').value = lead.name || '';
                 document.getElementById('contact-act').value = lead.actName || '';
                 document.getElementById('contact-ig').value = lead.artistIg || '';
+                document.getElementById('contact-soundcloud').value = lead.soundcloud || '';
                 if (lead.country) {
                     var sel = document.getElementById('contact-country');
                     for (var i = 0; i < sel.options.length; i++) {
@@ -1848,7 +1905,6 @@
                         if (sel2.options[k].value === lead.timeline) { sel2.selectedIndex = k; break; }
                     }
                 }
-                if (isHighBudget) {}
             }
         }
 
@@ -1862,6 +1918,7 @@
             var prefix = document.getElementById('phone-prefix').value;
             var phoneRaw = document.getElementById('contact-phone').value.trim();
             var timeline = document.getElementById('contact-timeline').value;
+            var soundcloud = document.getElementById('contact-soundcloud').value.trim();
             var fullPhone = phoneRaw ? prefix + phoneRaw.replace(/\s/g, '') : '';
 
             var valid = true;
@@ -1889,6 +1946,7 @@
             lead.email = email;
             lead.phone = fullPhone;
             lead.timeline = timeline;
+            lead.soundcloud = soundcloud;
             lead.timestamp = new Date().toISOString();
 
             sessionStorage.setItem('wts_lead', JSON.stringify(lead));
