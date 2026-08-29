@@ -29,7 +29,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
 
     <style>
-        /* ── reset & root ── */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -269,7 +268,6 @@
             margin-bottom: 10px;
         }
 
-        /* ─── HERO TITLE ─── */
         .hero-title {
             font-size: clamp(2rem, 4.5vw, 2.8rem);
             font-weight: 900;
@@ -314,7 +312,6 @@
             max-width: 420px;
         }
 
-        /* ─── COMPACT TRUST BADGES ─── */
         .hero-trust {
             display: flex;
             flex-wrap: wrap;
@@ -545,7 +542,7 @@
             color: #fff;
         }
 
-        /* ─── METRIC TILE (solid rounded) ─── */
+        /* ─── METRIC TILE ─── */
         .metric-tile {
             display: none;
             margin-top: 10px;
@@ -795,7 +792,7 @@
             display: block;
         }
 
-        /* ─── PLACEMENT GRID (for low budget step) ─── */
+        /* ─── PLACEMENT GRID ─── */
         .placement-grid-wrap .pg-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -813,7 +810,7 @@
             height: 18px;
         }
 
-        /* ─── CONTACT FORM PLACEMENTS (for high budget upsell) ─── */
+        /* ─── CONTACT FORM PLACEMENTS (high budget) ─── */
         .contact-placements {
             margin-top: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -842,7 +839,6 @@
             height: 16px;
         }
 
-        /* ─── FORM 2-COLUMN GRID ─── */
         .form-row-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1358,7 +1354,7 @@
                         <button class="btn-continue" id="btn-step2" disabled onclick="goStep(3)">Continue →</button>
                     </div>
 
-                    <!-- Step 3: Goals (2x4 grid) -->
+                    <!-- Step 3: Goals -->
                     <div class="step" data-step="3">
                         <div class="step-header"><button class="btn-back" onclick="goStep(2)">← Back</button><span class="q-label" style="margin-left:auto;">Step 4 of 7</span></div>
                         <div class="q-title">What does success look like?</div>
@@ -1460,7 +1456,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 5: Placements (low budget - mandatory step) -->
+                    <!-- Step 5: Placements (low budget) -->
                     <div class="step" data-step="5">
                         <div class="step-header"><button class="btn-back" onclick="goStep(4)">← Back</button><span class="q-label" style="margin-left:auto;">Step 6 of 7</span></div>
                         <div class="q-title" id="placement-step-title">For your budget, we have a couple of rich placements that you might be interested in.</div>
@@ -1483,7 +1479,7 @@
                         <div class="q-title">Where do we reach you?</div>
                         <div class="q-sub">We'll send your custom plan within 24h.</div>
 
-                        <!-- Name + Country row -->
+                        <!-- Name + Country -->
                         <div class="form-row-2">
                             <div>
                                 <label class="field-label">Your name *</label>
@@ -1518,13 +1514,13 @@
                             <div class="field-error" id="err-contact-ig">IG handle is required.</div>
                         </div>
 
-                        <!-- Untitled / SoundCloud link -->
+                        <!-- SoundCloud link -->
                         <div style="margin-bottom:10px;">
                             <label class="field-label">Untitled / SoundCloud link <span style="font-weight:400;color:rgba(255,255,255,0.2);">(optional)</span></label>
                             <input type="url" class="text-input" id="contact-soundcloud" placeholder="https://soundcloud.com/your-unreleased-track" />
                         </div>
 
-                        <!-- Email + Phone row -->
+                        <!-- Email + Phone -->
                         <div class="form-row-2">
                             <div>
                                 <label class="field-label">Email</label>
@@ -1559,7 +1555,7 @@
 
                         <div class="field-error" id="err-contact-general">Please provide at least an email or phone number.</div>
 
-                        <!-- ─── HIGH BUDGET PLACEMENTS (upsell at bottom of form) ─── -->
+                        <!-- ─── HIGH BUDGET PLACEMENTS ─── -->
                         <div class="contact-placements" id="high-budget-placements">
                             <div class="cp-title">Are you interested in any specific placements?</div>
                             <div class="cp-grid" id="contact-placement-grid">
@@ -1603,7 +1599,7 @@
         <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 360° music marketing</span>
     </div>
 
-    <!-- ─── SERVICES ─── -->
+    <!-- ─── SERVICES (reordered) ─── -->
     <div id="services" class="section bg-light">
         <div class="eyebrow">Our Services</div>
         <h2 class="s-title">360° creative marketing &amp; placement.</h2>
@@ -1939,9 +1935,7 @@
             hideError('err-step4');
 
             if (lead.budget === 'No budget') {
-                // Show disqualify message with placements
                 document.getElementById('disqualify-msg').classList.add('show');
-                // Reset no-budget placements
                 lead.placements = [];
                 document.querySelectorAll('#no-budget-placements .opt').forEach(function(b) { b.classList.remove('selected'); });
                 document.getElementById('btn-no-budget-continue').disabled = true;
@@ -1967,7 +1961,6 @@
                 isHighBudget = true;
                 lead.tier = 'full';
                 lead.prospectType = 'High Value Lead';
-                // Show contact form with placements at bottom
                 setTimeout(function() { goStep(6); }, 350);
             }
         }
@@ -1985,7 +1978,6 @@
         }
 
         function continueFromNoBudget() {
-            // Proceed to contact form regardless of placements (optional for no budget)
             goStep(6);
         }
 
