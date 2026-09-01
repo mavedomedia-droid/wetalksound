@@ -79,7 +79,7 @@
             z-index: 100;
         }
         .brand img {
-            height: 30px;
+            height: 15px;
             display: block;
         }
         .brand {
@@ -255,9 +255,15 @@
         }
 
         @media (max-width: 768px) {
+            .hero-wrap {
+                padding: 20px 16px 24px;
+                min-height: auto;
+                align-items: flex-start;
+            }
             .hero-inner {
                 grid-template-columns: 1fr;
                 gap: 20px;
+                align-items: start;
             }
             .hero-left {
                 order: 1;
@@ -267,17 +273,33 @@
             }
             .hero-left .hero-sub {
                 max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+            .hero-left .badge-tag {
+                display: none;
+            }
+            .hero-left .hero-title {
+                font-size: clamp(1.8rem, 6vw, 2.4rem);
             }
             .hero-scrim,
             .hero-glow-orb {
                 display: none;
             }
+            .hero-proof {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
             .quiz-card {
                 order: 2;
                 justify-self: center;
                 max-width: 100%;
+                width: 100%;
                 padding: 18px 14px 20px;
                 min-height: auto;
+                margin-top: 0;
             }
         }
 
@@ -330,6 +352,18 @@
             }
         }
 
+        .wts-logo-inline {
+            display: inline-block;
+            height: 0.8em;
+            vertical-align: baseline;
+            margin-left: 4px;
+        }
+        .wts-logo-inline img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+
         .hero-sub {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
@@ -337,8 +371,12 @@
             margin-bottom: 14px;
             max-width: 420px;
         }
+        .hero-sub strong {
+            color: #fff;
+            font-weight: 700;
+        }
 
-        /* ─── HERO PROOF BADGES (simplified: just checkmark + text) ─── */
+        /* ─── HERO PROOF TAGS ─── */
         .hero-proof {
             display: flex;
             flex-wrap: wrap;
@@ -352,7 +390,6 @@
             font-size: 0.68rem;
             font-weight: 600;
             color: rgba(255, 255, 255, 0.55);
-            /* no background, border, padding, or box styling */
         }
         .proof-badge svg {
             width: 14px;
@@ -364,26 +401,6 @@
             color: var(--accent);
         }
 
-        /* ─── TRUST BAR (bottom strip) ─── */
-        .trust-bar {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 16px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            background: var(--ink);
-        }
-        .trust-bar .proof-badge {
-            font-size: 0.62rem;
-            color: rgba(255, 255, 255, 0.45);
-        }
-        .trust-bar .proof-badge svg {
-            width: 12px;
-            height: 12px;
-        }
-
         /* ─── QUIZ CARD ─── */
         .quiz-card {
             background: rgba(20, 20, 22, 0.85);
@@ -392,12 +409,12 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-card);
-            padding: 20px 18px 24px;
+            padding: 20px 18px 18px;
             width: 100%;
             max-width: 460px;
             justify-self: end;
             color: #fff;
-            min-height: 460px;
+            min-height: auto;
         }
         .progress-dots {
             display: flex;
@@ -422,10 +439,6 @@
         }
         .progress-dots .dot .dot-num {
             display: none;
-            font-size: 0.45rem;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.3);
-            margin-top: 2px;
         }
 
         .step {
@@ -862,6 +875,17 @@
             margin-bottom: 10px;
         }
 
+        /* ─── QUIZ FOOTER (inside card) ─── */
+        .quiz-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 12px;
+            padding-top: 10px;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
         /* ─── SECTION STYLES ─── */
         .section {
             padding: 60px 20px;
@@ -1171,6 +1195,89 @@
             background: rgba(255, 107, 74, 0.06);
         }
 
+        /* ─── HEADIES SECTION (inside work section) ─── */
+        .headies-layout {
+            display: grid;
+            grid-template-columns: 40% 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .headies-image {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+        .headies-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+        }
+        .headies-content .eyebrow {
+            color: var(--accent);
+        }
+        .headies-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .headies-content .support {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .headies-artist {
+            margin-bottom: 16px;
+        }
+        .headies-artist .artist-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #16171A;
+            margin-bottom: 4px;
+        }
+        .headies-artist .nominations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .headies-artist .nomination-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 20px;
+            padding: 4px 10px;
+        }
+        .headies-cta {
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .headies-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .headies-image {
+                order: 2;
+            }
+            .headies-content {
+                order: 1;
+                text-align: center;
+            }
+            .headies-artist .nominations {
+                justify-content: center;
+            }
+        }
+
         /* ─── STICKY MOBILE CTA ─── */
         .mobile-sticky-cta {
             display: none;
@@ -1199,7 +1306,7 @@
                 display: block;
             }
             body {
-                padding-bottom: 70px; /* to prevent content hidden behind bar */
+                padding-bottom: 70px;
             }
         }
 
@@ -1245,19 +1352,17 @@
             <div class="hero-left">
                 <div class="badge-tag">WeTalkSound · MUSIC marketing</div>
                 <h1 class="hero-title">
-                    Amplify your <span class="caps-mr grad-sass"><span class="big-m">M</span>usic <span class="big-r">R</span>elease</span><br />with WTS.
+                    Amplify your <span class="caps-mr grad-sass"><span class="big-m">M</span>usic <span class="big-r">R</span>elease</span><br />
+                    with <span class="wts-logo-inline"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" /></span>
                 </h1>
                 <p class="hero-sub">
-                    From social buzz and creators to playlisting, press, radio and paid media, we build campaigns designed around your release.<br><br>
-                    WeTalkSound is recognised as an industry leader in amplifying Afrobeats and global music releases.
+                    WeTalkSound is the team behind Afrobeats' biggest releases, with evidence to back it.
                 </p>
 
-                <!-- Simple proof checkmarks -->
                 <div class="hero-proof">
-                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>370K+ owned reach</span>
-                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>500M+ influencer network</span>
-                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100+ media partners</span>
-                    <span class="proof-badge accent"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>🏆 2026 Headies Nominees</span>
+                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>2026 Headies</span>
+                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Grammy‑recognised</span>
+                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Lagos · London · New York</span>
                 </div>
             </div>
 
@@ -1533,25 +1638,59 @@
                     </div>
                 </div>
 
+                <!-- Quiz footer reassurance -->
+                <div class="quiz-footer">
+                    Takes about 2 minutes · We'll review and reply within 24h
+                </div>
+
                 <div class="thankyou" id="thankyou" style="display:none;"></div>
             </div><!-- /quiz-card -->
         </div><!-- /hero-inner -->
     </div><!-- /hero-wrap -->
 
-    <!-- ─── TRUST BAR ─── -->
-    <div class="trust-bar">
-        <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Grammy‑recognised</span>
-        <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Lagos · London · New York</span>
-        <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted by 200+ artists</span>
-        <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Featured in major media</span>
-    </div>
-
-    <!-- ─── SECTION: SELECTED WORK ─── -->
+    <!-- ─── SECTION: SELECTED WORK (with integrated Headies) ─── -->
     <div id="work" class="section bg-dark">
         <div class="eyebrow" style="color:var(--accent);">Selected Work</div>
         <h2 class="s-title">Proof in the numbers.</h2>
         <p class="s-sub" style="color:rgba(255,255,255,0.5);">We've moved millions of streams, trended on release, and earned 2026 Headies nominations along the way.</p>
 
+        <!-- HEADIES 2026 RECOGNITION (integrated) -->
+        <div class="headies-layout" style="margin-bottom: 40px;">
+            <div class="headies-image">
+                <!-- Replace with your actual image path -->
+                <img src="headies_WTS_1.jpg" alt="WeTalk Sound Headies 2026 nominations — 2 artists, 5 nominations featuring Danpapa GTA and Ṣẹwá" />
+            </div>
+            <div class="headies-content">
+                <div class="eyebrow" style="color:var(--accent);">HEADIES 2026 NOMINATIONS</div>
+                <h2 style="color:#fff;">2 ARTISTS.<br />5 HEADIES NOMINATIONS.</h2>
+                <p class="support" style="color:rgba(255,255,255,0.5);">
+                    WeTalk Sound continues to amplify music projects that make an impact. In the 2026 Headies nominations, two artists connected to our work received five nominations across major categories.
+                </p>
+
+                <div class="headies-artist">
+                    <div class="artist-name" style="color:#fff;">DANPAPA GTA</div>
+                    <div class="nominations">
+                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Rookie of the Year</span>
+                    </div>
+                </div>
+
+                <div class="headies-artist">
+                    <div class="artist-name" style="color:#fff;">ṢẸWÁ</div>
+                    <div class="nominations">
+                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Female Artist</span>
+                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Vocal Performance</span>
+                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Alternative Song — Lagos Lovin</span>
+                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Alternative Album — Detox</span>
+                    </div>
+                </div>
+
+                <div class="headies-cta">
+                    <a href="#hero" class="btn-link">Make an Enquiry →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- WORK CARDS (after Headies) -->
         <div class="work-grid">
             <div class="work-card">
                 <div class="wc-badge">🏆 2026 Headies Nominee</div>
