@@ -1208,6 +1208,7 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-card);
+            background: var(--surface-dark); /* ensures dark behind image */
         }
         .headies-image img {
             width: 100%;
@@ -1225,10 +1226,11 @@
             line-height: 1.1;
             margin-bottom: 12px;
             letter-spacing: -0.02em;
+            color: #fff; /* white for dark background */
         }
         .headies-content .support {
             font-size: 0.95rem;
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.5);
             line-height: 1.6;
             margin-bottom: 20px;
         }
@@ -1238,7 +1240,7 @@
         .headies-artist .artist-name {
             font-size: 1.1rem;
             font-weight: 800;
-            color: #16171A;
+            color: #fff;
             margin-bottom: 4px;
         }
         .headies-artist .nominations {
@@ -1251,9 +1253,9 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            color: rgba(0,0,0,0.6);
-            background: rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.08);
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 4px 10px;
         }
@@ -1658,29 +1660,29 @@
         <div class="headies-layout" style="margin-bottom: 40px;">
             <div class="headies-image">
                 <!-- Replace with your actual image path -->
-                <img src="headies_WTS_1.jpg" alt="WeTalk Sound Headies 2026 nominations — 2 artists, 5 nominations featuring Danpapa GTA and Ṣẹwá" />
+                <img src="headers_WTS_1.jpg" alt="WeTalk Sound Headies 2026 nominations — 2 artists, 5 nominations featuring Danpapa GTA and Ṣẹwá" />
             </div>
             <div class="headies-content">
                 <div class="eyebrow" style="color:var(--accent);">HEADIES 2026 NOMINATIONS</div>
-                <h2 style="color:#fff;">2 ARTISTS.<br />5 HEADIES NOMINATIONS.</h2>
-                <p class="support" style="color:rgba(255,255,255,0.5);">
+                <h2>2 ARTISTS.<br />5 HEADIES NOMINATIONS.</h2>
+                <p class="support">
                     WeTalk Sound continues to amplify music projects that make an impact. In the 2026 Headies nominations, two artists connected to our work received five nominations across major categories.
                 </p>
 
                 <div class="headies-artist">
-                    <div class="artist-name" style="color:#fff;">DANPAPA GTA</div>
+                    <div class="artist-name">DANPAPA GTA</div>
                     <div class="nominations">
-                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Rookie of the Year</span>
+                        <span class="nomination-tag">Rookie of the Year</span>
                     </div>
                 </div>
 
                 <div class="headies-artist">
-                    <div class="artist-name" style="color:#fff;">ṢẸWÁ</div>
+                    <div class="artist-name">ṢẸWÁ</div>
                     <div class="nominations">
-                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Female Artist</span>
-                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Vocal Performance</span>
-                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Alternative Song — Lagos Lovin</span>
-                        <span class="nomination-tag" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7);">Best Alternative Album — Detox</span>
+                        <span class="nomination-tag">Best Female Artist</span>
+                        <span class="nomination-tag">Best Vocal Performance</span>
+                        <span class="nomination-tag">Best Alternative Song — Lagos Lovin</span>
+                        <span class="nomination-tag">Best Alternative Album — Detox</span>
                     </div>
                 </div>
 
