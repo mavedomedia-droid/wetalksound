@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Your Placement Lineup — WeTalkSound</title>
+    <meta name="description" content="Thanks for your enquiry. Choose your placements and chat with us on WhatsApp." />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N3KZ2K8R');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Config -->
+    <script src="config.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ── reset & root ── */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --accent: #FF6B4A;
+            --accent-dark: #E55A3A;
+            --ink: #0A0A0A;
+            --surface-dark: #121212;
+            --white: #ffffff;
+            --muted: #8A8A8A;
+            --bg-light: #F5F6F8;
+            --border-light: #E4E4E7;
+            --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --grad-sass: linear-gradient(135deg, #FF6B4A 0%, #FF2D78 50%, #7B2FF7 100%);
+            --wa: #25D366;
+            --wa-dark: #1Fb457;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--ink);
+            color: var(--white);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 60px;
+            background: rgba(10,10,10,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-shrink: 0;
+        }
+        .brand img { height: 30px; display: block; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: var(--grad-sass);
+            color: #fff;
+            border: none;
+            padding: 7px 18px;
+            border-radius: 7px;
+            font: 700 0.8125rem 'Inter', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(255,107,74,0.35);
+            transition: transform .2s;
+        }
+        .nav-cta:hover { transform: translateY(-1px) scale(1.02); }
+        .hamburger { display: none; }
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* ─── HERO (two-column like first thank-you page) ─── */
+        .hero-wrap {
+            position: relative;
+            background: var(--ink);
+            overflow: hidden;
+            padding: 40px 24px;
+            border-bottom: 1px solid #26272B;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        .hero-scrim {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(180deg, var(--ink) 0%, rgba(10,10,10,0) 25%, rgba(10,10,10,0) 75%, var(--ink) 100%),
+                linear-gradient(90deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.3) 70%, var(--ink) 100%);
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1080px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Left column */
+        .ty-left { color: #fff; max-width: 520px; }
+        .ty-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,107,74,0.12);
+            color: #ff8a7a;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 4px 12px 4px 8px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,107,74,0.08);
+        }
+        .ty-badge b {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent); display: inline-block;
+            animation: pulseDot 1.8s ease-in-out infinite;
+        }
+        @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.6)} }
+        .ty-left h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        .ty-left h1 .grad {
+            background: var(--grad-sass);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .ty-left .sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 440px;
+        }
+        .next-steps {
+            background: var(--surface-dark);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 20px 20px 8px;
+            margin-top: 4px;
+        }
+        .next-steps .ns-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 12px;
+        }
+        .next-steps .ns-step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .next-steps .ns-num {
+            flex-shrink: 0;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: rgba(255,107,74,0.12);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,107,74,0.08);
+        }
+        .next-steps .ns-body {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.5;
+            padding-top: 2px;
+        }
+        .next-steps .ns-body b { color: #fff; font-weight: 600; }
+
+        /* Right column: placement lineup card */
+        .ty-card {
+            background: rgba(20,20,22,0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            padding: 28px 24px 24px;
+            max-width: 400px;
+            justify-self: end;
+            width: 100%;
+            color: #fff;
+            text-align: left;
+        }
+        .ty-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .ty-card .card-sub {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .placement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .placement-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: border-color .2s, background .2s;
+        }
+        .placement-option:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.06);
+        }
+        .placement-option.selected {
+            border-color: var(--accent);
+            background: rgba(255,107,74,0.08);
+        }
+        .placement-option .plus-icon {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: rgba(255,255,255,0.7);
+            flex-shrink: 0;
+            transition: all .2s;
+        }
+        .placement-option.selected .plus-icon {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .placement-option .option-info {
+            flex: 1;
+        }
+        .placement-option .option-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .placement-option .option-proof {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.45);
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--wa);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font: 600 0.85rem 'Inter', sans-serif;
+            text-decoration: none;
+            transition: background .2s, transform .15s;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.15);
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn-wa:hover { background: var(--wa-dark); transform: translateY(-1px); }
+        .btn-wa svg { width: 20px; height: 20px; fill: #fff; }
+
+        /* ─── TRUST BAR ─── */
+        .trust-bar {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 24px;
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.4);
+            flex-wrap: wrap;
+            background: var(--ink);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .trust-bar span { display: inline-flex; align-items: center; gap: 6px; }
+        .trust-bar svg { width: 14px; height: 14px; stroke: var(--accent); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding: 20px 24px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.15);
+        }
+        footer .fmark { font-weight: 800; font-size: 0.9rem; color: rgba(255,255,255,0.3); }
+        footer .fmeta { margin-top: 4px; }
+        footer .fmeta a { color: rgba(255,255,255,0.15); text-decoration: none; }
+        footer .fmeta a:hover { color: rgba(255,255,255,0.5); }
+        footer .social-links { display: flex; gap: 14px; justify-content: center; margin-top: 6px; }
+        footer .social-links a {
+            color: rgba(255,255,255,0.15); text-decoration: none;
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.06em; transition: color .2s;
+        }
+        footer .social-links a:hover { color: rgba(255,255,255,0.5); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+            .ty-left { max-width: 100%; text-align: left; }
+            .ty-left .sub { max-width: 100%; }
+            .ty-card { max-width: 100%; justify-self: center; padding: 24px 20px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3KZ2K8R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav>
+        <a href="#" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound"></a>
+        <ul class="nav-links">
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Services</a></li>
+        </ul>
+        <a href="#" class="nav-cta">Start your enquiry</a>
+    </nav>
+
+    <div class="hero-wrap">
+        <div class="hero-scrim"></div>
+        <div class="hero-inner">
+            <!-- Left column -->
+            <div class="ty-left">
+                <div class="ty-badge"><b></b> Enquiry received</div>
+                <h1>Thanks, <span class="grad" id="ty-name">there</span>.</h1>
+                <p class="sub">Your enquiry is in and we’ll reach out soon. In the meantime, fine‑tune your placement lineup and send it to us on WhatsApp.</p>
+
+                <div class="next-steps">
+                    <div class="ns-title">What happens next</div>
+                    <div class="ns-step">
+                        <div class="ns-num">1</div>
+                        <div class="ns-body">Our team will <b>review your request</b> and match you with the right placements.</div>
+                    </div>
+                    <div class="ns-step">
+                        <div class="ns-num">2</div>
+                        <div class="ns-body">We'll <b>reach out</b> via WhatsApp or email to confirm your selections and availability.</div>
+                    </div>
+                    <div class="ns-step">
+                        <div class="ns-num">3</div>
+                        <div class="ns-body"><b>We’ll reach out and start your enquiry.</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right column: placement lineup card -->
+            <div class="ty-card">
+                <div class="card-title">Choose your placements</div>
+                <div class="card-sub">Tap the + to add a placement to your lineup.</div>
+
+                <div class="placement-list" id="placement-list"></div>
+
+                <div class="summary-row">
+                    <span>Selected: <span id="selected-count">0</span></span>
+                    <span>Combined reach: <span id="combined-reach">0</span>+</span>
+                </div>
+
+                <a href="#" class="btn-wa" id="whatsapp-cta" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Proceed to WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="trust-bar">
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Grammy‑recognised</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Lagos · London · New York</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 360° music marketing</span>
+    </div>
+
+    <footer>
+        <div class="fmark">WeTalkSound</div>
+        <div class="fmeta">Lagos · London · New York · East Africa · <a href="mailto:thewtsagency@gmail.com">thewtsagency@gmail.com</a></div>
+        <div class="social-links">
+            <a href="https://instagram.com/wetalksound" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@wetalksound" target="_blank">TikTok</a>
+            <a href="https://twitter.com/wetalksound" target="_blank">X</a>
+        </div>
+        <div class="fmeta" style="margin-top:6px;">© <span id="footer-year"></span> WeTalkSound. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Lead data
+        var leadData = JSON.parse(sessionStorage.getItem('wts_lead') || '{}');
+        var firstName = leadData.name ? leadData.name.split(' ')[0] : 'there';
+        document.getElementById('ty-name').textContent = firstName;
+
+        // Placement data with proof stats
+        var placementsData = [
+            { name: 'Instagram', proof: '106K+ followers', reach: 106 },
+            { name: 'TikTok post', proof: '202K+ followers', reach: 202 },
+            { name: 'X post', proof: '36K+ followers', reach: 36 },
+            { name: 'Newsletter mention', proof: '30K+ subscribers', reach: 30 },
+            { name: 'YouTube shoutout', proof: '100K+ creators network', reach: 100 },
+            { name: 'Radio mention', proof: 'National radio reach', reach: 50 }
+        ];
+
+        // Initial selected placements from quiz (or defaults)
+        var selectedPlacements = (leadData.placements && leadData.placements.length > 0)
+            ? leadData.placements.slice()
+            : [];
+
+        var listContainer = document.getElementById('placement-list');
+        var whatsappCta = document.getElementById('whatsapp-cta');
+        var selectedCountSpan = document.getElementById('selected-count');
+        var combinedReachSpan = document.getElementById('combined-reach');
+
+        function renderPlacements() {
+            listContainer.innerHTML = '';
+            placementsData.forEach(function(item) {
+                var isSelected = selectedPlacements.indexOf(item.name) > -1;
+                var option = document.createElement('div');
+                option.className = 'placement-option' + (isSelected ? ' selected' : '');
+                option.innerHTML = `
+                    <span class="plus-icon">${isSelected ? '✓' : '+'}</span>
+                    <div class="option-info">
+                        <div class="option-name">${item.name}</div>
+                        <div class="option-proof">${item.proof}</div>
+                    </div>
+                `;
+                option.addEventListener('click', function() {
+                    togglePlacement(item.name, option);
+                });
+                listContainer.appendChild(option);
+            });
+            updateSummary();
+        }
+
+        function togglePlacement(name, option) {
+            var idx = selectedPlacements.indexOf(name);
+            if (idx > -1) {
+                selectedPlacements.splice(idx, 1);
+                option.classList.remove('selected');
+                option.querySelector('.plus-icon').textContent = '+';
+            } else {
+                selectedPlacements.push(name);
+                option.classList.add('selected');
+                option.querySelector('.plus-icon').textContent = '✓';
+            }
+            updateSummary();
+        }
+
+        function updateSummary() {
+            selectedCountSpan.textContent = selectedPlacements.length;
+
+            var totalReach = selectedPlacements.reduce(function(acc, name) {
+                var found = placementsData.find(function(p) { return p.name === name; });
+                return acc + (found ? found.reach : 0);
+            }, 0);
+            combinedReachSpan.textContent = totalReach.toLocaleString();
+
+            if (selectedPlacements.length === 0) {
+                whatsappCta.style.opacity = '0.5';
+                whatsappCta.style.pointerEvents = 'none';
+            } else {
+                whatsappCta.style.opacity = '1';
+                whatsappCta.style.pointerEvents = 'auto';
+                var msg = 'Hi WeTalkSound! I\'m interested in these placements: ' + selectedPlacements.join(', ') + '. Let\'s talk rates.';
+                whatsappCta.href = 'https://wa.me/2348178007329?text=' + encodeURIComponent(msg);
+            }
+        }
+
+        renderPlacements();
+
+        // Footer year
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
