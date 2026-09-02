@@ -1312,6 +1312,25 @@
             }
         }
 
+        /* Budget step enhancement */
+        #budget-grid .opt {
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+        }
+        #budget-grid .opt:hover {
+            background: rgba(255, 107, 74, 0.12);
+            border-color: rgba(255, 107, 74, 0.4);
+        }
+        #budget-grid .opt.selected {
+            background: rgba(255, 107, 74, 0.15);
+            border-color: var(--accent);
+            box-shadow: inset 0 0 0 1px rgba(255, 107, 74, 0.4);
+        }
+
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
@@ -1474,8 +1493,8 @@
                     <!-- Step 4: Budget -->
                     <div class="step" data-step="4">
                         <div class="step-header"><button type="button" class="btn-back" onclick="goStep(3)">← Back</button><span class="q-label" style="margin-left:auto;">Step 5 of 7</span></div>
-                        <div class="q-title">What budget are you working with?</div>
-                        <div class="q-sub">This helps us recommend the best fit.</div>
+                        <div class="q-title">What’s your total music marketing budget?</div>
+                        <div class="q-sub">Consider all campaign, placement, and content spend.</div>
                         <div class="opt-grid" id="budget-grid">
                             <button type="button" class="opt" data-value="No budget" onclick="selectBudget(this)">No budget<span class="check">✓</span></button>
                             <button type="button" class="opt" data-value="Up to 150K" onclick="selectBudget(this)">Up to 150K<span class="check">✓</span></button>
@@ -2369,14 +2388,23 @@
                     body: JSON.stringify(lead),
                     headers: { 'Content-Type': 'text/plain' }
                 })
-                .then(function(response) { return response.json(); })
                 .then(function(data) {
                     console.log('✅ Lead submitted:', data);
-                    window.location.href = '/thank-you/music';
+                    var lowBudget = ['No budget', 'Up to 150K', '200K – 500K'];
+                    if (lowBudget.indexOf(lead.budget) !== -1) {
+                        window.location.href = '/thank-you/music-2';
+                    } else {
+                        window.location.href = '/thank-you/music';
+                    }
                 })
                 .catch(function(err) {
                     console.error('❌ Error:', err);
-                    window.location.href = '/thank-you/music';
+                    var lowBudget = ['No budget', 'Up to 150K', '200K – 500K'];
+                    if (lowBudget.indexOf(lead.budget) !== -1) {
+                        window.location.href = '/thank-you/music-2';
+                    } else {
+                        window.location.href = '/thank-you/music';
+                    }
                 });
         }
 
