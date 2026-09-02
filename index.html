@@ -2392,7 +2392,7 @@
                     console.log('✅ Lead submitted:', data);
                     var lowBudget = ['No budget', 'Up to 150K', '200K – 500K'];
                     if (lowBudget.indexOf(lead.budget) !== -1) {
-                        window.location.href = '/thank-you/music-2';
+                        window.location.href = '/thank-you/placement';
                     } else {
                         window.location.href = '/thank-you/music';
                     }
@@ -2401,7 +2401,7 @@
                     console.error('❌ Error:', err);
                     var lowBudget = ['No budget', 'Up to 150K', '200K – 500K'];
                     if (lowBudget.indexOf(lead.budget) !== -1) {
-                        window.location.href = '/thank-you/music-2';
+                        window.location.href = '/thank-you/placement';
                     } else {
                         window.location.href = '/thank-you/music';
                     }
