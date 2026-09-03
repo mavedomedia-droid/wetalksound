@@ -283,18 +283,9 @@
             border-color: var(--accent);
             color: #fff;
         }
-        .placement-option .option-info {
-            flex: 1;
-        }
-        .placement-option .option-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #fff;
-        }
-        .placement-option .option-desc {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.45);
-        }
+        .placement-option .option-info { flex: 1; }
+        .placement-option .option-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
+        .placement-option .option-desc { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
         .btn-wa {
             display: inline-flex;
             align-items: center;
@@ -445,7 +436,7 @@
         var firstName = leadData.name ? leadData.name.split(' ')[0] : 'there';
         document.getElementById('ty-name').textContent = firstName;
 
-        // Placement options with descriptive labels (no literal reach numbers)
+        // Placement options with descriptive labels
         var placementsData = [
             { name: 'Instagram', desc: 'Post or story placement' },
             { name: 'TikTok post', desc: 'Video post placement' },
@@ -455,7 +446,6 @@
             { name: 'Radio mention', desc: 'Mention on radio' }
         ];
 
-        // Initial selected placements from quiz (or defaults)
         var selectedPlacements = (leadData.placements && leadData.placements.length > 0)
             ? leadData.placements.slice()
             : [];
@@ -512,7 +502,6 @@
 
         renderPlacements();
 
-        // Footer year
         document.getElementById('footer-year').textContent = new Date().getFullYear();
     </script>
 </body>
