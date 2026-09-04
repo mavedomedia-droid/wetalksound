@@ -415,6 +415,7 @@
             justify-self: end;
             color: #fff;
             min-height: auto;
+            overflow: visible !important; /* fix clipping */
         }
         .progress-dots {
             display: flex;
@@ -448,6 +449,11 @@
         .step.active {
             display: block;
         }
+        #stepsContainer, .step {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+
         @keyframes fadeSlide {
             0% {
                 opacity: 0;
@@ -557,10 +563,14 @@
             transition: transform .2s, box-shadow .2s, opacity .2s;
             box-shadow: 0 4px 20px rgba(255, 45, 120, 0.25);
             min-height: 52px;
-            display: none;
+            /* always visible, disabled initially */
+            display: block !important;
+            opacity: 0.5;
+            pointer-events: none;
         }
         .budget-continue-btn.visible {
-            display: block;
+            opacity: 1;
+            pointer-events: auto;
         }
         .budget-continue-btn:hover {
             transform: translateY(-2px) scale(1.01);
