@@ -99,7 +99,7 @@
             .hamburger { display: flex; }
         }
 
-        /* ─── HERO ─── */
+        /* ─── HERO (two-column) ─── */
         .hero-wrap {
             position: relative;
             background: var(--ink);
@@ -446,9 +446,7 @@
     <script>
         // Mobile menu
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-        document.querySelectorAll('.mobile-menu a').forEach(function(a) {
-            a.addEventListener('click', function() { document.getElementById('mobile-menu').classList.remove('open'); });
-        });
+        document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open')));
 
         // Lead data
         var leadData = JSON.parse(sessionStorage.getItem('wts_lead') || '{}');
