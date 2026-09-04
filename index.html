@@ -939,6 +939,7 @@
                     <span class="dot" data-step="4"></span>
                     <span class="dot" data-step="5"></span>
                     <span class="dot" data-step="6"></span>
+                    <span class="dot" data-step="7"></span>
                 </div>
 
                 <div id="stepsContainer">
@@ -1578,6 +1579,16 @@
             var btn = document.getElementById('btn-step6');
             if (lead.goals.length > 0) { btn.disabled = false; hideError('err-step6'); }
             else btn.disabled = true;
+        }
+
+        // High budget optional placements (step 7)
+        function toggleContactPlacement(el) {
+            el.classList.toggle('selected');
+            var val = el.dataset.value;
+            var idx = lead.placements.indexOf(val);
+            if (idx > -1) lead.placements.splice(idx, 1);
+            else lead.placements.push(val);
+            if (lead.placements.length > 0) hideError('err-contact-placements');
         }
 
         // Submit high budget
