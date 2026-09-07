@@ -48,8 +48,9 @@
             --radius: 10px;
             --radius-lg: 16px;
             --grad-sass: linear-gradient(135deg, #FF6B4A 0%, #FF2D78 50%, #7B2FF7 100%);
-            --muted: #6B6D7A;   /* added */
-            --text: #16171A;    /* added */
+            --muted: #6B6D7A;
+            --text: #16171A;
+            --danger: #E55A3A;
         }
         html {
             scroll-behavior: smooth;
@@ -367,7 +368,6 @@
             font-weight: 700;
         }
 
-        /* ─── HERO PROOF TAGS ─── */
         .hero-proof {
             display: flex;
             flex-wrap: wrap;
@@ -405,7 +405,7 @@
             max-width: 460px;
             justify-self: end;
             color: #fff;
-            min-height: auto;
+            min-height: 380px;
             overflow: visible !important;
         }
         .progress-dots {
@@ -429,20 +429,12 @@
         .progress-dots .dot.done {
             background: rgba(255,255,255,0.35);
         }
-        .progress-dots .dot .dot-num {
-            display: none;
-        }
-
         .step {
             display: none;
             animation: fadeSlide .3s ease;
         }
         .step.active {
             display: block;
-        }
-        #stepsContainer, .step {
-            overflow: visible !important;
-            max-height: none !important;
         }
         @keyframes fadeSlide {
             0% { opacity: 0; transform: translateY(12px); }
@@ -492,7 +484,31 @@
             margin-bottom: 12px;
         }
 
-        /* Budget grid specific */
+        /* ─── REJECTION SCREEN ─── */
+        .rejection-box {
+            display: none;
+            background: rgba(229, 90, 58, 0.06);
+            border-left: 4px solid var(--danger);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-top: 8px;
+        }
+        .rejection-box.show {
+            display: block;
+        }
+        .rejection-box .rej-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--danger);
+            margin-bottom: 4px;
+        }
+        .rejection-box .rej-text {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+        }
+
+        /* ─── BUDGET GRID ─── */
         .budget-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -520,37 +536,15 @@
             border-color: var(--accent);
             box-shadow: inset 0 0 0 1px rgba(255,107,74,0.4);
         }
-        .budget-note {
-            background: rgba(255,107,74,0.08);
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-top: 12px;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.5;
-            display: none;
+        .budget-grid .opt.low {
+            opacity: 0.6;
+            border-color: rgba(255,255,255,0.04);
         }
-        .budget-note.visible {
-            display: block;
+        .budget-grid .opt.low:hover {
+            opacity: 0.8;
         }
-        .budget-continue-btn {
-            margin-top: 12px;
-            width: 100%;
-            padding: 14px;
-            background: var(--grad-sass);
-            color: #fff;
-            border: none;
-            border-radius: var(--radius);
-            font: 700 0.9rem 'Inter', sans-serif;
-            cursor: pointer;
-            transition: transform .2s, box-shadow .2s, opacity .2s;
-            box-shadow: 0 4px 20px rgba(255,45,120,0.25);
-            min-height: 52px;
-            display: none; /* hidden by default, shown via .visible */
-        }
-        .budget-continue-btn.visible {
-            display: block;
+        .budget-grid .opt.high {
+            border-color: rgba(255,107,74,0.2);
         }
 
         /* General option styles */
@@ -559,14 +553,6 @@
             flex-direction: column;
             gap: 8px;
             margin-bottom: 6px;
-        }
-        .opt-grid.row {
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .opt-grid.row .opt {
-            flex: 1 0 calc(50% - 4px);
         }
         .opt {
             background: rgba(255,255,255,0.04);
@@ -619,18 +605,6 @@
         .opt.selected .check {
             opacity: 1;
             color: var(--accent);
-        }
-        .opt .dot-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.15);
-            flex-shrink: 0;
-            transition: background .2s, border-color .2s;
-        }
-        .opt.selected .dot-indicator {
-            background: var(--accent);
-            border-color: var(--accent);
         }
 
         .goals-grid {
@@ -730,51 +704,6 @@
             font-size: 0.75rem;
             color: rgba(255,255,255,0.6);
             margin-top: 2px;
-        }
-
-        .placement-grid-wrap .pg-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-top: 4px;
-        }
-        .placement-grid-wrap .pg-grid .opt {
-            padding: 10px 12px;
-            font-size: 0.75rem;
-            min-height: 44px;
-            gap: 8px;
-        }
-        .placement-grid-wrap .pg-grid .opt .icon-svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .contact-placements {
-            margin-top: 14px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 12px;
-        }
-        .contact-placements .cp-title {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 6px;
-        }
-        .contact-placements .cp-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .contact-placements .cp-grid .opt {
-            padding: 8px 10px;
-            font-size: 0.7rem;
-            min-height: 38px;
-            gap: 8px;
-            border-radius: 6px;
-        }
-        .contact-placements .cp-grid .opt .icon-svg {
-            width: 16px;
-            height: 16px;
         }
 
         .form-row-2 {
@@ -904,7 +833,6 @@
         @media (max-width: 768px) { .mobile-sticky-cta { display: block; } body { padding-bottom: 70px; } }
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
-        /* Additional fix: .field-label for forms */
         .field-label {
             display: block;
             font-size: 0.7rem;
@@ -1024,7 +952,7 @@
                 <div id="stepsContainer">
                     <!-- Step 0: Stage -->
                     <div class="step active" data-step="0">
-                        <div class="step-header"><span class="q-label">Step 1 of 7</span></div>
+                        <div class="step-header"><span class="q-label">Step 1 of 8</span></div>
                         <div class="q-title">What stage is your release in?</div>
                         <div class="q-sub">Choose the option that fits best.</div>
                         <div class="opt-grid">
@@ -1034,84 +962,45 @@
                         <div class="field-error" id="err-step0">Please select an option.</div>
                     </div>
 
-                    <!-- Step 1: Budget (grid) -->
+                    <!-- Step 1: Budget -->
                     <div class="step" data-step="1">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(0)">← Back</button><span class="q-label" style="margin-left:auto;">Step 2 of 7</span></div>
-                        <div class="q-title">What’s your total music marketing budget?</div>
-                        <div class="q-sub">Include campaigns, placements, content, and distribution.</div>
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(0)">← Back</button><span class="q-label" style="margin-left:auto;">Step 2 of 8</span></div>
+                        <div class="q-title">What's your total music marketing budget?</div>
+                        <div class="q-sub">We build 360° campaigns starting at ₦500K.</div>
                         <div class="budget-grid" id="budget-grid">
-                            <button type="button" class="opt" data-value="No budget" onclick="selectBudget(this)">No budget<span class="check">✓</span></button>
-                            <button type="button" class="opt" data-value="Up to 150K" onclick="selectBudget(this)">Up to 150K<span class="check">✓</span></button>
-                            <button type="button" class="opt" data-value="200K – 500K" onclick="selectBudget(this)">200K – 500K<span class="check">✓</span></button>
-                            <button type="button" class="opt" data-value="500K – 2M" onclick="selectBudget(this)">500K – 2M<span class="check">✓</span></button>
-                            <button type="button" class="opt" data-value="2M – 5M" onclick="selectBudget(this)">2M – 5M<span class="check">✓</span></button>
-                            <button type="button" class="opt" data-value="Over 5M" onclick="selectBudget(this)">Over 5M<span class="check">✓</span></button>
+                            <button type="button" class="opt low" data-value="No budget" onclick="selectBudget(this)">No budget<span class="check">✓</span></button>
+                            <button type="button" class="opt low" data-value="200K – 400K" onclick="selectBudget(this)">200K – 400K<span class="check">✓</span></button>
+                            <button type="button" class="opt high" data-value="500K – 2M" onclick="selectBudget(this)">500K – 2M<span class="check">✓</span></button>
+                            <button type="button" class="opt high" data-value="2M – 5M" onclick="selectBudget(this)">2M – 5M<span class="check">✓</span></button>
+                            <button type="button" class="opt high" data-value="Over 5M" onclick="selectBudget(this)">Over 5M<span class="check">✓</span></button>
                         </div>
                         <div class="field-error" id="err-step1">Please select a budget range.</div>
-                        <div class="budget-note" id="low-budget-note">
-                            We typically build full campaigns for budgets above ₦500K, but we do offer individual placements that could be perfect for your budget.
+
+                        <!-- Budget rejection – only for "No budget" -->
+                        <div class="rejection-box" id="budget-rejection">
+                            <div class="rej-title">We're unable to help with no budget at this time.</div>
+                            <div class="rej-text">
+                                We focus on strategic 360° campaigns for artists, labels, and management teams with budgets starting at ₦500K.
+                                <br><br>
+                                We wish you the best with your project.
+                            </div>
                         </div>
-                        <div class="budget-note" id="high-budget-note">
-                            Good news – we can help you reach the right audience.
-                        </div>
-                        <button type="button" class="budget-continue-btn" id="budget-continue-btn" onclick="continueFromBudget()">Continue →</button>
                     </div>
 
-                    <!-- Step 2: Placements (low budget) -->
+                    <!-- Step 2: Placement Confirmation (200K – 400K only) -->
                     <div class="step" data-step="2">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(1)">← Back</button><span class="q-label" style="margin-left:auto;">Step 3 of 7</span></div>
-                        <div class="q-title">Choose your placements</div>
-                        <div class="q-sub">Select any placements you’re interested in. We’ll help you reach the right audience.</div>
-                        <div class="placement-grid-wrap">
-                            <div class="pg-grid" id="pg-grid">
-                                <button type="button" class="opt" data-value="Instagram" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(post/story)</span><span class="check">✓</span></button>
-                                <button type="button" class="opt" data-value="TikTok post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(202K)</span><span class="check">✓</span></button>
-                                <button type="button" class="opt" data-value="X post" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(36K)</span><span class="check">✓</span></button>
-                                <button type="button" class="opt" data-value="Newsletter mention" onclick="togglePlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Newsletter mention <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(30K)</span><span class="check">✓</span></button>
-                            </div>
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(1)">← Back</button><span class="q-label" style="margin-left:auto;">Placement Interest</span></div>
+                        <div class="q-title">Confirm Your Interest in Placements</div>
+                        <div class="q-sub">We offer targeted placements on Instagram, TikTok, X (Twitter), and our Newsletter to help you reach your audience.</div>
+                        <div class="opt-grid">
+                            <button type="button" class="opt" onclick="routeToWhatsApp()"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></svg>Yes, I want to buy a placement<span class="check">✓</span></button>
+                            <button type="button" class="opt" onclick="goStep(1)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>No, I'll adjust my budget<span class="check">✓</span></button>
                         </div>
-                        <div class="field-error" id="err-step2">Please select at least one placement.</div>
-                        <button type="button" class="btn-continue" id="btn-step2" disabled onclick="goStep(3)">Continue →</button>
                     </div>
 
-                    <!-- Step 3: Simplified Contact (low budget) -->
+                    <!-- Step 3: Role (500K+) -->
                     <div class="step" data-step="3">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(2)">← Back</button><span class="q-label" style="margin-left:auto;">Step 4 of 7</span></div>
-                        <div class="q-title">Where do we reach you?</div>
-                        <div class="q-sub">We’ll send your placement request to our team.</div>
-                        <div class="contact-simple">
-                            <div style="margin-bottom:10px;">
-                                <label class="field-label">Your name *</label>
-                                <input type="text" class="text-input" id="contact-name-simple" placeholder="Chidi Okonkwo" autocomplete="name" />
-                                <div class="field-error" id="err-contact-name-simple">Name is required.</div>
-                            </div>
-                            <div style="margin-bottom:10px;">
-                                <label class="field-label">Stage/Act name *</label>
-                                <input type="text" class="text-input" id="contact-act-simple" placeholder="Your stage or act name" />
-                                <div class="field-error" id="err-contact-act-simple">Stage name is required.</div>
-                            </div>
-                            <div style="margin-bottom:10px;">
-                                <label class="field-label">Artist IG page *</label>
-                                <div style="display:flex;align-items:stretch;">
-                                    <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius) 0 0 var(--radius);padding:12px 10px;color:rgba(255,255,255,0.3);font-size:0.9rem;display:flex;align-items:center;min-height:50px;">@</span>
-                                    <input type="text" class="text-input" id="contact-ig-simple" placeholder="artisthandle" style="border-radius:0 var(--radius) var(--radius) 0;border-left:none;" />
-                                </div>
-                                <div class="field-error" id="err-contact-ig-simple">IG handle is required.</div>
-                            </div>
-                            <div style="margin-bottom:10px;">
-                                <label class="field-label">Email or phone (at least one) *</label>
-                                <input type="email" class="text-input" id="contact-email-simple" placeholder="you@artist.com" style="margin-bottom:8px;" />
-                                <input type="tel" class="text-input" id="contact-phone-simple" placeholder="Phone number (optional)" />
-                                <div class="field-error" id="err-contact-contact-simple">Please provide an email or phone number.</div>
-                            </div>
-                        </div>
-                        <div class="field-error" id="err-contact-general-simple">Please provide at least an email or phone number.</div>
-                        <button type="button" class="btn-continue" id="btn-step3" onclick="submitLowBudget()">Submit →</button>
-                    </div>
-
-                    <!-- Step 4: Role (high budget) -->
-                    <div class="step" data-step="4">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(1)">← Back</button><span class="q-label" style="margin-left:auto;">Step 3 of 7</span></div>
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(1)">← Back</button><span class="q-label" style="margin-left:auto;">Step 4 of 8</span></div>
                         <div class="q-title">Who are you?</div>
                         <div class="q-sub">We tailor our approach to your role.</div>
                         <div class="opt-grid">
@@ -1120,20 +1009,20 @@
                             <button type="button" class="opt" data-value="Label or marketing team" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Label or marketing team<span class="check">✓</span></button>
                             <button type="button" class="opt" data-value="Other" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>Other<span class="check">✓</span></button>
                         </div>
-                        <div class="field-error" id="err-step4">Please select your role.</div>
+                        <div class="field-error" id="err-step3">Please select your role.</div>
                     </div>
 
-                    <!-- Step 5: Release details (high budget) -->
+                    <!-- Step 4: Release Details (500K+) -->
+                    <div class="step" data-step="4">
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(3)">← Back</button><span class="q-label" style="margin-left:auto;">Step 5 of 8</span></div>
+                        <div id="step4-content"></div>
+                        <div class="field-error" id="err-step4">Please fill in all fields.</div>
+                        <button type="button" class="btn-continue" id="btn-step4" disabled onclick="goStep(5)">Continue →</button>
+                    </div>
+
+                    <!-- Step 5: Goals (500K+) -->
                     <div class="step" data-step="5">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(4)">← Back</button><span class="q-label" style="margin-left:auto;">Step 4 of 7</span></div>
-                        <div id="step5-content"></div>
-                        <div class="field-error" id="err-step5">Please fill in all fields.</div>
-                        <button type="button" class="btn-continue" id="btn-step5" disabled onclick="goStep(6)">Continue →</button>
-                    </div>
-
-                    <!-- Step 6: Goals (high budget) -->
-                    <div class="step" data-step="6">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(5)">← Back</button><span class="q-label" style="margin-left:auto;">Step 5 of 7</span></div>
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(4)">← Back</button><span class="q-label" style="margin-left:auto;">Step 6 of 8</span></div>
                         <div class="q-title">What does success look like?</div>
                         <div class="q-sub">Pick as many as you want. Tap a goal to see proof from our work.</div>
                         <div class="goals-grid" id="goals-grid">
@@ -1147,13 +1036,35 @@
                             <div class="goal-card" data-value="Creative Direction" onclick="toggleGoal(this)"><svg class="gc-icon" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg><span class="gc-label">Creative</span><span class="gc-check">✓</span></div>
                         </div>
                         <div class="metric-tile" id="metric-tile"><div class="big-number" id="metric-number">64K+</div><div class="metric-label" id="metric-label">sounds · 2M+ streams for Danpapa's Ikeja</div></div>
-                        <div class="field-error" id="err-step6">Select at least one goal.</div>
-                        <button type="button" class="btn-continue" id="btn-step6" disabled onclick="goStep(7)">Continue →</button>
+                        <div class="field-error" id="err-step5">Select at least one goal.</div>
+                        <button type="button" class="btn-continue" id="btn-step5" disabled onclick="goStep(6)">Continue →</button>
                     </div>
 
-                    <!-- Step 7: Full Contact (high budget) -->
+                    <!-- Step 6: Timeline (500K+) – just before the form -->
+                    <div class="step" data-step="6">
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(5)">← Back</button><span class="q-label" style="margin-left:auto;">Step 7 of 8</span></div>
+                        <div class="q-title">What's your timeline?</div>
+                        <div class="q-sub">We work with artists and teams who are ready to execute.</div>
+                        <div class="opt-grid" id="timeline-grid">
+                            <button type="button" class="opt" data-value="asap" onclick="selectTimeline(this)">ASAP<span class="check">✓</span></button>
+                            <button type="button" class="opt" data-value="month" onclick="selectTimeline(this)">Within 1 month<span class="check">✓</span></button>
+                            <button type="button" class="opt" data-value="1-3months" onclick="selectTimeline(this)">1–3 months<span class="check">✓</span></button>
+                            <button type="button" class="opt" data-value="exploring" onclick="selectTimeline(this)">Not for now / Just exploring<span class="check">✓</span></button>
+                        </div>
+                        <div class="field-error" id="err-step6">Please select a timeline.</div>
+
+                        <!-- Timeline rejection – only for "Not for now / Just exploring" -->
+                        <div class="rejection-box" id="timeline-rejection">
+                            <div class="rej-title">We focus on releases with confirmed launch dates.</div>
+                            <div class="rej-text">
+                                We prioritise campaigns that are closer to launch. Please reach out again when you're ready to move forward — we'd love to work with you then.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Contact Form (500K+) – NO placements section -->
                     <div class="step" data-step="7">
-                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(6)">← Back</button><span class="q-label" style="margin-left:auto;">Step 6 of 7</span></div>
+                        <div class="step-header"><button type="button" class="btn-back" onclick="goStep(6)">← Back</button><span class="q-label" style="margin-left:auto;">Step 8 of 8</span></div>
                         <div class="q-title">Where do we reach you?</div>
                         <div class="q-sub">We'll send your custom plan within 24h.</div>
                         <div class="form-row-2">
@@ -1188,7 +1099,6 @@
                         </div>
                         <div style="margin-bottom:10px;"><label class="field-label">How soon would you like to get started? *</label><select class="select-input" id="contact-timeline"><option value="">Select…</option><option value="ASAP">ASAP</option><option value="Within 1 week">Within 1 week</option><option value="Within 1 month">Within 1 month</option></select><div class="field-error" id="err-contact-timeline">Please select a timeline.</div></div>
                         <div class="field-error" id="err-contact-general">Please provide at least an email or phone number.</div>
-                        <div class="contact-placements" id="high-budget-placements"><div class="cp-title">Are you interested in any specific placements?</div><div class="cp-grid" id="contact-placement-grid"><button type="button" class="opt" data-value="Instagram" onclick="toggleContactPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>Instagram <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(post/story)</span><span class="check">✓</span></button><button type="button" class="opt" data-value="TikTok post" onclick="toggleContactPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/></svg>TikTok post <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(202K)</span><span class="check">✓</span></button><button type="button" class="opt" data-value="X post" onclick="toggleContactPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg>X post <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(36K)</span><span class="check">✓</span></button><button type="button" class="opt" data-value="Newsletter mention" onclick="toggleContactPlacement(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Newsletter mention <span style="font-size:0.6rem;color:rgba(255,255,255,0.3);">(30K)</span><span class="check">✓</span></button></div><div class="field-error" id="err-contact-placements">Please select at least one placement.</div></div>
                         <button type="button" class="btn-continue" id="btn-step7" onclick="submitHighBudget()">Submit Enquiry →</button>
                     </div>
                 </div>
@@ -1205,7 +1115,6 @@
         <h2 class="s-title">Proof in the numbers.</h2>
         <p class="s-sub" style="color:rgba(255,255,255,0.5);">We've moved millions of streams, trended on release, and earned 2026 Headies nominations along the way.</p>
 
-        <!-- HEADIES 2026 RECOGNITION -->
         <div class="headies-layout" style="margin-bottom: 40px;">
             <div class="headies-image">
                 <img src="headies_WTS_1.jpg" alt="WeTalk Sound Headies 2026 nominations — 2 artists, 5 nominations featuring Danpapa GTA and Ṣẹwá" />
@@ -1235,7 +1144,6 @@
             </div>
         </div>
 
-        <!-- WORK CARDS -->
         <div class="work-grid">
             <div class="work-card">
                 <div class="wc-badge">🏆 2026 Headies Nominee</div>
@@ -1301,7 +1209,6 @@
                 </div>
             </div>
         </div>
-
         <div style="margin-top:32px;">
             <a href="#hero" class="btn-link wo">Make an Enquiry →</a>
         </div>
@@ -1453,16 +1360,17 @@
         // Lead object
         var lead = {
             path: '', role: '', releaseType: '', stage: '', link: '',
-            goals: [], budget: '', placements: [], tier: '', prospectType: '',
-            name: '', actName: '', artistIg: '', country: '', email: '', phone: '', timeline: '', soundcloud: '',
-            addons: [], utmSource: utmParams.source || '', utmMedium: utmParams.medium || '', utmCampaign: utmParams.campaign || ''
+            goals: [], budget: '', placements: [], timeline: '',
+            name: '', actName: '', artistIg: '', country: '', email: '', phone: '', soundcloud: '',
+            utmSource: utmParams.source || '', utmMedium: utmParams.medium || '', utmCampaign: utmParams.campaign || ''
         };
 
         var currentStep = 0;
         var steps = document.querySelectorAll('.step');
         var dots = document.querySelectorAll('.progress-dots .dot');
-        var isLowBudgetPath = false;
         var budgetSelected = false;
+        var timelineSelected = false;
+        var isRejected = false;
 
         function showStep(index) {
             currentStep = index;
@@ -1479,7 +1387,7 @@
         function hideError(id) { var el = document.getElementById(id); if (el) el.classList.remove('show'); }
         function showError(id) { var el = document.getElementById(id); if (el) el.classList.add('show'); }
 
-        // Step 0: Stage selection
+        // ─── STEP 0: Stage ───
         function selectStep1(el) {
             document.querySelectorAll('#stepsContainer [data-step="0"] .opt').forEach(b => b.classList.remove('selected'));
             el.classList.add('selected');
@@ -1488,7 +1396,7 @@
             setTimeout(() => goStep(1), 350);
         }
 
-        // Step 1: Budget selection
+        // ─── STEP 1: Budget ───
         function selectBudget(el) {
             document.querySelectorAll('#budget-grid .opt').forEach(b => b.classList.remove('selected'));
             el.classList.add('selected');
@@ -1496,102 +1404,63 @@
             hideError('err-step1');
             budgetSelected = true;
 
-            var lowBudgets = ['No budget', 'Up to 150K', '200K – 500K'];
-            var highBudgets = ['500K – 2M', '2M – 5M', 'Over 5M'];
-
-            if (lowBudgets.indexOf(lead.budget) !== -1) {
-                isLowBudgetPath = true;
-                lead.tier = 'placement';
-                lead.prospectType = 'Placement Lead';
-                document.getElementById('low-budget-note').classList.add('visible');
-                document.getElementById('high-budget-note').classList.remove('visible');
-            } else {
-                isLowBudgetPath = false;
-                lead.tier = 'full';
-                lead.prospectType = 'High Value Lead';
-                document.getElementById('high-budget-note').classList.add('visible');
-                document.getElementById('low-budget-note').classList.remove('visible');
+            // No budget → hard disqualify
+            if (lead.budget === 'No budget') {
+                document.getElementById('budget-grid').style.display = 'none';
+                document.getElementById('budget-rejection').classList.add('show');
+                isRejected = true;
+                return;
             }
-            document.getElementById('budget-continue-btn').classList.add('visible');
-        }
 
-        function continueFromBudget() {
-            if (!budgetSelected) return;
-            if (isLowBudgetPath) {
-                goStep(2); // placements
-            } else {
-                goStep(4); // role
+            // 200K – 400K → placement flow
+            if (lead.budget === '200K – 400K') {
+                isRejected = false;
+                document.getElementById('budget-grid').style.display = 'grid';
+                document.getElementById('budget-rejection').classList.remove('show');
+                setTimeout(() => goStep(2), 350);
+                return;
             }
+
+            // 500K+ → full campaign
+            isRejected = false;
+            document.getElementById('budget-grid').style.display = 'grid';
+            document.getElementById('budget-rejection').classList.remove('show');
+            setTimeout(() => goStep(3), 350);
         }
 
-        // Low budget placements
-        function togglePlacement(el) {
-            el.classList.toggle('selected');
-            var val = el.dataset.value;
-            var idx = lead.placements.indexOf(val);
-            if (idx > -1) lead.placements.splice(idx, 1);
-            else lead.placements.push(val);
-            var btn = document.getElementById('btn-step2');
-            if (lead.placements.length > 0) { btn.disabled = false; hideError('err-step2'); }
-            else btn.disabled = true;
+        // ─── STEP 2: Placement Confirmation ───
+        function routeToWhatsApp() {
+            // Replace with your WhatsApp number
+            var phone = '234XXXXXXXXXX';
+            var message = 'Hi%20WeTalkSound%2C%20I%27m%20interested%20in%20buying%20a%20media%20placement%20for%20my%20release.';
+            window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
         }
 
-        // Submit low budget – redirect to /thank-you/placement
-        function submitLowBudget() {
-            var name = document.getElementById('contact-name-simple').value.trim();
-            var act = document.getElementById('contact-act-simple').value.trim();
-            var igRaw = document.getElementById('contact-ig-simple').value.trim();
-            var email = document.getElementById('contact-email-simple').value.trim();
-            var phone = document.getElementById('contact-phone-simple').value.trim();
-            var ig = igRaw.startsWith('@') ? igRaw : '@' + igRaw;
-
-            var valid = true;
-            if (!name) { showError('err-contact-name-simple'); valid = false; } else hideError('err-contact-name-simple');
-            if (!act) { showError('err-contact-act-simple'); valid = false; } else hideError('err-contact-act-simple');
-            if (!igRaw) { showError('err-contact-ig-simple'); valid = false; } else hideError('err-contact-ig-simple');
-            if (!email && !phone) { showError('err-contact-contact-simple'); valid = false; } else hideError('err-contact-contact-simple');
-            if (!valid) return;
-
-            lead.name = name;
-            lead.actName = act;
-            lead.artistIg = ig;
-            lead.email = email;
-            lead.phone = phone;
-            lead.timestamp = new Date().toISOString();
-            // include UTM
-            lead.utmMedium = utmParams.medium || '';
-            lead.utmCampaign = utmParams.campaign || '';
-            sessionStorage.setItem('wts_lead', JSON.stringify(lead));
-            fetch(CONFIG.GAS_URL, { method: 'POST', body: JSON.stringify(lead), headers: { 'Content-Type': 'text/plain' } })
-                .then(res => res.json()).then(data => { console.log('✅ Lead submitted:', data); window.location.href = '/thank-you/placement'; })
-                .catch(err => { console.error('❌ Error:', err); window.location.href = '/thank-you/placement'; });
-        }
-
-        // High budget role selection
+        // ─── STEP 3: Role ───
         function selectRole(el) {
-            document.querySelectorAll('[data-step="4"] .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('[data-step="3"] .opt').forEach(b => b.classList.remove('selected'));
             el.classList.add('selected');
             lead.role = el.dataset.value;
-            hideError('err-step4');
-            setTimeout(() => goStep(5), 350);
+            hideError('err-step3');
+            setTimeout(() => goStep(4), 350);
         }
 
-        // Step 5 release details
-        function renderStep5() {
+        // ─── STEP 4: Release Details ───
+        function renderStep4() {
             var html = '';
             if (lead.path === 'pre') {
                 html = `
                     <div class="q-title">What are you releasing?</div>
-                    <div class="opt-grid" id="step5-pre-type">
+                    <div class="opt-grid" id="step4-pre-type">
                         <button type="button" class="opt" data-value="Single" onclick="selectPreType(this)">Single<span class="check">✓</span></button>
                         <button type="button" class="opt" data-value="EP" onclick="selectPreType(this)">EP<span class="check">✓</span></button>
                         <button type="button" class="opt" data-value="Album" onclick="selectPreType(this)">Album<span class="check">✓</span></button>
                         <button type="button" class="opt" data-value="Not sure yet" onclick="selectPreType(this)">Not sure yet<span class="check">✓</span></button>
                     </div>
-                    <div class="stage-reveal" id="step5-stage-reveal">
+                    <div class="stage-reveal" id="step4-stage-reveal">
                         <div style="margin-top:8px;">
                             <div class="q-sub" style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-bottom:4px;">How far along are you?</div>
-                            <div class="opt-grid" id="step5-pre-stage">
+                            <div class="opt-grid" id="step4-pre-stage">
                                 <button type="button" class="opt" data-value="Still recording" onclick="selectPreStage(this)">Still recording<span class="check">✓</span></button>
                                 <button type="button" class="opt" data-value="Project ready, no dates yet" onclick="selectPreStage(this)">Project ready, no dates yet<span class="check">✓</span></button>
                                 <button type="button" class="opt" data-value="Release date confirmed" onclick="selectPreStage(this)">Release date confirmed<span class="check">✓</span></button>
@@ -1603,77 +1472,89 @@
             } else {
                 html = `
                     <div class="q-title">What did you release?</div>
-                    <div class="opt-grid" id="step5-post-type">
+                    <div class="opt-grid" id="step4-post-type">
                         <button type="button" class="opt" data-value="Single" onclick="selectPostType(this)">Single<span class="check">✓</span></button>
                         <button type="button" class="opt" data-value="EP" onclick="selectPostType(this)">EP<span class="check">✓</span></button>
                         <button type="button" class="opt" data-value="Album" onclick="selectPostType(this)">Album<span class="check">✓</span></button>
                     </div>
                     <div style="margin-top:10px;">
                         <div class="q-sub" style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-bottom:6px;">Drop the link</div>
-                        <input type="text" class="text-input" id="step5-link" placeholder="Spotify, Apple Music, YouTube…" oninput="checkPostLink()" />
+                        <input type="text" class="text-input" id="step4-link" placeholder="Spotify, Apple Music, YouTube…" oninput="checkPostLink()" />
                     </div>
                 `;
             }
-            document.getElementById('step5-content').innerHTML = html;
-            disableContinue('btn-step5');
-            hideError('err-step5');
+            document.getElementById('step4-content').innerHTML = html;
+            disableContinue('btn-step4');
+            hideError('err-step4');
         }
 
         function selectPreType(el) {
-            document.querySelectorAll('#step5-pre-type .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('#step4-pre-type .opt').forEach(b => b.classList.remove('selected'));
             el.classList.add('selected');
             lead.releaseType = el.dataset.value;
-            document.getElementById('step5-stage-reveal').classList.add('show');
+            document.getElementById('step4-stage-reveal').classList.add('show');
             checkPreStage();
         }
         function selectPreStage(el) {
-            document.querySelectorAll('#step5-pre-stage .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('#step4-pre-stage .opt').forEach(b => b.classList.remove('selected'));
             el.classList.add('selected');
             lead.stage = el.dataset.value;
             checkPreStage();
         }
         function checkPreStage() {
-            var type = document.querySelector('#step5-pre-type .opt.selected');
-            var stage = document.querySelector('#step5-pre-stage .opt.selected');
-            if (type && stage) { lead.releaseType = type.dataset.value; lead.stage = stage.dataset.value; hideError('err-step5'); enableContinue('btn-step5'); }
-            else disableContinue('btn-step5');
+            var type = document.querySelector('#step4-pre-type .opt.selected');
+            var stage = document.querySelector('#step4-pre-stage .opt.selected');
+            if (type && stage) { lead.releaseType = type.dataset.value; lead.stage = stage.dataset.value; hideError('err-step4'); enableContinue('btn-step4'); }
+            else disableContinue('btn-step4');
         }
         function selectPostType(el) {
-            document.querySelectorAll('#step5-post-type .opt').forEach(b => b.classList.remove('selected'));
+            document.querySelectorAll('#step4-post-type .opt').forEach(b => b.classList.remove('selected'));
             el.classList.add('selected');
             lead.releaseType = el.dataset.value;
             checkPostLink();
         }
         function checkPostLink() {
-            var type = document.querySelector('#step5-post-type .opt.selected');
-            var link = document.getElementById('step5-link')?.value.trim();
-            if (type && link) { lead.releaseType = type.dataset.value; lead.link = link; hideError('err-step5'); enableContinue('btn-step5'); }
-            else disableContinue('btn-step5');
+            var type = document.querySelector('#step4-post-type .opt.selected');
+            var link = document.getElementById('step4-link')?.value.trim();
+            if (type && link) { lead.releaseType = type.dataset.value; lead.link = link; hideError('err-step4'); enableContinue('btn-step4'); }
+            else disableContinue('btn-step4');
         }
 
-        // Goals toggle (step 6)
+        // ─── STEP 5: Goals ───
         function toggleGoal(el) {
             el.classList.toggle('selected');
             var val = el.dataset.value;
             var idx = lead.goals.indexOf(val);
             if (idx > -1) lead.goals.splice(idx, 1);
             else lead.goals.push(val);
-            var btn = document.getElementById('btn-step6');
-            if (lead.goals.length > 0) { btn.disabled = false; hideError('err-step6'); }
+            var btn = document.getElementById('btn-step5');
+            if (lead.goals.length > 0) { btn.disabled = false; hideError('err-step5'); }
             else btn.disabled = true;
         }
 
-        // High budget optional placements (step 7)
-        function toggleContactPlacement(el) {
-            el.classList.toggle('selected');
-            var val = el.dataset.value;
-            var idx = lead.placements.indexOf(val);
-            if (idx > -1) lead.placements.splice(idx, 1);
-            else lead.placements.push(val);
-            if (lead.placements.length > 0) hideError('err-contact-placements');
+        // ─── STEP 6: Timeline ───
+        function selectTimeline(el) {
+            document.querySelectorAll('#timeline-grid .opt').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+            lead.timeline = el.dataset.value;
+            hideError('err-step6');
+            timelineSelected = true;
+
+            // "Not for now / Just exploring" → hard disqualify
+            if (lead.timeline === 'exploring') {
+                document.getElementById('timeline-grid').style.display = 'none';
+                document.getElementById('timeline-rejection').classList.add('show');
+                isRejected = true;
+                return;
+            }
+
+            isRejected = false;
+            document.getElementById('timeline-grid').style.display = 'flex';
+            document.getElementById('timeline-rejection').classList.remove('show');
+            setTimeout(() => goStep(7), 350);
         }
 
-        // Submit high budget – redirect to /thank-you/music
+        // ─── STEP 7: Contact / Submit (NO placements) ───
         function submitHighBudget() {
             var name = document.getElementById('contact-name').value.trim();
             var act = document.getElementById('contact-act').value.trim();
@@ -1707,29 +1588,31 @@
             lead.timestamp = new Date().toISOString();
             lead.utmMedium = utmParams.medium || '';
             lead.utmCampaign = utmParams.campaign || '';
+
             sessionStorage.setItem('wts_lead', JSON.stringify(lead));
             fetch(CONFIG.GAS_URL, { method: 'POST', body: JSON.stringify(lead), headers: { 'Content-Type': 'text/plain' } })
                 .then(res => res.json()).then(data => { console.log('✅ Lead submitted:', data); window.location.href = '/thank-you/music'; })
                 .catch(err => { console.error('❌ Error:', err); window.location.href = '/thank-you/music'; });
         }
 
-        // Navigation
+        // ─── NAVIGATION ───
         function goStep(index) {
+            if (isRejected) return;
+
             if (index > currentStep) {
                 if (currentStep === 0 && !lead.path) { showError('err-step0'); return; }
                 if (currentStep === 1 && !lead.budget) { showError('err-step1'); return; }
-                if (currentStep === 2 && isLowBudgetPath && lead.placements.length === 0) { showError('err-step2'); return; }
-                if (currentStep === 4 && !lead.role) { showError('err-step4'); return; }
-                if (currentStep === 6 && !isLowBudgetPath && lead.goals.length === 0) { showError('err-step6'); return; }
+                if (currentStep === 3 && !lead.role) { showError('err-step3'); return; }
+                if (currentStep === 4) { /* handled internally */ }
+                if (currentStep === 5 && lead.goals.length === 0) { showError('err-step5'); return; }
+                if (currentStep === 6 && !lead.timeline) { showError('err-step6'); return; }
             }
             showStep(index);
-            if (index === 5) renderStep5();
+            if (index === 4) renderStep4();
         }
 
-        // Initialize
+        // ─── INIT ───
         showStep(0);
-
-        // Footer year
         document.getElementById('footer-year').textContent = new Date().getFullYear();
     </script>
 </body>
