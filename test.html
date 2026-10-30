@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>WeTalkSound | Amplify Your Music Release</title>
+    <meta name="description" content="WeTalkSound is the team behind Afrobeats' biggest records. Let's help you amplify yours." />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N3KZ2K8R');</script>
+
+    <script src="config.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --accent: #FF6B4A;
+            --accent-soft: rgba(255, 107, 74, 0.08);
+            --ink: #0A0A0A;
+            --surface-dark: #141416;
+            --white: #ffffff;
+            --bg-light: #F5F6F8;
+            --border-light: #E4E4E7;
+            --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.45);
+            --radius: 10px;
+            --radius-lg: 16px;
+            --grad-sass: linear-gradient(135deg, #FF6B4A 0%, #FF2D78 50%, #7B2FF7 100%);
+            --muted: #6B6D7A;
+            --text: #16171A;
+            --danger: #E55A3A;
+            --wrap: 1120px;
+            --gutter: 20px;
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top);
+        }
+
+        /* ---------- NAV ---------- */
+        nav {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 var(--gutter); height: 58px;
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .brand { display: flex; align-items: center; text-decoration: none; }
+        .brand img { height: 15px; display: block; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { font-size: 0.8125rem; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: var(--grad-sass); color: #fff; border: none;
+            padding: 7px 18px; border-radius: 7px;
+            font: 700 0.8125rem 'Inter', sans-serif; cursor: pointer;
+            text-decoration: none; box-shadow: 0 4px 20px rgba(255,107,74,0.35);
+            transition: transform .2s;
+        }
+        .nav-cta:hover { transform: translateY(-1px); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+        .mobile-menu { display: none; flex-direction: column; background: var(--ink); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 12px var(--gutter) 16px; position: fixed; top: 58px; left: 0; right: 0; z-index: 99; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 0.9375rem; color: rgba(255,255,255,0.6); text-decoration: none; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .mobile-menu .mob-cta { margin-top: 8px; background: var(--grad-sass); color: #fff; padding: 12px 20px; border-radius: 9px; text-align: center; font-weight: 700; border-bottom: none; }
+        @media (max-width: 860px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+
+        /* ---------- HERO ---------- */
+        .hero-wrap {
+            position: relative; background: var(--ink);
+            padding: 28px var(--gutter) 40px;
+            min-height: calc(100dvh - 58px);
+            display: flex; align-items: center;
+        }
+        .hero-glow-orb { position: absolute; border-radius: 50%; filter: blur(130px); opacity: 0.14; pointer-events: none; z-index: 0; }
+        .hero-glow-orb.orb1 { width: 420px; height: 420px; background: #FF2D78; top: -18%; right: -8%; }
+        .hero-glow-orb.orb2 { width: 360px; height: 360px; background: #7B2FF7; bottom: -26%; left: -8%; }
+        .hero-inner { position: relative; z-index: 2; max-width: var(--wrap); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: 100%; }
+        .hero-left { color: #fff; max-width: 460px; }
+
+        .badge-tag { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); padding: 3px 10px; border-radius: 4px; margin-bottom: 12px; }
+        .hero-title { font-size: clamp(2rem, 4.2vw, 2.7rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 10px; color: #fff; text-wrap: balance; }
+        .hero-title .grad-sass { background: var(--grad-sass); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% 200%; animation: moveGrad 5s ease-in-out infinite alternate; }
+        @keyframes moveGrad { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        .wts-logo-inline { display: inline-block; height: 0.6em; vertical-align: baseline; margin-left: 3px; }
+        .wts-logo-inline img { height: 100%; width: auto; display: block; }
+        .hero-sub { font-size: 0.92rem; color: rgba(255,255,255,0.62); line-height: 1.5; margin-bottom: 14px; max-width: 400px; }
+        .hero-proof { display: flex; flex-wrap: wrap; gap: 6px; }
+        .proof-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.66rem; font-weight: 600; color: rgba(255,255,255,0.62); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); padding: 4px 10px; border-radius: 30px; white-space: nowrap; }
+        .proof-badge svg { width: 11px; height: 11px; stroke: var(--accent); flex-shrink: 0; }
+
+        @media (max-width: 860px) {
+            .hero-wrap { padding: 18px var(--gutter) 24px; min-height: auto; align-items: flex-start; }
+            .hero-inner { grid-template-columns: 1fr; gap: 16px; }
+            .hero-left { order: 1; max-width: 100%; text-align: center; }
+            .hero-left .hero-title { font-size: clamp(1.45rem, 6.6vw, 1.9rem); margin-bottom: 8px; }
+            .hero-left .hero-sub { max-width: 100%; margin: 0 auto 10px; font-size: 0.84rem; }
+            .hero-left .badge-tag { display: none; }
+            .hero-glow-orb { display: none; }
+            .hero-proof { justify-content: center; gap: 4px; flex-wrap: nowrap; }
+            .proof-badge { font-size: 0.58rem; padding: 3px 7px; gap: 0; }
+            .proof-badge svg { display: none; }
+            .quiz-card { order: 2; max-width: 100%; width: 100%; }
+        }
+
+        /* ---------- QUIZ ---------- */
+        .quiz-card {
+            background: rgba(20,20,22,0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            padding: 20px 18px 16px;
+            width: 100%; max-width: 460px;
+            justify-self: end;
+            color: #fff;
+            scroll-margin-top: 72px;
+        }
+        .progress-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 14px; }
+        .progress-dots .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: background .3s; }
+        .progress-dots .dot.active { background: var(--accent); box-shadow: 0 0 10px rgba(255,107,74,0.35); }
+        .progress-dots .dot.done { background: rgba(255,255,255,0.35); }
+
+        .step { display: none; animation: fadeSlide .28s ease; }
+        .step.active { display: block; }
+        @keyframes fadeSlide { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+        .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; min-height: 20px; }
+        .btn-back { background: none; border: none; color: rgba(255,255,255,0.3); font: 500 0.75rem 'Inter', sans-serif; cursor: pointer; padding: 4px 0; transition: color .2s; }
+        .btn-back:hover { color: rgba(255,255,255,0.75); }
+        .q-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-left: auto; }
+        .q-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 2px; }
+        .q-title.solo { margin-bottom: 12px; }
+        .q-sub { font-size: 0.76rem; color: rgba(255,255,255,0.42); margin-bottom: 12px; }
+
+        .rejection-box { display: none; background: rgba(229, 90, 58, 0.07); border-left: 3px solid var(--danger); border-radius: var(--radius); padding: 14px; margin-top: 10px; }
+        .rejection-box.show { display: block; }
+        .rejection-box .rej-title { font-weight: 700; font-size: 0.85rem; color: var(--danger); margin-bottom: 4px; }
+        .rejection-box .rej-text { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+        .opt-grid { display: flex; flex-direction: column; gap: 7px; }
+        .opt { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 11px 13px; font: 500 0.84rem 'Inter', sans-serif; color: #fff; cursor: pointer; transition: border-color .18s, background .18s; text-align: left; display: flex; align-items: center; gap: 11px; min-height: 48px; }
+        .opt:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); }
+        .opt:active { transform: scale(0.985); }
+        .opt.selected { border-color: var(--accent); background: rgba(255,107,74,0.09); }
+        .opt .icon-svg { flex-shrink: 0; width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.45; }
+        .opt.selected .icon-svg { opacity: 1; stroke: var(--accent); }
+        .opt .check { margin-left: auto; opacity: 0; color: var(--accent); transition: opacity .2s; }
+        .opt.selected .check { opacity: 1; }
+
+        .budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+        .budget-grid .opt { justify-content: space-between; min-height: 52px; font-weight: 600; }
+        .budget-grid .opt.low { opacity: 0.55; }
+        .budget-grid .opt.low:hover { opacity: 0.85; }
+
+        .placement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+        .placement-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 11px 11px 9px; cursor: pointer; transition: border-color .18s, background .18s; text-align: left; color: #fff; font-family: 'Inter', sans-serif; position: relative; min-height: 88px; display: flex; flex-direction: column; gap: 3px; }
+        .placement-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); }
+        .placement-card.selected { border-color: var(--accent); background: rgba(255,107,74,0.09); }
+        .placement-card .pc-icon { width: 19px; height: 19px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .placement-card .pc-name { font-size: 0.76rem; font-weight: 700; line-height: 1.2; }
+        .placement-card .pc-meta { font-size: 0.6rem; color: rgba(255,255,255,0.38); line-height: 1.3; }
+        .placement-card .pc-check { position: absolute; top: 8px; right: 8px; width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.48rem; color: transparent; }
+        .placement-card.selected .pc-check { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .price-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 13px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); margin-bottom: 7px; }
+        .price-row .pr-name { font-size: 0.83rem; font-weight: 600; }
+        .price-row .pr-price { font-size: 0.68rem; color: rgba(255,255,255,0.45); margin-top: 2px; }
+        .price-row .pr-price.amount { color: var(--accent); font-weight: 700; }
+        .qty-controls { display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
+        .qty-btn { width: 27px; height: 27px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: #fff; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+        .qty-btn:hover { background: rgba(255,107,74,0.15); border-color: var(--accent); }
+        .qty-value { min-width: 14px; text-align: center; font-weight: 700; font-size: 0.83rem; }
+
+        .total-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 13px; background: rgba(255,107,74,0.08); border: 1px solid rgba(255,107,74,0.16); border-radius: var(--radius); margin-top: 10px; }
+        .total-bar .tb-label { font-size: 0.73rem; color: rgba(255,255,255,0.6); }
+        .total-bar .tb-note { font-size: 0.56rem; color: rgba(255,255,255,0.3); margin-top: 1px; }
+        .total-bar .tb-value { font-size: 1rem; font-weight: 900; color: var(--accent); text-align: right; }
+        .total-bar .tb-value.pending { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.5); }
+
+        .add-more-title { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); margin: 14px 0 7px; }
+        .add-more-list { display: flex; flex-direction: column; gap: 5px; }
+        .add-more-item { display: flex; align-items: center; padding: 8px 11px; background: transparent; border: 1px dashed rgba(255,255,255,0.09); border-radius: var(--radius); color: rgba(255,255,255,0.45); font: 500 0.74rem 'Inter', sans-serif; cursor: pointer; transition: all .2s; text-align: left; }
+        .add-more-item:hover { border-color: rgba(255,107,74,0.3); color: rgba(255,255,255,0.78); background: rgba(255,107,74,0.04); }
+        .add-more-item .am-name { flex: 1; }
+        .add-more-item .am-price { font-size: 0.66rem; margin-right: 9px; color: rgba(255,255,255,0.33); }
+        .add-more-item .am-plus { color: var(--accent); font-weight: 700; font-size: 0.92rem; }
+
+        .custom-budget { margin-top: 14px; padding-top: 13px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
+        .custom-budget .cb-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.48); margin-bottom: 8px; }
+        .cb-input-wrap { display: flex; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 0 13px; max-width: 250px; margin: 0 auto; min-height: 46px; transition: border-color .2s; }
+        .cb-input-wrap:focus-within { border-color: var(--accent); }
+        .cb-prefix { font-size: 0.88rem; color: rgba(255,255,255,0.45); font-weight: 600; margin-right: 5px; }
+        .cb-input { flex: 1; background: transparent; border: none; color: #fff; font: 600 0.88rem 'Inter', sans-serif; padding: 12px 0; outline: none; }
+        .cb-input::placeholder { color: rgba(255,255,255,0.22); font-weight: 400; }
+
+        .metric-tile { display: none; margin-top: 10px; padding: 13px 15px 15px; background: linear-gradient(135deg, rgba(255,107,74,0.08) 0%, rgba(123,47,247,0.05) 100%); border-radius: var(--radius); border: 1px solid rgba(255,107,74,0.18); animation: fadeSlide .28s ease; }
+        .metric-tile.show { display: block; }
+        .metric-tile .mt-header { font-size: 0.57rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.32); font-weight: 600; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+        .metric-tile .mt-work { font-size: 0.88rem; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 4px; }
+        .metric-tile .mt-metric { font-size: 0.78rem; font-weight: 700; color: var(--accent); margin-bottom: 3px; }
+        .metric-tile .mt-context { font-size: 0.7rem; color: rgba(255,255,255,0.48); line-height: 1.5; }
+
+        .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .goal-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 8px 10px; cursor: pointer; transition: border-color .18s, background .18s; display: flex; align-items: center; gap: 8px; min-height: 44px; font-family: 'Inter', sans-serif; text-align: left; }
+        .goal-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); }
+        .goal-card.selected { border-color: var(--accent); background: rgba(255,107,74,0.09); }
+        .goal-card .gc-icon { flex-shrink: 0; width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.45; }
+        .goal-card.selected .gc-icon { opacity: 1; stroke: var(--accent); }
+        .goal-card .gc-label { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.5); line-height: 1.2; flex: 1; }
+        .goal-card.selected .gc-label { color: #fff; }
+        .goal-card .gc-check { flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.48rem; color: transparent; transition: background .2s, border-color .2s; }
+        .goal-card.selected .gc-check { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 9px; }
+        .field-wrap { margin-bottom: 9px; }
+        .field-label { display: block; font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+        .text-input, .select-input { width: 100%; padding: 11px 13px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font: 400 0.88rem 'Inter', sans-serif; min-height: 48px; transition: border-color .2s; }
+        .text-input:focus, .select-input:focus { outline: none; border-color: var(--accent); }
+        .select-input option { background: #1a1a1a; color: #fff; }
+        .input-combo { display: flex; align-items: stretch; }
+        .input-combo .combo-prefix { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-right: none; border-radius: var(--radius) 0 0 var(--radius); padding: 0 11px; color: rgba(255,255,255,0.32); font-size: 0.88rem; display: flex; align-items: center; }
+        .input-combo .text-input { border-radius: 0 var(--radius) var(--radius) 0; border-left: none; }
+        .prefix-select { padding: 11px 9px; border-radius: var(--radius) 0 0 var(--radius); border: 1px solid rgba(255,255,255,0.08); border-right: none; background: rgba(255,255,255,0.04); color: #fff; font: 400 0.88rem 'Inter', sans-serif; min-height: 48px; width: 94px; flex-shrink: 0; }
+        .prefix-select:focus { outline: none; border-color: var(--accent); }
+
+        .field-error { display: none; color: var(--accent); font-size: 0.72rem; margin-top: 4px; }
+        .field-error.show { display: block; }
+        .stage-reveal { display: none; margin-top: 10px; }
+        .stage-reveal.show { display: block; }
+
+        .btn-continue { background: var(--grad-sass); color: #fff; border: none; padding: 13px 20px; border-radius: var(--radius); font: 700 0.85rem 'Inter', sans-serif; cursor: pointer; transition: transform .2s; width: 100%; margin-top: 12px; min-height: 48px; box-shadow: 0 4px 20px rgba(255,45,120,0.25); }
+        .btn-continue:hover:not(:disabled) { transform: translateY(-1px); }
+        .btn-continue:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+        .quiz-footer { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 12px; padding-top: 10px; font-size: 0.63rem; color: rgba(255,255,255,0.3); text-align: center; }
+
+        /* ---------- SECTIONS ---------- */
+        .section { padding: 56px var(--gutter); max-width: var(--wrap); margin: 0 auto; }
+        @media (max-width: 768px) { .section { padding: 36px var(--gutter); } }
+        .band { width: 100%; }
+        .band-dark { background: var(--ink); color: #fff; }
+        .band-light { background: var(--bg-light); }
+        .band-white { background: var(--white); }
+        .band-dark .s-title { color: #fff; }
+        .band-dark .s-sub { color: rgba(255,255,255,0.48); }
+        .eyebrow { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; }
+        .s-title { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 4px; line-height: 1.2; letter-spacing: -0.02em; }
+        .s-sub { font-size: 0.86rem; color: var(--muted); line-height: 1.55; margin-bottom: 22px; max-width: 540px; }
+
+        .btn-link { display: inline-flex; align-items: center; gap: 6px; background: var(--grad-sass); color: #fff; border: none; padding: 12px 24px; border-radius: var(--radius); font: 700 0.84rem 'Inter', sans-serif; cursor: pointer; text-decoration: none; transition: transform .2s; box-shadow: 0 4px 20px rgba(255,45,120,0.25); min-height: 48px; }
+        .btn-link:hover { transform: translateY(-2px); }
+        .btn-link.wo { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); box-shadow: none; }
+        .btn-link.wo:hover { background: rgba(255,255,255,0.06); border-color: #fff; }
+
+        /* ---------- HEADIES ---------- */
+        .headies-layout { display: grid; grid-template-columns: 300px 1fr; gap: 32px; align-items: center; margin-bottom: 36px; }
+        .headies-image { width: 100%; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-dark); }
+        .headies-image img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 5; object-fit: cover; }
+        .headies-content h3 { font-size: 1.45rem; font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; color: #fff; }
+        .nom-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .nom-row .nom-artist { font-size: 0.86rem; font-weight: 800; color: #fff; margin-right: 2px; }
+        .nom-tag { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.62); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 3px 9px; }
+        @media (max-width: 768px) {
+            .headies-layout { grid-template-columns: 1fr; gap: 18px; margin-bottom: 26px; }
+            .headies-image { order: 2; max-width: 260px; margin: 0 auto; }
+            .headies-content { order: 1; text-align: center; }
+            .headies-content h3 { font-size: 1.25rem; }
+            .nom-row { justify-content: center; }
+        }
+
+        /* ---------- WORK ---------- */
+        .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .work-card { background: var(--surface-dark); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 16px 15px; transition: border-color .2s, transform .2s; }
+        .work-card:hover { border-color: rgba(255,107,74,0.3); transform: translateY(-2px); }
+        .work-card .wc-badge { display: inline-block; font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); background: rgba(255,107,74,0.08); padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; }
+        .work-card .wc-title { font-size: 0.9rem; font-weight: 700; color: #fff; }
+        .work-card .wc-artist { font-size: 0.72rem; color: rgba(255,255,255,0.38); margin-bottom: 9px; }
+        .work-card .wc-metrics { display: flex; flex-wrap: wrap; gap: 4px; }
+        .work-card .wc-metrics span { font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.48); background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 12px; }
+        .work-card .wc-metrics .highlight { color: var(--accent); background: rgba(255,107,74,0.07); }
+        @media (max-width: 768px) {
+            .work-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 6px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+            .work-grid::-webkit-scrollbar { display: none; }
+            .work-card { flex: 0 0 76%; scroll-snap-align: start; }
+        }
+
+        /* ---------- REACH ---------- */
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .stat-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 14px 13px; }
+        .stat-card .stat-num { font-size: 1.4rem; font-weight: 800; background: var(--grad-sass); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1; }
+        .stat-card .stat-lbl { font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 2px; }
+        @media (max-width: 768px) { .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; } .stat-card { padding: 12px 11px; } .stat-card .stat-num { font-size: 1.25rem; } }
+
+        /* ---------- PACKAGES ---------- */
+        .pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+        .pkg-card { background: var(--surface-dark); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 20px 18px; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; position: relative; }
+        .pkg-card:hover { border-color: rgba(255,107,74,0.35); transform: translateY(-3px); }
+        .pkg-card.featured { border-color: rgba(255,107,74,0.4); box-shadow: 0 0 40px rgba(255,107,74,0.07); }
+        .pkg-card.featured::before { content: "MOST POPULAR"; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: var(--grad-sass); color: #fff; font-size: 0.53rem; font-weight: 800; letter-spacing: 0.08em; padding: 4px 11px; border-radius: 20px; white-space: nowrap; }
+        .pkg-name { font-size: 0.98rem; font-weight: 800; color: #fff; }
+        .pkg-duration { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
+        .pkg-deliverables { list-style: none; flex: 1; margin-bottom: 12px; }
+        .pkg-deliverables li { font-size: 0.75rem; color: rgba(255,255,255,0.6); padding: 5px 0 5px 17px; position: relative; line-height: 1.4; }
+        .pkg-deliverables li::before { content: "+"; position: absolute; left: 0; top: 5px; color: var(--accent); font-weight: 700; font-size: 0.72rem; }
+        .pkg-deliverables li.hidden-item { display: none; }
+        .pkg-deliverables.expanded li.hidden-item { display: block; }
+        .pkg-toggle { background: none; border: none; color: rgba(255,255,255,0.4); font: 600 0.68rem 'Inter', sans-serif; cursor: pointer; padding: 6px 0; text-align: left; transition: color .2s; }
+        .pkg-toggle:hover { color: var(--accent); }
+        .pkg-cta { display: block; text-align: center; background: rgba(255,255,255,0.06); color: #fff; padding: 11px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.77rem; border: 1px solid rgba(255,255,255,0.1); transition: all .2s; cursor: pointer; min-height: 44px; line-height: 22px; }
+        .pkg-cta:hover { background: rgba(255,107,74,0.15); border-color: var(--accent); }
+        .pkg-card.featured .pkg-cta { background: var(--grad-sass); border: none; }
+        .partner-strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+        .partner-strip span { font-size: 0.66rem; color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 20px; }
+
+        /* ---------- SERVICES ---------- */
+        .svc-row { margin-bottom: 18px; }
+        .svc-row:last-child { margin-bottom: 0; }
+        .svc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+        .svc-head svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+        .svc-head .svc-title { font-size: 0.78rem; font-weight: 800; color: var(--text); text-transform: uppercase; letter-spacing: 0.06em; }
+        .svc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .svc-chips span { font-size: 0.76rem; font-weight: 600; color: var(--text); background: var(--white); border: 1px solid var(--border-light); border-radius: 30px; padding: 7px 13px; transition: all .2s; }
+        .svc-chips span:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ---------- PLAYLISTS ---------- */
+        .playlist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+        .playlist-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 15px 14px; transition: all .2s; }
+        .playlist-card:hover { border-color: var(--accent); }
+        .playlist-card .pl-name { font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+        .playlist-card .pl-price { font-size: 0.95rem; font-weight: 800; color: var(--accent); }
+        .playlist-card .pl-note { font-size: 0.63rem; color: var(--muted); margin-top: 2px; }
+        .vat-note { font-size: 0.68rem; color: var(--muted); margin-top: 14px; }
+
+        /* ---------- FAQ ---------- */
+        .faq-item { border-bottom: 1px solid var(--border-light); padding: 12px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item strong { font-size: 0.86rem; display: block; margin-bottom: 2px; }
+        .faq-item span { color: var(--muted); font-size: 0.82rem; }
+
+        .cta-banner { background: var(--surface-dark); padding: 18px var(--gutter); text-align: center; font-size: 0.88rem; color: #fff; }
+        .cta-banner a { color: var(--accent); font-weight: 700; text-decoration: underline; }
+        @media (max-width: 768px) { .cta-banner { display: none; } }
+
+        footer { border-top: 1px solid var(--border-light); padding: 24px var(--gutter); display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--muted); background: var(--white); flex-wrap: wrap; gap: 14px; }
+        footer .fmark { font-weight: 800; font-size: 0.95rem; color: var(--text); }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer .socials { display: flex; gap: 14px; flex-wrap: wrap; }
+        footer .socials a { font-size: 0.68rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+        footer .socials a:hover { color: var(--text); }
+
+        .mobile-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10,10,10,0.96); backdrop-filter: blur(8px); padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom)); z-index: 1000; transition: transform .25s ease; }
+        .mobile-sticky-cta.hidden { transform: translateY(110%); }
+        .mobile-sticky-cta a { display: block; text-align: center; background: var(--grad-sass); color: #fff; font-weight: 700; padding: 13px 20px; border-radius: var(--radius); text-decoration: none; }
+        @media (max-width: 768px) { .mobile-sticky-cta { display: block; } body { padding-bottom: 72px; } }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    </style>
+</head>
+<body>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3KZ2K8R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#hero" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='<span style=&quot;font-weight:900;font-size:1.15rem;color:#fff;&quot;>WTS</span>'"></a>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#playlists">Playlists</a></li>
+        </ul>
+        <a href="#hero" class="nav-cta">Start your enquiry</a>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#work">Work</a>
+        <a href="#packages">Packages</a>
+        <a href="#services">Services</a>
+        <a href="#playlists">Playlists</a>
+        <a href="#hero" class="mob-cta">Start your enquiry</a>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-wrap" id="hero">
+        <div class="hero-glow-orb orb1"></div>
+        <div class="hero-glow-orb orb2"></div>
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="badge-tag">WeTalkSound Agency</div>
+                <h1 class="hero-title">
+                    Amplify your <span class="grad-sass">Music Release</span><br />
+                    with <span class="wts-logo-inline"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.closest('.wts-logo-inline').outerHTML='WeTalkSound'" /></span>
+                </h1>
+                <p class="hero-sub">The team behind Afrobeats' biggest records.</p>
+                <div class="hero-proof">
+                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>2026 Headies</span>
+                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Grammy recognised</span>
+                    <span class="proof-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Lagos · London · NY</span>
+                </div>
+            </div>
+
+            <div class="quiz-card" id="quizCard">
+                <div class="progress-dots" id="progressDots"></div>
+
+                <!-- Stage -->
+                <div class="step active" data-key="stage">
+                    <div class="step-header"><span class="q-label" data-label></span></div>
+                    <div class="q-title solo">What stage is your release in?</div>
+                    <div class="opt-grid">
+                        <button type="button" class="opt" data-value="pre" onclick="selectStage(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Releasing soon<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="post" onclick="selectStage(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Already out<span class="check">✓</span></button>
+                    </div>
+                    <div class="field-error" id="err-stage">Please select an option.</div>
+                </div>
+
+                <!-- Budget -->
+                <div class="step" data-key="budget">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title">What's your budget?</div>
+                    <div class="q-sub">360 campaigns start at ₦500K.</div>
+                    <div class="budget-grid" id="budget-grid">
+                        <button type="button" class="opt low" data-value="No budget" onclick="selectBudget(this)">No budget<span class="check">✓</span></button>
+                        <button type="button" class="opt low" data-value="200K - 400K" onclick="selectBudget(this)">200K - 400K<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="500K - 2M" onclick="selectBudget(this)">500K - 2M<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="2M - 5M" onclick="selectBudget(this)">2M - 5M<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="Over 5M" onclick="selectBudget(this)">Over 5M<span class="check">✓</span></button>
+                    </div>
+                    <div class="field-error" id="err-budget">Please select a budget range.</div>
+                    <div class="rejection-box" id="budget-rejection">
+                        <div class="rej-title">Not a fit right now.</div>
+                        <div class="rej-text">We wish you the best with the release.</div>
+                    </div>
+                </div>
+
+                <!-- Placements -->
+                <div class="step" data-key="placements">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title">Which placements interest you?</div>
+                    <div class="q-sub">Pricing on the next step.</div>
+                    <div class="placement-grid" id="placement-grid"></div>
+                    <div class="field-error" id="err-placements">Please select at least one placement.</div>
+                    <button type="button" class="btn-continue" id="btn-placements" disabled onclick="goNext()">Continue &rarr;</button>
+                </div>
+
+                <!-- Review -->
+                <div class="step" data-key="review">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title">Review your selection</div>
+                    <div class="q-sub">Adjust quantities or add more.</div>
+                    <div id="price-list"></div>
+                    <div class="total-bar">
+                        <div>
+                            <div class="tb-label" id="total-label">Estimated total</div>
+                            <div class="tb-note" id="total-note">Inclusive of 7.5% VAT</div>
+                        </div>
+                        <div class="tb-value" id="total-value">₦0</div>
+                    </div>
+                    <div class="custom-budget">
+                        <label class="cb-label" for="custom-budget">Or name your budget.</label>
+                        <div class="cb-input-wrap">
+                            <span class="cb-prefix">₦</span>
+                            <input type="text" class="cb-input" id="custom-budget" placeholder="350,000" inputmode="numeric" oninput="formatBudget(this)" />
+                        </div>
+                    </div>
+                    <div class="field-error" id="err-review">Keep at least one placement or enter a budget.</div>
+                    <button type="button" class="btn-continue" id="btn-review" onclick="goNext()">Continue &rarr;</button>
+                </div>
+
+                <!-- Placement contact -->
+                <div class="step" data-key="pcontact">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title">Last bit, then we talk</div>
+                    <div class="q-sub">So we can prep your quote before you message.</div>
+                    <div class="form-row-2">
+                        <div>
+                            <label class="field-label" for="p-name">Your name *</label>
+                            <input type="text" class="text-input" id="p-name" placeholder="Ayo Balogun" autocomplete="name" />
+                        </div>
+                        <div>
+                            <label class="field-label" for="p-act">Stage name *</label>
+                            <input type="text" class="text-input" id="p-act" placeholder="Wizkid" />
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <label class="field-label" for="p-ig">Artist IG *</label>
+                        <div class="input-combo"><span class="combo-prefix">@</span><input type="text" class="text-input" id="p-ig" placeholder="wizkidayo" /></div>
+                    </div>
+                    <div class="field-wrap">
+                        <label class="field-label" for="p-phone">WhatsApp number *</label>
+                        <div class="input-combo">
+                            <select class="prefix-select" id="p-prefix"><option value="+234">🇳🇬 +234</option><option value="+233">🇬🇭 +233</option><option value="+27">🇿🇦 +27</option><option value="+44">🇬🇧 +44</option><option value="+1">🇺🇸 +1</option><option value="+49">🇩🇪 +49</option><option value="+33">🇫🇷 +33</option></select>
+                            <input type="tel" class="text-input" id="p-phone" placeholder="801 234 5678" />
+                        </div>
+                    </div>
+                    <div class="field-error" id="err-pcontact">Please fill in name, stage name, IG and number.</div>
+                    <button type="button" class="btn-continue" id="btn-pcontact" onclick="submitPlacement()">Chat with us on WhatsApp &rarr;</button>
+                </div>
+
+                <!-- Role -->
+                <div class="step" data-key="role">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title solo">Who are you?</div>
+                    <div class="opt-grid">
+                        <button type="button" class="opt" data-value="Artist" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Artist<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="Manager or A&R" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>Manager or A&R<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="Label or marketing team" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Label or marketing team<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="Other" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>Other<span class="check">✓</span></button>
+                    </div>
+                    <div class="field-error" id="err-role">Please select your role.</div>
+                </div>
+
+                <!-- Release -->
+                <div class="step" data-key="release">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div id="release-content"></div>
+                    <div class="field-error" id="err-release">Please complete this step.</div>
+                    <button type="button" class="btn-continue" id="btn-release" disabled onclick="goNext()">Continue &rarr;</button>
+                </div>
+
+                <!-- Goals -->
+                <div class="step" data-key="goals">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title">What does success look like?</div>
+                    <div class="q-sub">Tap to see proof.</div>
+                    <div class="goals-grid" id="goals-grid"></div>
+                    <div class="metric-tile" id="metric-tile">
+                        <div class="mt-header">From our work</div>
+                        <div class="mt-work" id="metric-work"></div>
+                        <div class="mt-metric" id="metric-metric"></div>
+                        <div class="mt-context" id="metric-context"></div>
+                    </div>
+                    <div class="field-error" id="err-goals">Select at least one goal.</div>
+                    <button type="button" class="btn-continue" id="btn-goals" disabled onclick="goNext()">Continue &rarr;</button>
+                </div>
+
+                <!-- Timeline -->
+                <div class="step" data-key="timeline">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title solo">How soon do you want to start?</div>
+                    <div class="opt-grid" id="timeline-grid">
+                        <button type="button" class="opt" data-value="ASAP" onclick="selectTimeline(this)">ASAP<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="Within 1 month" onclick="selectTimeline(this)">Within 1 month<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="1 to 3 months" onclick="selectTimeline(this)">1 to 3 months<span class="check">✓</span></button>
+                        <button type="button" class="opt" data-value="Just exploring" onclick="selectTimeline(this)">Not for now, just exploring<span class="check">✓</span></button>
+                    </div>
+                    <div class="field-error" id="err-timeline">Please select a timeline.</div>
+                    <div class="rejection-box" id="timeline-rejection">
+                        <div class="rej-title">We focus on confirmed release dates.</div>
+                        <div class="rej-text">Reach out when yours is set.</div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="step" data-key="contact">
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="q-title">Where do we reach you?</div>
+                    <div class="q-sub">Your plan within 24 hours.</div>
+                    <div class="form-row-2">
+                        <div>
+                            <label class="field-label" for="c-name">Your name *</label>
+                            <input type="text" class="text-input" id="c-name" placeholder="Ayo Balogun" autocomplete="name" />
+                        </div>
+                        <div>
+                            <label class="field-label" for="c-country">Country *</label>
+                            <select class="select-input" id="c-country"><option value="Nigeria">Nigeria</option><option value="Ghana">Ghana</option><option value="South Africa">South Africa</option><option value="UK">UK</option><option value="US">US</option><option value="Other">Other</option></select>
+                        </div>
+                    </div>
+                    <div class="form-row-2">
+                        <div>
+                            <label class="field-label" for="c-act">Stage name *</label>
+                            <input type="text" class="text-input" id="c-act" placeholder="Wizkid" />
+                        </div>
+                        <div>
+                            <label class="field-label" for="c-ig">Artist IG *</label>
+                            <div class="input-combo"><span class="combo-prefix">@</span><input type="text" class="text-input" id="c-ig" placeholder="wizkidayo" /></div>
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <label class="field-label" for="c-email">Email</label>
+                        <input type="email" class="text-input" id="c-email" placeholder="you@artist.com" autocomplete="email" />
+                    </div>
+                    <div class="field-wrap">
+                        <label class="field-label" for="c-phone">Phone</label>
+                        <div class="input-combo">
+                            <select class="prefix-select" id="c-prefix"><option value="+234">🇳🇬 +234</option><option value="+233">🇬🇭 +233</option><option value="+27">🇿🇦 +27</option><option value="+44">🇬🇧 +44</option><option value="+1">🇺🇸 +1</option><option value="+49">🇩🇪 +49</option><option value="+33">🇫🇷 +33</option></select>
+                            <input type="tel" class="text-input" id="c-phone" placeholder="801 234 5678" />
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <label class="field-label" for="c-soundcloud">Unreleased link <span style="font-weight:400;color:rgba(255,255,255,0.22);">(optional)</span></label>
+                        <input type="url" class="text-input" id="c-soundcloud" placeholder="https://soundcloud.com/..." />
+                    </div>
+                    <div class="field-error" id="err-contact">Please fill in name, stage name, IG and either an email or phone.</div>
+                    <button type="button" class="btn-continue" id="btn-contact" onclick="submitFull()">Submit enquiry &rarr;</button>
+                </div>
+
+                <div class="quiz-footer">Takes about 2 minutes · We reply within 24 hours</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WORK -->
+    <div class="band band-dark" id="work">
+        <div class="section">
+            <div class="eyebrow">Selected Work</div>
+            <h2 class="s-title">Proof in the numbers.</h2>
+            <p class="s-sub">Millions of streams. Five Headies nominations in 2026.</p>
+
+            <div class="headies-layout">
+                <div class="headies-image">
+                    <img src="headies_WTS_1.jpg" alt="WeTalkSound 2026 Headies nominations" loading="lazy" onerror="this.closest('.headies-image').style.display='none'" />
+                </div>
+                <div class="headies-content">
+                    <h3>2 ARTISTS.<br />5 HEADIES NOMINATIONS.</h3>
+                    <div class="nom-row">
+                        <span class="nom-artist">DANPAPA GTA</span>
+                        <span class="nom-tag">Rookie of the Year</span>
+                    </div>
+                    <div class="nom-row">
+                        <span class="nom-artist">ṢẸWÁ</span>
+                        <span class="nom-tag">Best Female Artist</span>
+                        <span class="nom-tag">Best Vocal Performance</span>
+                        <span class="nom-tag">Best Alternative Song</span>
+                        <span class="nom-tag">Best Alternative Album</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-grid">
+                <div class="work-card">
+                    <div class="wc-badge">2026 Headies Nominee</div>
+                    <div class="wc-title">"Ikeja"</div>
+                    <div class="wc-artist">Danpapa</div>
+                    <div class="wc-metrics"><span class="highlight">64K+ sound uses</span><span class="highlight">2M+ streams</span><span>200+ creators</span></div>
+                </div>
+                <div class="work-card">
+                    <div class="wc-badge">Press &amp; Media</div>
+                    <div class="wc-title">Album Run</div>
+                    <div class="wc-artist">Joeboy</div>
+                    <div class="wc-metrics"><span class="highlight">100+ placements</span><span>900M+ streams</span><span>#2 Nigeria Top 50</span></div>
+                </div>
+                <div class="work-card">
+                    <div class="wc-badge">Trending</div>
+                    <div class="wc-title">"On A Low"</div>
+                    <div class="wc-artist">Tiwa Savage</div>
+                    <div class="wc-metrics"><span class="highlight">Trended on release</span><span>40+ placements</span></div>
+                </div>
+                <div class="work-card">
+                    <div class="wc-badge">360 Marketing</div>
+                    <div class="wc-title">"Flowstate"</div>
+                    <div class="wc-artist">Zen Universe</div>
+                    <div class="wc-metrics"><span class="highlight">Full rollout</span><span>5K+ sound uses</span><span>1M+ impressions</span></div>
+                </div>
+                <div class="work-card">
+                    <div class="wc-badge">Creative</div>
+                    <div class="wc-title">"ATSG"</div>
+                    <div class="wc-artist">Reminisce</div>
+                    <div class="wc-metrics"><span class="highlight">Creative direction</span><span>Visual identity</span></div>
+                </div>
+                <div class="work-card">
+                    <div class="wc-badge">Radio Seeding</div>
+                    <div class="wc-title">"Hei God"</div>
+                    <div class="wc-artist">Fimi, SGawD, WeTalkSound, Kevin Lndn</div>
+                    <div class="wc-metrics"><span class="highlight">Radio across Nigeria</span></div>
+                </div>
+            </div>
+            <div style="margin-top:26px;"><a href="#hero" class="btn-link wo">Make an enquiry &rarr;</a></div>
+        </div>
+    </div>
+
+    <!-- REACH -->
+    <div class="band band-light">
+        <div class="section">
+            <div class="eyebrow">Our Reach</div>
+            <h2 class="s-title">Distribution that moves culture.</h2>
+            <p class="s-sub">Our platforms, plus 200+ partners across Nigeria, Africa and the Diaspora.</p>
+            <div class="stat-grid">
+                <div class="stat-card"><div class="stat-num">36K</div><div class="stat-lbl">X / Twitter</div></div>
+                <div class="stat-card"><div class="stat-num">110K</div><div class="stat-lbl">Instagram</div></div>
+                <div class="stat-card"><div class="stat-num">201K</div><div class="stat-lbl">TikTok</div></div>
+                <div class="stat-card"><div class="stat-num">70K</div><div class="stat-lbl">Newsletter</div></div>
+                <div class="stat-card"><div class="stat-num">400K</div><div class="stat-lbl">Digital Community</div></div>
+                <div class="stat-card"><div class="stat-num">200+</div><div class="stat-lbl">Media Partners</div></div>
+                <div class="stat-card"><div class="stat-num">500M+</div><div class="stat-lbl">Influencer Reach</div></div>
+                <div class="stat-card"><div class="stat-num">1.6K</div><div class="stat-lbl">YouTube</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PACKAGES -->
+    <div class="band band-dark" id="packages">
+        <div class="section">
+            <div class="eyebrow">Digital Amplification</div>
+            <h2 class="s-title">Ready to activate packages.</h2>
+            <p class="s-sub">Press and media across our platforms and partner network. Priced on enquiry.</p>
+
+            <div class="pkg-grid">
+                <div class="pkg-card">
+                    <div class="pkg-name">360 Immersion</div>
+                    <div class="pkg-duration">1 Month · All Channels</div>
+                    <ul class="pkg-deliverables">
+                        <li>8 social posts</li>
+                        <li>Deep dive video</li>
+                        <li>Feature article</li>
+                        <li>Twitter Space</li>
+                        <li class="hidden-item">Cover of a relevant playlist</li>
+                        <li class="hidden-item">Event recap video</li>
+                        <li class="hidden-item">Newsletter banner ad</li>
+                    </ul>
+                    <button type="button" class="pkg-toggle" onclick="togglePkg(this)">View all 7 &rarr;</button>
+                    <a class="pkg-cta" onclick="pkgEnquire('360 Immersion')">Enquire &rarr;</a>
+                </div>
+
+                <div class="pkg-card">
+                    <div class="pkg-name">Gold</div>
+                    <div class="pkg-duration">1 Month · Press &amp; Media</div>
+                    <ul class="pkg-deliverables">
+                        <li>WeTalkSound: 3 posts, 1 press release</li>
+                        <li>AlbumTalks: 2 posts, 1 press release</li>
+                        <li>The49thStreet: 2 posts</li>
+                        <li>The Upper Ent: 2 posts</li>
+                        <li class="hidden-item">Hypetribe: 2 posts</li>
+                        <li class="hidden-item">Debut Hub: 2 posts</li>
+                    </ul>
+                    <button type="button" class="pkg-toggle" onclick="togglePkg(this)">View all 6 &rarr;</button>
+                    <a class="pkg-cta" onclick="pkgEnquire('Gold Package')">Enquire &rarr;</a>
+                </div>
+
+                <div class="pkg-card featured">
+                    <div class="pkg-name">Platinum</div>
+                    <div class="pkg-duration">1 Month · Press &amp; Media</div>
+                    <ul class="pkg-deliverables">
+                        <li>WeTalkSound: 4 posts, 2 press releases</li>
+                        <li>AlbumTalks: 3 posts, 1 press release</li>
+                        <li>The49thStreet: 3 posts, 1 press release</li>
+                        <li>10 micro influencers plus Twitter amplification</li>
+                        <li class="hidden-item">The Upper Ent: 3 posts, 1 press release</li>
+                        <li class="hidden-item">Debut Hub: 3 posts</li>
+                        <li class="hidden-item">Hypetribe: 2 posts</li>
+                        <li class="hidden-item">Pulse Nigeria: 1 post</li>
+                        <li class="hidden-item">NotjustOK: 1 post</li>
+                    </ul>
+                    <button type="button" class="pkg-toggle" onclick="togglePkg(this)">View all 9 &rarr;</button>
+                    <a class="pkg-cta" onclick="pkgEnquire('Platinum Package')">Enquire &rarr;</a>
+                </div>
+
+                <div class="pkg-card">
+                    <div class="pkg-name">Diamond</div>
+                    <div class="pkg-duration">1 Month · Press &amp; Media</div>
+                    <ul class="pkg-deliverables">
+                        <li>WeTalkSound: 6 posts, 1 press, 1 editorial</li>
+                        <li>AlbumTalks: 4 posts, 1 press, 1 editorial</li>
+                        <li>The Guardian: 1 editorial</li>
+                        <li>Pulse Nigeria and NotjustOK: posts plus editorials</li>
+                        <li class="hidden-item">The49thStreet: 3 posts, 1 press, 1 editorial</li>
+                        <li class="hidden-item">The Upper Ent: 3 posts, 1 press, 1 editorial</li>
+                        <li class="hidden-item">Debut Hub: 3 posts</li>
+                        <li class="hidden-item">DigiMillenialls: 2 posts</li>
+                        <li class="hidden-item">Hypetribe: 2 posts</li>
+                        <li class="hidden-item">Turntable Charts: 2 posts</li>
+                        <li class="hidden-item">Kussman and OneJoblessBoy amplification</li>
+                        <li class="hidden-item">10 micro influencers</li>
+                    </ul>
+                    <button type="button" class="pkg-toggle" onclick="togglePkg(this)">View all 12 &rarr;</button>
+                    <a class="pkg-cta" onclick="pkgEnquire('Diamond Package')">Enquire &rarr;</a>
+                </div>
+
+                <div class="pkg-card">
+                    <div class="pkg-name">Boutique</div>
+                    <div class="pkg-duration">2 Months · End to End</div>
+                    <ul class="pkg-deliverables">
+                        <li>Digital press</li>
+                        <li>Influencer marketing</li>
+                        <li>Instagram blog campaign</li>
+                        <li>TikTok campaign</li>
+                        <li>Fully tailored, research backed matching</li>
+                    </ul>
+                    <a class="pkg-cta" onclick="pkgEnquire('Boutique Package')">Enquire &rarr;</a>
+                </div>
+            </div>
+
+            <div class="partner-strip">
+                <span>WeTalkSound</span><span>AlbumTalks</span><span>The49thStreet</span><span>The Upper Ent</span><span>Debut Hub</span><span>DigiMillenialls</span><span>Hypetribe</span><span>Turntable Charts</span><span>Pulse Nigeria</span><span>NotjustOK</span><span>The Guardian</span><span>Kussman</span><span>OneJoblessBoy</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES + PLAYLISTS -->
+    <div class="band band-light" id="services">
+        <div class="section">
+            <div class="eyebrow">Our Services</div>
+            <h2 class="s-title">Everything your release may need.</h2>
+            <p class="s-sub">One service or the full rollout.</p>
+
+            <div class="svc-row">
+                <div class="svc-head"><svg viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/></svg><span class="svc-title">Placements</span></div>
+                <div class="svc-chips"><span>Press, Media &amp; Interviews</span><span>Radio &amp; TV</span><span>DJ Amplification</span><span>Billboards</span><span>Rave &amp; Nightlife Seeding</span></div>
+            </div>
+            <div class="svc-row">
+                <div class="svc-head"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><span class="svc-title">Digital Marketing</span></div>
+                <div class="svc-chips"><span>Meta, Snapchat &amp; YouTube Ads</span><span>Rollout Planning</span><span>Influencer Marketing</span><span>Social Conversations &amp; Trends</span></div>
+            </div>
+            <div class="svc-row">
+                <div class="svc-head"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/></svg><span class="svc-title">Creative</span></div>
+                <div class="svc-chips"><span>Artwork, Photography &amp; Visualisers</span><span>Website Design</span><span>Brand Identity</span><span>Event Production</span></div>
+            </div>
+
+            <div id="playlists" style="margin-top:36px;padding-top:30px;border-top:1px solid var(--border-light);">
+                <div class="eyebrow">Playlists</div>
+                <h2 class="s-title">Playlist placements.</h2>
+                <p class="s-sub">Our owned and partner playlists.</p>
+                <div class="playlist-grid" id="playlist-grid"></div>
+                <div class="vat-note">All rates inclusive of 7.5% VAT.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="band band-light">
+        <div class="section" style="padding-top:0;">
+            <div class="eyebrow">FAQ</div>
+            <h2 class="s-title">Quick answers</h2>
+            <div style="margin-top:16px;">
+                <div class="faq-item"><strong>How much does a campaign cost?</strong><span>Tailored to each release. Start the enquiry and we'll price it.</span></div>
+                <div class="faq-item"><strong>Do you work with independent artists?</strong><span>Yes. Individual placements exist for tighter budgets.</span></div>
+                <div class="faq-item"><strong>What platforms do you specialise in?</strong><span>TikTok, Instagram, YouTube, X, Spotify, Apple Music, radio, TV and print.</span></div>
+                <div class="faq-item"><strong>How long does a campaign run?</strong><span>One to two months, built around your release date.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-banner"><span>Ready to amplify your release? <a href="#hero">Make an enquiry &rarr;</a></span></div>
+
+    <footer>
+        <div>
+            <div class="fmark">WeTalkSound</div>
+            <div style="font-size:0.72rem;">Lagos · London · New York · East Africa</div>
+        </div>
+        <div style="text-align:right;">
+            <div class="socials">
+                <a href="https://instagram.com/wetalksound" target="_blank" rel="noopener">@wetalksound</a>
+                <a href="https://instagram.com/agency.wts" target="_blank" rel="noopener">@agency.wts</a>
+                <a href="https://wa.me/2348178007329" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+            <div style="margin-top:6px;font-size:0.68rem;">
+                <a href="mailto:hello@wetalksound.co">hello@wetalksound.co</a> · +234 817 800 7329 · &copy; <span id="footer-year"></span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-sticky-cta" id="stickyCta"><a href="#hero">Make an enquiry</a></div>
+
+    <script>
+    (function () {
+        'use strict';
+
+        /* ============ SINGLE SOURCE OF PRICING ============ */
+        var PLACEMENTS = [
+            { name: 'Instagram',        price: 0,      meta: '110K followers · Post or Story', icon: 'ig' },
+            { name: 'TikTok',           price: 0,      meta: '201K followers · High reach',    icon: 'tt' },
+            { name: 'X (Twitter)',      price: 0,      meta: '36K followers · Amplification',  icon: 'x'  },
+            { name: 'Newsletter',       price: 0,      meta: '70K subscribers · Banner ad',    icon: 'nl' },
+            { name: 'New Music Friday', price: 161250, meta: 'Our flagship weekly playlist', icon: 'pl', note: 'Flagship weekly playlist' },
+            { name: 'Afrobeats Gems',   price: 86000,  meta: 'Curated Afrobeats audience',  icon: 'pl', note: 'Curated Afrobeats audience' },
+            { name: 'Select Sounds',    price: 107500, meta: 'Our editorial selection',     icon: 'pl', note: 'Editorial selection' },
+            { name: 'Custom Curation',  price: 268750, meta: 'Built around your release',   icon: 'pl', note: 'Built around your release' }
+        ];
+        var EXTRA_PLAYLISTS = [
+            { name: 'Brand Partnership', price: 1075000, suffix: '+', note: 'New Music Friday series' }
+        ];
+
+        var ICONS = {
+            ig: '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/>',
+            tt: '<path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 0 0 4-4"/><path d="M15 16V4a4 4 0 0 0 4 4"/>',
+            x:  '<path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M19.5 4l-6.768 6.768"/>',
+            nl: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>',
+            pl: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>'
+        };
+
+        var GOALS = [
+            { key: 'TikTok Campaign',    label: 'TikTok',      icon: 'tt' },
+            { key: 'Playlisting',        label: 'Playlisting', icon: 'pl' },
+            { key: 'Press & Media',      label: 'Press',       icon: 'pr' },
+            { key: 'Social Buzz',        label: 'Social Buzz', icon: 'so' },
+            { key: 'Ads',                label: 'Ads',         icon: 'ad' },
+            { key: '360 Marketing',      label: '360',         icon: 'gl' },
+            { key: 'Radio & DJ',         label: 'Radio & DJ',  icon: 'so' },
+            { key: 'Creative Direction', label: 'Creative',    icon: 'pr' }
+        ];
+        ICONS.pr = '<path d="M4 4h16v16H4z"/><path d="M8 8h8v2H8z"/><path d="M8 12h6v2H8z"/>';
+        ICONS.so = '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>';
+        ICONS.ad = '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>';
+        ICONS.gl = '<circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>';
+
+        var GOAL_PROOFS = {
+            'TikTok Campaign':    { work: 'Danpapa, "Ikeja"', metric: '64K+ sound uses · 2M+ streams', context: 'Over 200 creators activated, plus ads across Meta, Snapchat and YouTube.' },
+            'Playlisting':        { work: 'New Music Friday · Afrobeats Gems · Select Sounds', metric: 'Covers across our flagship playlists', context: 'Curated placements reaching our 400K+ digital community.' },
+            'Press & Media':      { work: 'Joeboy, Album Run', metric: '100+ press placements', context: 'Secured across 200+ media partners in Nigeria, Africa and the Diaspora.' },
+            'Social Buzz':        { work: 'Tiwa Savage, "On A Low"', metric: 'Trended on release day', context: 'Amplified on X with 40+ placements driving the conversation.' },
+            'Ads':                { work: 'Danpapa, "Ikeja"', metric: '2M+ streams driven', context: 'Meta, Snapchat, Instagram and YouTube working behind one release.' },
+            '360 Marketing':      { work: 'Zen Universe, "Flowstate"', metric: 'Full end to end rollout', context: 'Strategy, content, playlisting and amplification. 5K+ sound uses, 1M+ impressions.' },
+            'Radio & DJ':         { work: 'Fimi, SGawD, WeTalkSound, Kevin Lndn, "Hei God"', metric: 'Seeded across Nigerian radio', context: 'Nationwide playlist and DJ support pushing the record into rotation.' },
+            'Creative Direction': { work: 'Reminisce, "ATSG"', metric: 'End to end creative direction', context: 'Album artwork, visual identity and full rollout.' }
+        };
+
+        var WA_PHONE = '2348178007329';
+
+        /* ============ STATE ============ */
+        var FLOW_PLACEMENT = ['stage', 'budget', 'placements', 'review', 'pcontact'];
+        var FLOW_FULL      = ['stage', 'budget', 'role', 'release', 'goals', 'timeline', 'contact'];
+
+        var utm = {};
+        (function () {
+            var p = new URLSearchParams(window.location.search);
+            ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+                if (p.get(k)) utm[k.replace('utm_', '')] = p.get(k);
+            });
+        })();
+
+        var lead = {
+            path: '', role: '', releaseType: '', stage: '', link: '',
+            goals: [], budget: '', placements: [], placementQty: {}, timeline: '',
+            name: '', actName: '', artistIg: '', country: '', email: '', phone: '', soundcloud: '',
+            utmSource: utm.source || '', utmMedium: utm.medium || '', utmCampaign: utm.campaign || ''
+        };
+
+        var flow = FLOW_FULL;
+        var stepIndex = 0;
+        var selected = [];
+        var lastGoal = null;
+        var submitting = false;
+        var booted = false;
+
+        function $(id) { return document.getElementById(id); }
+        function stepEl(key) { return document.querySelector('.step[data-key="' + key + '"]'); }
+        function money(n) { return '₦' + n.toLocaleString('en-NG'); }
+        function showErr(id) { var e = $(id); if (e) e.classList.add('show'); }
+        function hideErr(id) { var e = $(id); if (e) e.classList.remove('show'); }
+        function svg(cls, key) { return '<svg class="' + cls + '" viewBox="0 0 24 24">' + (ICONS[key] || '') + '</svg>'; }
+
+        /* ============ NAVIGATION ============ */
+        function render() {
+            var key = flow[stepIndex];
+            document.querySelectorAll('.step').forEach(function (s) {
+                s.classList.toggle('active', s.dataset.key === key);
+            });
+
+            var dots = '';
+            for (var i = 0; i < flow.length; i++) {
+                dots += '<span class="dot' + (i === stepIndex ? ' active' : (i < stepIndex ? ' done' : '')) + '"></span>';
+            }
+            $('progressDots').innerHTML = dots;
+
+            var el = stepEl(key);
+            if (el) {
+                var label = el.querySelector('[data-label]');
+                if (label) label.textContent = 'Step ' + (stepIndex + 1) + ' of ' + flow.length;
+            }
+            if (booted) $('quizCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function go(key) {
+            var i = flow.indexOf(key);
+            if (i === -1) return;
+            stepIndex = i;
+            if (key === 'review') renderPrices();
+            if (key === 'release') renderRelease();
+            render();
+        }
+
+        function goNext() {
+            var key = flow[stepIndex];
+            if (key === 'placements' && selected.length === 0) { showErr('err-placements'); return; }
+            if (key === 'review') {
+                var cb = $('custom-budget').value.trim();
+                if (selected.length === 0 && !cb) { showErr('err-review'); return; }
+            }
+            if (key === 'goals' && lead.goals.length === 0) { showErr('err-goals'); return; }
+            if (stepIndex < flow.length - 1) {
+                stepIndex++;
+                var next = flow[stepIndex];
+                if (next === 'review') renderPrices();
+                if (next === 'release') renderRelease();
+                render();
+            }
+        }
+
+        // Back always works, including out of a rejection screen
+        function goBack() {
+            clearRejections();
+            if (stepIndex > 0) { stepIndex--; render(); }
+        }
+
+        function clearRejections() {
+            $('budget-grid').style.display = '';
+            $('budget-rejection').classList.remove('show');
+            $('timeline-grid').style.display = '';
+            $('timeline-rejection').classList.remove('show');
+        }
+
+        /* ============ STEPS ============ */
+        function selectStage(el) {
+            stepEl('stage').querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+            el.classList.add('selected');
+            lead.path = el.dataset.value;
+            hideErr('err-stage');
+            setTimeout(goNext, 260);
+        }
+
+        function selectBudget(el) {
+            clearRejections();
+            $('budget-grid').querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+            el.classList.add('selected');
+            lead.budget = el.dataset.value;
+            hideErr('err-budget');
+
+            if (lead.budget === 'No budget') {
+                $('budget-grid').style.display = 'none';
+                $('budget-rejection').classList.add('show');
+                return;
+            }
+
+            flow = (lead.budget === '200K - 400K') ? FLOW_PLACEMENT : FLOW_FULL;
+            stepIndex = flow.indexOf('budget');
+            setTimeout(goNext, 260);
+        }
+
+        function selectRole(el) {
+            stepEl('role').querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+            el.classList.add('selected');
+            lead.role = el.dataset.value;
+            hideErr('err-role');
+            setTimeout(goNext, 260);
+        }
+
+        function selectTimeline(el) {
+            clearRejections();
+            $('timeline-grid').querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+            el.classList.add('selected');
+            lead.timeline = el.dataset.value;
+            hideErr('err-timeline');
+
+            if (lead.timeline === 'Just exploring') {
+                $('timeline-grid').style.display = 'none';
+                $('timeline-rejection').classList.add('show');
+                return;
+            }
+            setTimeout(goNext, 260);
+        }
+
+        /* ============ PLACEMENTS ============ */
+        function buildPlacements() {
+            $('placement-grid').innerHTML = PLACEMENTS.map(function (p) {
+                return '<button type="button" class="placement-card" data-value="' + p.name + '">' +
+                    svg('pc-icon', p.icon) +
+                    '<span class="pc-name">' + p.name + '</span>' +
+                    '<span class="pc-meta">' + p.meta + '</span>' +
+                    '<span class="pc-check">✓</span></button>';
+            }).join('');
+            $('placement-grid').addEventListener('click', function (e) {
+                var card = e.target.closest('.placement-card');
+                if (card) togglePlacement(card);
+            });
+        }
+
+        function priceOf(name) {
+            var p = PLACEMENTS.filter(function (x) { return x.name === name; })[0];
+            return p ? p.price : 0;
+        }
+
+        function togglePlacement(card) {
+            var name = card.dataset.value;
+            var i = selected.indexOf(name);
+            if (i > -1) { selected.splice(i, 1); delete lead.placementQty[name]; card.classList.remove('selected'); }
+            else { selected.push(name); lead.placementQty[name] = 1; card.classList.add('selected'); }
+            $('btn-placements').disabled = selected.length === 0;
+            if (selected.length) hideErr('err-placements');
+        }
+
+        function addPlacement(name) {
+            var card = document.querySelector('.placement-card[data-value="' + name + '"]');
+            if (card && selected.indexOf(name) === -1) togglePlacement(card);
+            renderPrices();
+        }
+
+        function adjustQty(name, delta) {
+            lead.placementQty[name] = (lead.placementQty[name] || 1) + delta;
+            if (lead.placementQty[name] < 1) {
+                var card = document.querySelector('.placement-card[data-value="' + name + '"]');
+                if (card) togglePlacement(card);
+            }
+            renderPrices();
+        }
+
+        function renderPrices() {
+            var html = '';
+            var total = 0;
+            var hasPriced = false;
+            var hasUnpriced = false;
+
+            selected.forEach(function (name) {
+                var price = priceOf(name);
+                var qty = lead.placementQty[name] || 1;
+                if (price > 0) { hasPriced = true; total += price * qty; } else { hasUnpriced = true; }
+                html += '<div class="price-row"><div><div class="pr-name">' + name + '</div>' +
+                    '<div class="pr-price ' + (price > 0 ? 'amount' : '') + '">' +
+                    (price > 0 ? money(price * qty) : 'Quoted separately') + '</div></div>' +
+                    '<div class="qty-controls">' +
+                    '<button type="button" class="qty-btn" data-qty="' + name + '" data-d="-1">&minus;</button>' +
+                    '<span class="qty-value">' + qty + '</span>' +
+                    '<button type="button" class="qty-btn" data-qty="' + name + '" data-d="1">+</button>' +
+                    '</div></div>';
+            });
+
+            var others = PLACEMENTS.filter(function (p) { return selected.indexOf(p.name) === -1; });
+            if (others.length) {
+                html += '<div class="add-more-title">Add more</div><div class="add-more-list">';
+                others.forEach(function (p) {
+                    html += '<button type="button" class="add-more-item" data-add="' + p.name + '">' +
+                        '<span class="am-name">' + p.name + '</span>' +
+                        '<span class="am-price">' + (p.price > 0 ? money(p.price) : 'On request') + '</span>' +
+                        '<span class="am-plus">+</span></button>';
+                });
+                html += '</div>';
+            }
+            $('price-list').innerHTML = html;
+
+            var tv = $('total-value'), tl = $('total-label'), tn = $('total-note');
+            tv.classList.remove('pending');
+            if (hasPriced) {
+                tv.textContent = money(total);
+                tl.textContent = hasUnpriced ? 'Playlist subtotal' : 'Estimated total';
+                tn.textContent = hasUnpriced ? 'Social placements quoted separately' : 'Inclusive of 7.5% VAT';
+            } else if (selected.length) {
+                tv.textContent = 'Quoted on request';
+                tv.classList.add('pending');
+                tl.textContent = 'Your selection';
+                tn.textContent = 'We will price these for you';
+            } else {
+                tv.textContent = money(0);
+                tl.textContent = 'Estimated total';
+                tn.textContent = 'Inclusive of 7.5% VAT';
+            }
+
+            var cb = $('custom-budget').value.trim();
+            $('btn-review').disabled = (selected.length === 0 && !cb);
+            if (!$('btn-review').disabled) hideErr('err-review');
+        }
+
+        $('price-list').addEventListener('click', function (e) {
+            var q = e.target.closest('[data-qty]');
+            if (q) { adjustQty(q.dataset.qty, parseInt(q.dataset.d, 10)); return; }
+            var a = e.target.closest('[data-add]');
+            if (a) addPlacement(a.dataset.add);
+        });
+
+        function formatBudget(el) {
+            var raw = el.value.replace(/[^0-9]/g, '');
+            el.value = raw ? parseInt(raw, 10).toLocaleString('en-NG') : '';
+            $('btn-review').disabled = (selected.length === 0 && !el.value.trim());
+            if (!$('btn-review').disabled) hideErr('err-review');
+        }
+
+        /* ============ RELEASE STEP ============ */
+        function renderRelease() {
+            var html;
+            if (lead.path === 'pre') {
+                html = '<div class="q-title">What are you releasing?</div><div class="q-sub">&nbsp;</div>' +
+                    '<div class="opt-grid" id="pre-type">' +
+                    ['Single', 'EP', 'Album', 'Not sure yet'].map(function (v) {
+                        return '<button type="button" class="opt" data-value="' + v + '">' + v + '<span class="check">✓</span></button>';
+                    }).join('') + '</div>' +
+                    '<div class="stage-reveal" id="stage-reveal">' +
+                    '<div class="q-sub" style="margin-bottom:6px;">How far along are you?</div>' +
+                    '<div class="opt-grid" id="pre-stage">' +
+                    ['Still recording', 'Project ready, no date yet', 'Release date confirmed', 'Dropping ASAP'].map(function (v) {
+                        return '<button type="button" class="opt" data-value="' + v + '">' + v + '<span class="check">✓</span></button>';
+                    }).join('') + '</div></div>';
+            } else {
+                html = '<div class="q-title">What did you release?</div><div class="q-sub">&nbsp;</div>' +
+                    '<div class="opt-grid" id="post-type">' +
+                    ['Single', 'EP', 'Album'].map(function (v) {
+                        return '<button type="button" class="opt" data-value="' + v + '">' + v + '<span class="check">✓</span></button>';
+                    }).join('') + '</div>' +
+                    '<div style="margin-top:12px;"><label class="field-label" for="post-link">Drop the link</label>' +
+                    '<input type="text" class="text-input" id="post-link" placeholder="Spotify, Apple Music, YouTube" /></div>';
+            }
+            $('release-content').innerHTML = html;
+
+            // Restore any answers given before the user went back
+            if (lead.releaseType) {
+                var typeGroup = $('pre-type') || $('post-type');
+                if (typeGroup) {
+                    typeGroup.querySelectorAll('.opt').forEach(function (b) {
+                        if (b.dataset.value === lead.releaseType) b.classList.add('selected');
+                    });
+                    if ($('pre-type') && $('stage-reveal')) $('stage-reveal').classList.add('show');
+                }
+            }
+            if (lead.stage && $('pre-stage')) {
+                $('pre-stage').querySelectorAll('.opt').forEach(function (b) {
+                    if (b.dataset.value === lead.stage) b.classList.add('selected');
+                });
+            }
+            if (lead.link && $('post-link')) $('post-link').value = lead.link;
+
+            checkRelease();
+        }
+
+        // Bound once, so going back and forward never stacks handlers
+        $('release-content').addEventListener('click', function (e) {
+            var btn = e.target.closest('.opt');
+            if (!btn) return;
+            var group = btn.parentElement;
+            group.querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+            btn.classList.add('selected');
+            if (group.id === 'pre-type') { lead.releaseType = btn.dataset.value; $('stage-reveal').classList.add('show'); }
+            if (group.id === 'pre-stage') lead.stage = btn.dataset.value;
+            if (group.id === 'post-type') lead.releaseType = btn.dataset.value;
+            checkRelease();
+        });
+        $('release-content').addEventListener('input', function (e) {
+            if (e.target.id === 'post-link') { lead.link = e.target.value.trim(); checkRelease(); }
+        });
+
+        function checkRelease() {
+            var ok = (lead.path === 'pre') ? !!(lead.releaseType && lead.stage) : !!(lead.releaseType && lead.link);
+            $('btn-release').disabled = !ok;
+            if (ok) hideErr('err-release');
+        }
+
+        /* ============ GOALS ============ */
+        function buildGoals() {
+            $('goals-grid').innerHTML = GOALS.map(function (g) {
+                return '<button type="button" class="goal-card" data-value="' + g.key + '">' +
+                    svg('gc-icon', g.icon) +
+                    '<span class="gc-label">' + g.label + '</span>' +
+                    '<span class="gc-check">✓</span></button>';
+            }).join('');
+            $('goals-grid').addEventListener('click', function (e) {
+                var card = e.target.closest('.goal-card');
+                if (card) toggleGoal(card);
+            });
+        }
+
+        function toggleGoal(card) {
+            var key = card.dataset.value;
+            var i = lead.goals.indexOf(key);
+            if (i > -1) { lead.goals.splice(i, 1); card.classList.remove('selected'); }
+            else { lead.goals.push(key); card.classList.add('selected'); }
+
+            if (card.classList.contains('selected')) { lastGoal = key; showProof(key); }
+            else if (lastGoal === key) {
+                if (lead.goals.length) { lastGoal = lead.goals[lead.goals.length - 1]; showProof(lastGoal); }
+                else { lastGoal = null; $('metric-tile').classList.remove('show'); }
+            }
+            $('btn-goals').disabled = lead.goals.length === 0;
+            if (lead.goals.length) hideErr('err-goals');
+        }
+
+        function showProof(key) {
+            var p = GOAL_PROOFS[key];
+            if (!p) return;
+            $('metric-work').textContent = p.work;
+            $('metric-metric').textContent = p.metric;
+            $('metric-context').textContent = p.context;
+            $('metric-tile').classList.add('show');
+        }
+
+        /* ============ SUBMIT ============ */
+        function cleanPhone(prefix, raw) {
+            var c = raw.replace(/[\s\-()]/g, '').replace(/^0+/, '');
+            return c ? prefix + c : '';
+        }
+
+        function postLead(payload) {
+            try {
+                if (typeof CONFIG === 'undefined' || !CONFIG || !CONFIG.GAS_URL) {
+                    return Promise.reject(new Error('CONFIG.GAS_URL is missing. Check config.js.'));
+                }
+                return fetch(CONFIG.GAS_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'text/plain' }
+                }).then(function (r) { return r.json(); });
+            } catch (e) {
+                return Promise.reject(e);
+            }
+        }
+
+        function submitPlacement() {
+            if (submitting) return;
+            var name = $('p-name').value.trim();
+            var act = $('p-act').value.trim();
+            var igRaw = $('p-ig').value.trim().replace(/^@/, '');
+            var phone = cleanPhone($('p-prefix').value, $('p-phone').value.trim());
+
+            if (!name || !act || !igRaw || !phone) { showErr('err-pcontact'); return; }
+            hideErr('err-pcontact');
+
+            var btn = $('btn-pcontact');
+            submitting = true;
+            btn.disabled = true;
+            btn.textContent = 'Opening WhatsApp...';
+
+            var customBudget = $('custom-budget').value.trim();
+            var total = 0;
+            var lines = [];
+            selected.forEach(function (n) {
+                var price = priceOf(n);
+                var qty = lead.placementQty[n] || 1;
+                total += price * qty;
+                lines.push(qty + 'x ' + n + (price > 0 ? ' (' + money(price * qty) + ')' : ' (quoted separately)'));
+            });
+
+            lead.name = name;
+            lead.actName = act;
+            lead.artistIg = '@' + igRaw;
+            lead.phone = phone;
+            lead.placements = selected.map(function (n) { return (lead.placementQty[n] || 1) + 'x ' + n; });
+            lead.customBudget = customBudget ? '₦' + customBudget : '';
+            lead.estimatedTotal = total > 0 ? money(total) : '';
+            lead.tier = 'placement';
+            lead.prospectType = 'Placement Lead';
+            lead.timeline = 'Placement enquiry';
+            lead.timestamp = new Date().toISOString();
+
+            var msg = 'Hi WeTalkSound, I would like to explore placements for my release.\n\n';
+            msg += 'Name: ' + name + '\nAct: ' + act + '\nIG: @' + igRaw + '\n\n';
+            if (lines.length) { msg += 'Selected:\n' + lines.map(function (l) { return '- ' + l; }).join('\n') + '\n'; }
+            if (total > 0) msg += '\nPlaylist subtotal: ' + money(total) + '\n';
+            if (customBudget) msg += '\nMy budget: ₦' + customBudget + '\n';
+            msg += '\nPlease let me know the next steps.';
+
+            var waUrl = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(msg);
+            var wa = window.open(waUrl, '_blank');
+
+            postLead(lead).then(function () {
+                if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', lead_tier: 'placement' });
+            }).catch(function (err) {
+                console.error('Lead post failed:', err);
+                try { sessionStorage.setItem('wts_failed_lead', JSON.stringify(lead)); } catch (e) {}
+            }).then(function () {
+                if (!wa) window.location.href = waUrl;
+                submitting = false;
+                btn.disabled = false;
+                btn.textContent = 'Chat with us on WhatsApp →';
+            });
+        }
+
+        function submitFull() {
+            if (submitting) return;
+            var name = $('c-name').value.trim();
+            var act = $('c-act').value.trim();
+            var igRaw = $('c-ig').value.trim().replace(/^@/, '');
+            var email = $('c-email').value.trim();
+            var phone = cleanPhone($('c-prefix').value, $('c-phone').value.trim());
+
+            if (!name || !act || !igRaw || (!email && !phone)) { showErr('err-contact'); return; }
+            hideErr('err-contact');
+
+            var btn = $('btn-contact');
+            submitting = true;
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            lead.name = name;
+            lead.actName = act;
+            lead.artistIg = '@' + igRaw;
+            lead.country = $('c-country').value;
+            lead.email = email;
+            lead.phone = phone;
+            lead.soundcloud = $('c-soundcloud').value.trim();
+            lead.tier = 'full';
+            lead.prospectType = 'High Value Lead';
+            lead.timestamp = new Date().toISOString();
+
+            try { sessionStorage.setItem('wts_lead', JSON.stringify(lead)); } catch (e) {}
+
+            postLead(lead).then(function () {
+                if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', lead_tier: 'full' });
+                window.location.href = '/thank-you/music';
+            }).catch(function (err) {
+                console.error('Lead post failed:', err);
+                try { sessionStorage.setItem('wts_failed_lead', JSON.stringify(lead)); } catch (e) {}
+                window.location.href = '/thank-you/music';
+            });
+        }
+
+        /* ============ PAGE CHROME ============ */
+        function buildPlaylists() {
+            var items = PLACEMENTS.filter(function (p) { return p.price > 0; }).concat(EXTRA_PLAYLISTS);
+            $('playlist-grid').innerHTML = items.map(function (p) {
+                return '<div class="playlist-card">' +
+                    '<div class="pl-name">' + p.name + '</div>' +
+                    '<div class="pl-price">' + money(p.price) + (p.suffix || '') + '</div>' +
+                    '<div class="pl-note">' + (p.note || '') + '</div></div>';
+            }).join('');
+        }
+
+        function togglePkg(btn) {
+            var ul = btn.previousElementSibling;
+            var open = ul.classList.toggle('expanded');
+            var count = ul.querySelectorAll('li').length;
+            btn.textContent = open ? 'Show less' : 'View all ' + count + ' →';
+        }
+
+        function pkgEnquire(name) {
+            var msg = 'Hi WeTalkSound, I would like to enquire about the ' + name + '. Please share pricing and details.';
+            window.open('https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(msg), '_blank');
+        }
+
+        function toggleMenu() { $('mobile-menu').classList.toggle('open'); }
+        document.querySelectorAll('.mobile-menu a').forEach(function (a) {
+            a.addEventListener('click', function () { $('mobile-menu').classList.remove('open'); });
+        });
+
+        // Sticky CTA hides while the quiz is on screen
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+                $('stickyCta').classList.toggle('hidden', entries[0].isIntersecting);
+            }, { threshold: 0.25 }).observe($('quizCard'));
+        }
+
+        /* ============ INIT ============ */
+        buildPlacements();
+        buildGoals();
+        buildPlaylists();
+        $('footer-year').textContent = new Date().getFullYear();
+        render();
+        booted = true;
+
+        // expose inline handlers
+        window.selectStage = selectStage;
+        window.selectBudget = selectBudget;
+        window.selectRole = selectRole;
+        window.selectTimeline = selectTimeline;
+        window.goNext = goNext;
+        window.goBack = goBack;
+        window.formatBudget = formatBudget;
+        window.submitPlacement = submitPlacement;
+        window.submitFull = submitFull;
+        window.togglePkg = togglePkg;
+        window.pkgEnquire = pkgEnquire;
+        window.toggleMenu = toggleMenu;
+    })();
+    </script>
+</body>
+</html>
