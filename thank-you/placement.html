@@ -6,6 +6,7 @@
     <title>Your Placement Lineup — WeTalkSound</title>
     <meta name="description" content="Thanks for your enquiry. Choose your placements and chat with us on WhatsApp." />
     <meta name="theme-color" content="#0A0A0A" />
+    <meta name="robots" content="noindex, nofollow" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -21,9 +22,6 @@
         })(window, document, 'script', 'dataLayer', 'GTM-N3KZ2K8R');
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Config -->
-    <script src="config.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
@@ -76,28 +74,9 @@
             z-index: 100;
             flex-shrink: 0;
         }
-        .brand img { height: 30px; display: block; }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
-        .nav-links a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s; }
-        .nav-links a:hover { color: #fff; }
-        .nav-cta {
-            background: var(--grad-sass);
-            color: #fff;
-            border: none;
-            padding: 7px 18px;
-            border-radius: 7px;
-            font: 700 0.8125rem 'Inter', sans-serif;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(255,107,74,0.35);
-            transition: transform .2s;
-        }
-        .nav-cta:hover { transform: translateY(-1px) scale(1.02); }
-        .hamburger { display: none; }
-        @media (max-width: 768px) {
-            .nav-links, .nav-cta { display: none; }
-            .hamburger { display: flex; }
-        }
+        .brand { display: inline-flex; align-items: center; text-decoration: none; }
+        .brand img { height: 18px; display: block; }
+        .brand-text { font-weight: 900; font-size: 1.05rem; color: #fff; letter-spacing: -0.01em; }
 
         /* ─── HERO (two-column) ─── */
         .hero-wrap {
@@ -241,51 +220,33 @@
             margin-bottom: 20px;
             line-height: 1.5;
         }
-        .placement-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .placement-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px;
-            padding: 10px 12px;
-            cursor: pointer;
-            transition: border-color .2s, background .2s;
-        }
-        .placement-option:hover {
-            border-color: rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.06);
-        }
-        .placement-option.selected {
-            border-color: var(--accent);
-            background: rgba(255,107,74,0.08);
-        }
-        .placement-option .plus-icon {
-            width: 22px; height: 22px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: rgba(255,255,255,0.7);
-            flex-shrink: 0;
-            transition: all .2s;
-        }
-        .placement-option.selected .plus-icon {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-        }
-        .placement-option .option-info { flex: 1; }
-        .placement-option .option-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
-        .placement-option .option-desc { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
+        .line-list { display: flex; flex-direction: column; gap: 6px; }
+        .line-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: rgba(255,107,74,0.07); border: 1px solid rgba(255,107,74,0.18); border-radius: 8px; }
+        .lr-info { flex: 1; min-width: 0; }
+        .lr-name { font-size: 0.84rem; font-weight: 700; color: #fff; line-height: 1.25; }
+        .lr-price { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 1px; }
+        .lr-price.amount { color: var(--accent); font-weight: 700; }
+        .lr-qty { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .qbtn { width: 26px; height: 26px; border-radius: 7px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: #fff; font-size: 0.95rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s; }
+        .qbtn:hover { background: rgba(255,107,74,0.18); border-color: var(--accent); }
+        .qv { min-width: 13px; text-align: center; font-weight: 700; font-size: 0.82rem; }
+
+        .empty-note { display: none; font-size: 0.78rem; color: rgba(255,255,255,0.4); padding: 14px 12px; border: 1px dashed rgba(255,255,255,0.12); border-radius: 8px; text-align: center; }
+
+        .total-bar { display: none; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; padding: 11px 13px; background: rgba(255,107,74,0.08); border: 1px solid rgba(255,107,74,0.16); border-radius: 8px; }
+        .tb-label { font-size: 0.74rem; color: rgba(255,255,255,0.6); }
+        .tb-value { font-size: 1rem; font-weight: 900; color: var(--accent); }
+
+        .more-title { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin: 18px 0 7px; }
+        .more-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 18px; }
+        .more-row { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 11px; background: transparent; border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: 'Inter', sans-serif; cursor: pointer; text-align: left; transition: border-color .2s, background .2s; }
+        .more-row:hover { border-color: rgba(255,107,74,0.35); background: rgba(255,107,74,0.05); }
+        .mr-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+        .mr-name { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+        .mr-desc { font-size: 0.64rem; color: rgba(255,255,255,0.35); }
+        .mr-price { font-size: 0.7rem; color: rgba(255,255,255,0.4); white-space: nowrap; }
+        .mr-plus { color: var(--accent); font-weight: 700; font-size: 1rem; line-height: 1; }
+
         .btn-wa {
             display: inline-flex;
             align-items: center;
@@ -304,6 +265,7 @@
             width: 100%;
         }
         .btn-wa:hover { background: var(--wa-dark); transform: translateY(-1px); }
+        .btn-wa.is-off { opacity: 0.45; pointer-events: none; }
         .btn-wa svg { width: 20px; height: 20px; fill: #fff; }
 
         /* ─── TRUST BAR ─── */
@@ -364,12 +326,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3KZ2K8R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <nav>
-        <a href="#" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound"></a>
-        <ul class="nav-links">
-            <li><a href="#">Work</a></li>
-            <li><a href="#">Services</a></li>
-        </ul>
-        <a href="#" class="nav-cta">Start your enquiry</a>
+        <a href="/" class="brand" aria-label="WeTalkSound home"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='&lt;span class=&quot;brand-text&quot;&gt;WeTalkSound&lt;/span&gt;'" /></a>
     </nav>
 
     <div class="hero-wrap">
@@ -378,8 +335,8 @@
             <!-- Left column -->
             <div class="ty-left">
                 <div class="ty-badge"><b></b> Enquiry received</div>
-                <h1>Thanks, <span class="grad" id="ty-name">there</span>.</h1>
-                <p class="sub">Choose which of our placements across music, culture, and media you’d like to market with — we’ll help you reach the right audience.</p>
+                <h1>Thanks<span id="ty-name-wrap">, <span class="grad" id="ty-name"></span></span>.</h1>
+                <p class="sub">Choose which of our placements across music, culture, and media you'd like to market with — we'll help you reach the right audience.</p>
 
                 <div class="next-steps">
                     <div class="ns-title">What happens next</div>
@@ -393,28 +350,41 @@
                     </div>
                     <div class="ns-step">
                         <div class="ns-num">3</div>
-                        <div class="ns-body"><b>We’ll reach out and start your enquiry.</b></div>
+                        <div class="ns-body">You get a <b>plan and pricing</b> built around your release.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Right column: placement lineup card -->
             <div class="ty-card">
-                <div class="card-title">Choose your placements</div>
-                <div class="card-sub">Tap the + to add a placement to your lineup.</div>
+                <div class="card-title">Your lineup</div>
+                <div class="card-sub">Adjust quantities or add more before you send.</div>
 
-                <div class="placement-list" id="placement-list"></div>
+                <div id="chosen-wrap">
+                    <div class="line-list" id="chosen-list"></div>
+                </div>
+                <div class="empty-note" id="empty-note">Nothing selected yet. Add a placement below.</div>
 
-                <a href="#" class="btn-wa" id="whatsapp-cta" target="_blank">
+                <div class="total-bar" id="total-bar">
+                    <span class="tb-label" id="total-label">Estimated total</span>
+                    <span class="tb-value" id="total-value">&#8358;0</span>
+                </div>
+
+                <div id="more-wrap">
+                    <div class="more-title">Add more</div>
+                    <div class="more-list" id="more-list"></div>
+                </div>
+
+                <a href="#" class="btn-wa" id="whatsapp-cta" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Proceed to WhatsApp
+                    Confirm on WhatsApp
                 </a>
             </div>
         </div>
     </div>
 
     <div class="trust-bar">
-        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Grammy‑recognised</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Grammy-recognised</span>
         <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Lagos · London · New York</span>
         <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 360° music marketing</span>
     </div>
@@ -423,86 +393,162 @@
         <div class="fmark">WeTalkSound</div>
         <div class="fmeta">Lagos · London · New York · East Africa · <a href="mailto:thewtsagency@gmail.com">thewtsagency@gmail.com</a></div>
         <div class="social-links">
-            <a href="https://instagram.com/wetalksound" target="_blank">Instagram</a>
-            <a href="https://tiktok.com/@wetalksound" target="_blank">TikTok</a>
-            <a href="https://twitter.com/wetalksound" target="_blank">X</a>
+            <a href="https://instagram.com/wetalksound" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://tiktok.com/@wetalksound" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://twitter.com/wetalksound" target="_blank" rel="noopener">X</a>
         </div>
         <div class="fmeta" style="margin-top:6px;">© <span id="footer-year"></span> WeTalkSound. All rights reserved.</div>
     </footer>
 
     <script>
-        // Lead data
-        var leadData = JSON.parse(sessionStorage.getItem('wts_lead') || '{}');
-        var firstName = leadData.name ? leadData.name.split(' ')[0] : 'there';
-        document.getElementById('ty-name').textContent = firstName;
+    (function () {
+        'use strict';
+        var WA_PHONE = '2348178007329';
 
-        // Placement options with descriptive labels
-        var placementsData = [
-            { name: 'Instagram', desc: 'Post or story placement' },
-            { name: 'TikTok post', desc: 'Video post placement' },
-            { name: 'X post', desc: 'Tweet or thread placement' },
-            { name: 'Newsletter mention', desc: 'Feature in our newsletter' },
-            { name: 'YouTube shoutout', desc: 'Shoutout in video content' },
-            { name: 'Radio mention', desc: 'Mention on radio' }
+        // Must stay in step with the PLACEMENTS array on the landing page.
+        var CATALOGUE = [
+            { name: 'Instagram',        price: 0,      desc: '110K followers · Post or Story' },
+            { name: 'TikTok',           price: 0,      desc: '201K followers · High reach' },
+            { name: 'X (Twitter)',      price: 0,      desc: '36K followers · Amplification' },
+            { name: 'Newsletter',       price: 0,      desc: '70K subscribers · Banner ad' },
+            { name: 'New Music Friday', price: 161250, desc: 'Flagship weekly playlist' },
+            { name: 'Afrobeats Gems',   price: 86000,  desc: 'Curated Afrobeats audience' },
+            { name: 'Select Sounds',    price: 107500, desc: 'Editorial selection' },
+            { name: 'Custom Curation',  price: 268750, desc: 'Built around your release' }
         ];
 
-        var selectedPlacements = (leadData.placements && leadData.placements.length > 0)
-            ? leadData.placements.slice()
-            : [];
+        function readLead() {
+            try { return JSON.parse(sessionStorage.getItem('wts_lead') || '{}') || {}; }
+            catch (e) { return {}; }
+        }
+        var lead = readLead();
 
-        var listContainer = document.getElementById('placement-list');
-        var whatsappCta = document.getElementById('whatsapp-cta');
+        function $(id) { return document.getElementById(id); }
+        function money(n) { return '\u20A6' + n.toLocaleString('en-NG'); }
+        function priceOf(n) {
+            for (var i = 0; i < CATALOGUE.length; i++) if (CATALOGUE[i].name === n) return CATALOGUE[i].price;
+            return 0;
+        }
 
-        function renderPlacements() {
-            listContainer.innerHTML = '';
-            placementsData.forEach(function(item) {
-                var isSelected = selectedPlacements.indexOf(item.name) > -1;
-                var option = document.createElement('div');
-                option.className = 'placement-option' + (isSelected ? ' selected' : '');
-                option.innerHTML = `
-                    <span class="plus-icon">${isSelected ? '✓' : '+'}</span>
-                    <div class="option-info">
-                        <div class="option-name">${item.name}</div>
-                        <div class="option-desc">${item.desc}</div>
-                    </div>
-                `;
-                option.addEventListener('click', function() {
-                    togglePlacement(item.name, option);
+        // Greeting
+        var firstName = (lead.name || '').trim().split(/\s+/)[0];
+        if (firstName) { $('ty-name').textContent = firstName; }
+        else { $('ty-name-wrap').remove(); }
+
+        // Rebuild the lineup from the quiz. placementNames holds bare names;
+        // older leads only have "2x Name" strings, so strip the prefix off those.
+        var qty = {};
+        var selected = [];
+        (function () {
+            var names = lead.placementNames;
+            if (!names || !names.length) {
+                names = (lead.placements || []).map(function (p) {
+                    return String(p).replace(/^\s*\d+x\s*/, '');
                 });
-                listContainer.appendChild(option);
+            }
+            names.forEach(function (n) {
+                if (!n) return;
+                var known = CATALOGUE.filter(function (c) { return c.name === n; })[0];
+                if (!known) return;
+                if (selected.indexOf(n) === -1) selected.push(n);
             });
-            updateCta();
-        }
+            var q = lead.placementQty || {};
+            selected.forEach(function (n) { qty[n] = Math.max(1, parseInt(q[n], 10) || 1); });
+        })();
 
-        function togglePlacement(name, option) {
-            var idx = selectedPlacements.indexOf(name);
-            if (idx > -1) {
-                selectedPlacements.splice(idx, 1);
-                option.classList.remove('selected');
-                option.querySelector('.plus-icon').textContent = '+';
-            } else {
-                selectedPlacements.push(name);
-                option.classList.add('selected');
-                option.querySelector('.plus-icon').textContent = '✓';
+        function adjust(name, delta) {
+            qty[name] = (qty[name] || 1) + delta;
+            if (qty[name] < 1) {
+                delete qty[name];
+                selected.splice(selected.indexOf(name), 1);
             }
-            updateCta();
+            render();
+        }
+        function add(name) {
+            if (selected.indexOf(name) === -1) { selected.push(name); qty[name] = 1; }
+            render();
         }
 
-        function updateCta() {
-            if (selectedPlacements.length === 0) {
-                whatsappCta.style.opacity = '0.5';
-                whatsappCta.style.pointerEvents = 'none';
+        function render() {
+            var chosen = $('chosen-list');
+            var total = 0, anyPriced = false, anyUnpriced = false;
+
+            chosen.innerHTML = selected.map(function (n) {
+                var p = priceOf(n), q = qty[n] || 1;
+                if (p > 0) { total += p * q; anyPriced = true; } else { anyUnpriced = true; }
+                return '<div class="line-row">' +
+                         '<div class="lr-info"><div class="lr-name">' + n + '</div>' +
+                         '<div class="lr-price' + (p > 0 ? ' amount' : '') + '">' +
+                           (p > 0 ? money(p * q) : 'Priced on request') + '</div></div>' +
+                         '<div class="lr-qty">' +
+                           '<button type="button" class="qbtn" data-n="' + n + '" data-d="-1" aria-label="Remove one">&minus;</button>' +
+                           '<span class="qv">' + q + '</span>' +
+                           '<button type="button" class="qbtn" data-n="' + n + '" data-d="1" aria-label="Add one">+</button>' +
+                         '</div></div>';
+            }).join('');
+
+            $('chosen-wrap').style.display = selected.length ? 'block' : 'none';
+            $('empty-note').style.display = selected.length ? 'none' : 'block';
+
+            var tv = $('total-value'), tl = $('total-label');
+            if (anyPriced) {
+                tv.textContent = money(total);
+                tl.textContent = anyUnpriced ? 'Playlist subtotal' : 'Estimated total';
+            } else if (selected.length) {
+                tv.textContent = 'On request';
+                tl.textContent = 'Your lineup';
             } else {
-                whatsappCta.style.opacity = '1';
-                whatsappCta.style.pointerEvents = 'auto';
-                var msg = 'Hi WeTalkSound! I\'m interested in these placements: ' + selectedPlacements.join(', ') + '. Let\'s talk rates.';
-                whatsappCta.href = 'https://wa.me/2348178007329?text=' + encodeURIComponent(msg);
+                tv.textContent = '\u20A60';
+                tl.textContent = 'Estimated total';
             }
+            $('total-bar').style.display = selected.length ? 'flex' : 'none';
+
+            var rest = CATALOGUE.filter(function (c) { return selected.indexOf(c.name) === -1; });
+            $('more-wrap').style.display = rest.length ? 'block' : 'none';
+            $('more-list').innerHTML = rest.map(function (c) {
+                return '<button type="button" class="more-row" data-add="' + c.name + '">' +
+                         '<span class="mr-info"><span class="mr-name">' + c.name + '</span>' +
+                         '<span class="mr-desc">' + c.desc + '</span></span>' +
+                         '<span class="mr-price">' + (c.price > 0 ? money(c.price) : 'On request') + '</span>' +
+                         '<span class="mr-plus">+</span></button>';
+            }).join('');
+
+            var btn = $('whatsapp-cta');
+            btn.href = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(waMessage(total, anyPriced));
+            btn.classList.toggle('is-off', selected.length === 0);
         }
 
-        renderPlacements();
+        function waMessage(total, anyPriced) {
+            var out = ['Hi WeTalkSound, I would like to go ahead with these placements.', ''];
+            if (lead.name)     out.push('Name: ' + lead.name);
+            if (lead.actName)  out.push('Act: ' + lead.actName);
+            if (lead.artistIg) out.push('IG: ' + lead.artistIg);
+            if (lead.name || lead.actName) out.push('');
+            if (selected.length) {
+                out.push('Lineup:');
+                selected.forEach(function (n) {
+                    var p = priceOf(n), q = qty[n] || 1;
+                    out.push('- ' + q + 'x ' + n + (p > 0 ? ' (' + money(p * q) + ')' : ' (priced on request)'));
+                });
+            }
+            if (anyPriced) out.push('', 'Subtotal: ' + money(total));
+            if (lead.customBudget) out.push('My budget: ' + lead.customBudget);
+            out.push('', 'Please let me know the next steps.');
+            return out.join('\n');
+        }
 
-        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        $('chosen-list').addEventListener('click', function (e) {
+            var b = e.target.closest('.qbtn');
+            if (b) adjust(b.dataset.n, parseInt(b.dataset.d, 10));
+        });
+        $('more-list').addEventListener('click', function (e) {
+            var b = e.target.closest('[data-add]');
+            if (b) add(b.dataset.add);
+        });
+
+        render();
+        $('footer-year').textContent = new Date().getFullYear();
+    })();
     </script>
 </body>
 </html>
