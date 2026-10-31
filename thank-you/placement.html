@@ -417,9 +417,24 @@
             { name: 'Custom Curation',  price: 268750, desc: 'Built around your release' }
         ];
 
+        // Only trust a lead that was just handed over by the form. Anything older
+        // is a leftover from an earlier submission in this tab, so ignore and clear it.
+        var MAX_AGE_MIN = 30;
         function readLead() {
-            try { return JSON.parse(sessionStorage.getItem('wts_lead') || '{}') || {}; }
-            catch (e) { return {}; }
+            var raw;
+            try { raw = sessionStorage.getItem('wts_lead'); } catch (e) { return {}; }
+            if (!raw) return {};
+
+            var data;
+            try { data = JSON.parse(raw) || {}; } catch (e) { return {}; }
+
+            var stamped = Date.parse(data.timestamp || '');
+            var fresh = stamped && (Date.now() - stamped) < MAX_AGE_MIN * 60 * 1000;
+            if (!fresh) {
+                try { sessionStorage.removeItem('wts_lead'); } catch (e) {}
+                return {};
+            }
+            return data;
         }
         var lead = readLead();
 
