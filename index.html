@@ -984,6 +984,8 @@
         var stepIndex = 0;
         var selected = [];
         var submitting = false;
+        var placementSent = false;
+        var lastWaUrl = '';
         var booted = false;
 
         function $(id) { return document.getElementById(id); }
@@ -1029,8 +1031,18 @@
 
         // Back always works, including out of a rejection screen
         function goBack() {
+            resetSent();
             clearRejections();
             if (stepIndex > 0) { stepIndex--; render(); }
+        }
+
+        // Changing the enquiry after sending makes it a new one, so allow a fresh save.
+        function resetSent() {
+            if (!placementSent) return;
+            placementSent = false;
+            lastWaUrl = '';
+            var b = $('btn-pcontact');
+            if (b) b.textContent = 'Chat with us on WhatsApp \u2192';
         }
 
         function clearRejections() {
@@ -1124,6 +1136,7 @@
         }
 
         function togglePlacement(card) {
+            resetSent();
             var name = card.dataset.value;
             var i = selected.indexOf(name);
             if (i > -1) { selected.splice(i, 1); delete lead.placementQty[name]; card.classList.remove('selected'); }
@@ -1352,6 +1365,7 @@
 
         function submitPlacement() {
             if (submitting) return;
+            if (placementSent) { window.open(lastWaUrl, '_blank'); return; }   // already saved, never resend
             var name = $('p-name').value.trim();
             var act = $('p-act').value.trim();
             var igRaw = $('p-ig').value.trim().replace(/^@/, '');
@@ -1410,9 +1424,14 @@
                 try { sessionStorage.setItem('wts_failed_lead', JSON.stringify(lead)); } catch (e) {}
             }).then(function () {
                 if (!wa) window.location.href = waUrl;   // popup blocked, go in this tab
+
+                // WhatsApp opened in a new tab, so this page is still sitting there.
+                // The button must never post a second time: it only reopens WhatsApp.
+                placementSent = true;
+                lastWaUrl = waUrl;
                 submitting = false;
                 btn.disabled = false;
-                btn.textContent = 'Chat with us on WhatsApp \u2192';
+                btn.textContent = 'Reopen WhatsApp';
             });
         }
 
