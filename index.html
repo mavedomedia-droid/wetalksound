@@ -116,7 +116,7 @@
             .hero-proof { justify-content: center; gap: 4px; flex-wrap: nowrap; }
             .proof-badge { font-size: 0.58rem; padding: 3px 7px; gap: 0; }
             .proof-badge svg { display: none; }
-            .quiz-card { order: 2; max-width: 100%; width: 100%; }
+            .quiz-card { order: 2; max-width: 100%; width: 100%; padding: 20px 16px 16px; }
         }
 
         /* ---------- QUIZ ---------- */
@@ -127,16 +127,16 @@
                 linear-gradient(158deg, rgba(40,38,46,0.94) 0%, rgba(24,23,27,0.94) 48%, rgba(16,16,19,0.95) 100%);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.07);
-            padding: 20px 18px 16px;
-            width: 100%; max-width: 460px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,107,74,0.06), inset 0 1px 0 rgba(255,255,255,0.08);
+            padding: 24px 22px 18px;
+            width: 100%; max-width: 440px;
             justify-self: end;
             color: #fff;
             scroll-margin-top: 72px;
         }
-        .progress-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 14px; }
+        .progress-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 18px; }
         .progress-dots .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: background .3s; }
         .progress-dots .dot.active { background: var(--accent); box-shadow: 0 0 10px rgba(255,107,74,0.35); }
         .progress-dots .dot.done { background: rgba(255,255,255,0.35); }
@@ -154,13 +154,12 @@
         .step.active .plc-row:nth-child(6), .step.active .goal-card:nth-child(6) { animation-delay: .24s; }
         .step.active .plc-row:nth-child(7), .step.active .goal-card:nth-child(7) { animation-delay: .28s; }
         .step.active .plc-row:nth-child(8), .step.active .goal-card:nth-child(8) { animation-delay: .32s; }
-        .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; min-height: 20px; }
-        .btn-back { background: none; border: none; color: rgba(255,255,255,0.3); font: 500 0.75rem 'Inter', sans-serif; cursor: pointer; padding: 4px 0; transition: color .2s; }
+        .step-header { display: flex; align-items: center; margin-bottom: 6px; min-height: 18px; }
+        .btn-back { background: none; border: none; color: rgba(255,255,255,0.35); font-size: 0.95rem; line-height: 1; cursor: pointer; padding: 2px 6px 2px 0; transition: color .2s; }
         .btn-back:hover { color: rgba(255,255,255,0.75); }
-        .q-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-left: auto; }
-        .q-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 2px; }
-        .q-title.solo { margin-bottom: 12px; }
-        .q-sub { font-size: 0.76rem; color: rgba(255,255,255,0.42); margin-bottom: 12px; }
+        .q-title { font-size: 1.12rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 3px; }
+        .q-title.solo { margin-bottom: 14px; }
+        .q-sub { font-size: 0.76rem; color: rgba(255,255,255,0.42); margin-bottom: 14px; }
 
         .rejection-box { display: none; background: rgba(229, 90, 58, 0.07); border-left: 3px solid var(--danger); border-radius: var(--radius); padding: 14px; margin-top: 10px; }
         .rejection-box.show { display: block; }
@@ -272,7 +271,8 @@
         .btn-continue { background: var(--grad-sass); color: #fff; border: none; padding: 13px 20px; border-radius: var(--radius); font: 700 0.85rem 'Inter', sans-serif; cursor: pointer; transition: transform .2s; width: 100%; margin-top: 12px; min-height: 48px; box-shadow: 0 4px 20px rgba(255,45,120,0.25); }
         .btn-continue:hover:not(:disabled) { transform: translateY(-1px); }
         .btn-continue:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
-        .quiz-footer { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 12px; padding-top: 10px; font-size: 0.63rem; color: rgba(255,255,255,0.3); text-align: center; }
+        .quiz-footer { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 12px; padding-top: 10px; font-size: 0.63rem; color: rgba(255,255,255,0.28); text-align: center; }
+        .quiz-footer.hide { display: none; }
 
         /* ---------- SECTIONS ---------- */
         .section { padding: 56px var(--gutter); max-width: var(--wrap); margin: 0 auto; }
@@ -452,7 +452,7 @@
 
                 <!-- Stage -->
                 <div class="step active" data-key="stage">
-                    <div class="step-header"><span class="q-label" data-label></span></div>
+                    <div class="step-header"></div>
                     <div class="q-title solo">What stage is your release in?</div>
                     <div class="opt-grid">
                         <button type="button" class="opt" data-value="pre" onclick="selectStage(this)"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Releasing soon<span class="check">✓</span></button>
@@ -463,7 +463,7 @@
 
                 <!-- Budget -->
                 <div class="step" data-key="budget">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
                     <div class="q-title">What's your budget?</div>
                     <div class="q-sub">360 campaigns start at ₦500K.</div>
                     <div class="budget-grid" id="budget-grid">
@@ -482,9 +482,8 @@
 
                 <!-- Placements -->
                 <div class="step" data-key="placements">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
-                    <div class="q-title">Which placements interest you?</div>
-                    <div class="q-sub">Pricing on the next step.</div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
+                    <div class="q-title solo">Which placements interest you?</div>
                     <div class="placement-grid" id="placement-grid"></div>
                     <div class="field-error" id="err-placements">Please select at least one placement.</div>
                     <button type="button" class="btn-continue" id="btn-placements" disabled onclick="goNext()">Continue &rarr;</button>
@@ -492,9 +491,8 @@
 
                 <!-- Review -->
                 <div class="step" data-key="review">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
-                    <div class="q-title">Review your selection</div>
-                    <div class="q-sub">Adjust quantities or add more.</div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
+                    <div class="q-title solo">Review your selection</div>
                     <div id="price-list"></div>
                     <div class="total-bar">
                         <div>
@@ -516,25 +514,25 @@
 
                 <!-- Placement contact -->
                 <div class="step" data-key="pcontact">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
                     <div class="q-title">Last bit, then we talk</div>
                     <div class="q-sub">So we can prep your quote before you message.</div>
                     <div class="form-row-2">
                         <div>
-                            <label class="field-label" for="p-name">Your name *</label>
+                            <label class="field-label" for="p-name">Your name</label>
                             <input type="text" class="text-input" id="p-name" placeholder="Ayo Balogun" autocomplete="name" />
                         </div>
                         <div>
-                            <label class="field-label" for="p-act">Stage name *</label>
+                            <label class="field-label" for="p-act">Stage name</label>
                             <input type="text" class="text-input" id="p-act" placeholder="Wizkid" />
                         </div>
                     </div>
                     <div class="field-wrap">
-                        <label class="field-label" for="p-ig">Artist IG *</label>
+                        <label class="field-label" for="p-ig">Artist IG</label>
                         <div class="input-combo"><span class="combo-prefix">@</span><input type="text" class="text-input" id="p-ig" placeholder="wizkidayo" /></div>
                     </div>
                     <div class="field-wrap">
-                        <label class="field-label" for="p-phone">WhatsApp number *</label>
+                        <label class="field-label" for="p-phone">WhatsApp number</label>
                         <div class="input-combo">
                             <select class="prefix-select" id="p-prefix"></select>
                             <input type="tel" class="text-input" id="p-phone" placeholder="801 234 5678" />
@@ -546,7 +544,7 @@
 
                 <!-- Role -->
                 <div class="step" data-key="role">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
                     <div class="q-title solo">Who are you?</div>
                     <div class="opt-grid">
                         <button type="button" class="opt" data-value="Artist" onclick="selectRole(this)"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Artist<span class="check">✓</span></button>
@@ -559,7 +557,7 @@
 
                 <!-- Release -->
                 <div class="step" data-key="release">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
                     <div id="release-content"></div>
                     <div class="field-error" id="err-release">Please complete this step.</div>
                     <button type="button" class="btn-continue" id="btn-release" disabled onclick="goNext()">Continue &rarr;</button>
@@ -567,9 +565,8 @@
 
                 <!-- Goals -->
                 <div class="step" data-key="goals">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
-                    <div class="q-title">What does success look like?</div>
-                    <div class="q-sub">Tap to see proof.</div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
+                    <div class="q-title solo">What does success look like?</div>
                     <div class="goals-grid" id="goals-grid"></div>
                     <div class="proof-stack" id="proof-stack"></div>
                     <div class="field-error" id="err-goals">Select at least one goal.</div>
@@ -578,7 +575,7 @@
 
                 <!-- Timeline -->
                 <div class="step" data-key="timeline">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
                     <div class="q-title solo">How soon do you want to start?</div>
                     <div class="opt-grid" id="timeline-grid">
                         <button type="button" class="opt" data-value="ASAP" onclick="selectTimeline(this)">ASAP<span class="check">✓</span></button>
@@ -595,26 +592,25 @@
 
                 <!-- Contact -->
                 <div class="step" data-key="contact">
-                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()">&larr; Back</button><span class="q-label" data-label></span></div>
-                    <div class="q-title">Where do we reach you?</div>
-                    <div class="q-sub">Your plan within 24 hours.</div>
+                    <div class="step-header"><button type="button" class="btn-back" onclick="goBack()" aria-label="Back">&larr;</button></div>
+                    <div class="q-title solo">Where do we reach you?</div>
                     <div class="form-row-2">
                         <div>
-                            <label class="field-label" for="c-name">Your name *</label>
+                            <label class="field-label" for="c-name">Your name</label>
                             <input type="text" class="text-input" id="c-name" placeholder="Ayo Balogun" autocomplete="name" />
                         </div>
                         <div>
-                            <label class="field-label" for="c-country">Country *</label>
+                            <label class="field-label" for="c-country">Country</label>
                             <select class="select-input" id="c-country"><option value="Nigeria">Nigeria</option><option value="Ghana">Ghana</option><option value="South Africa">South Africa</option><option value="UK">UK</option><option value="US">US</option><option value="Other">Other</option></select>
                         </div>
                     </div>
                     <div class="form-row-2">
                         <div>
-                            <label class="field-label" for="c-act">Stage name *</label>
+                            <label class="field-label" for="c-act">Stage name</label>
                             <input type="text" class="text-input" id="c-act" placeholder="Wizkid" />
                         </div>
                         <div>
-                            <label class="field-label" for="c-ig">Artist IG *</label>
+                            <label class="field-label" for="c-ig">Artist IG</label>
                             <div class="input-combo"><span class="combo-prefix">@</span><input type="text" class="text-input" id="c-ig" placeholder="wizkidayo" /></div>
                         </div>
                     </div>
@@ -637,7 +633,7 @@
                     <button type="button" class="btn-continue" id="btn-contact" onclick="submitFull()">Submit enquiry &rarr;</button>
                 </div>
 
-                <div class="quiz-footer">Takes about 2 minutes · We reply within 24 hours</div>
+                <div class="quiz-footer" id="quizFooter">About 2 minutes · We reply within 24 hours</div>
             </div>
         </div>
     </div>
@@ -1010,11 +1006,7 @@
             }
             $('progressDots').innerHTML = dots;
 
-            var el = stepEl(key);
-            if (el) {
-                var label = el.querySelector('[data-label]');
-                if (label) label.textContent = 'Step ' + (stepIndex + 1) + ' of ' + flow.length;
-            }
+            $('quizFooter').classList.toggle('hide', stepIndex > 0);
             if (booted) $('quizCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -1228,7 +1220,7 @@
         function renderRelease() {
             var html;
             if (lead.path === 'pre') {
-                html = '<div class="q-title">What are you releasing?</div><div class="q-sub">&nbsp;</div>' +
+                html = '<div class="q-title solo">What are you releasing?</div>' +
                     '<div class="opt-grid" id="pre-type">' +
                     ['Single', 'EP', 'Album', 'Not sure yet'].map(function (v) {
                         return '<button type="button" class="opt" data-value="' + v + '">' + v + '<span class="check">✓</span></button>';
@@ -1240,7 +1232,7 @@
                         return '<button type="button" class="opt" data-value="' + v + '">' + v + '<span class="check">✓</span></button>';
                     }).join('') + '</div></div>';
             } else {
-                html = '<div class="q-title">What did you release?</div><div class="q-sub">&nbsp;</div>' +
+                html = '<div class="q-title solo">What did you release?</div>' +
                     '<div class="opt-grid" id="post-type">' +
                     ['Single', 'EP', 'Album'].map(function (v) {
                         return '<button type="button" class="opt" data-value="' + v + '">' + v + '<span class="check">✓</span></button>';
@@ -1380,7 +1372,7 @@
                 var price = priceOf(n);
                 var qty = lead.placementQty[n] || 1;
                 total += price * qty;
-                lines.push(qty + 'x ' + n + (price > 0 ? ' (' + money(price * qty) + ')' : ' (quoted separately)'));
+                lines.push(qty + 'x ' + n + (price > 0 ? ' (' + money(price * qty) + ')' : ' (priced on request)'));
             });
 
             lead.name = name;
@@ -1395,18 +1387,32 @@
             lead.timeline = 'Placement enquiry';
             lead.timestamp = new Date().toISOString();
 
-            // Bare names and quantities, so the thank-you page can rebuild the
-            // lineup exactly. lead.placements keeps the "2x Name" form for the sheet.
             lead.placementNames = selected.slice();
 
             try { sessionStorage.setItem('wts_lead', JSON.stringify(lead)); } catch (e) {}
 
-            postLead(lead).catch(function (err) {
+            var msg = 'Hi WeTalkSound, I would like to explore placements for my release.\n\n';
+            msg += 'Name: ' + name + '\nAct: ' + act + '\nIG: @' + igRaw + '\n\n';
+            if (lines.length) { msg += 'Lineup:\n' + lines.map(function (l) { return '- ' + l; }).join('\n') + '\n'; }
+            if (total > 0) msg += '\nSubtotal: ' + money(total) + '\n';
+            if (customBudget) msg += '\nMy budget: \u20A6' + customBudget + '\n';
+            msg += '\nPlease let me know the next steps.';
+
+            // Opened before the post resolves: a window opened inside a promise
+            // is treated as a popup and blocked.
+            var waUrl = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(msg);
+            var wa = window.open(waUrl, '_blank');
+
+            postLead(lead).then(function () {
+                if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', lead_tier: 'placement' });
+            }).catch(function (err) {
                 console.error('Lead post failed:', err);
                 try { sessionStorage.setItem('wts_failed_lead', JSON.stringify(lead)); } catch (e) {}
             }).then(function () {
-                if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', lead_tier: 'placement' });
-                window.location.href = '/thank-you/placements';
+                if (!wa) window.location.href = waUrl;   // popup blocked, go in this tab
+                submitting = false;
+                btn.disabled = false;
+                btn.textContent = 'Chat with us on WhatsApp \u2192';
             });
         }
 
