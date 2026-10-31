@@ -1395,26 +1395,18 @@
             lead.timeline = 'Placement enquiry';
             lead.timestamp = new Date().toISOString();
 
-            var msg = 'Hi WeTalkSound, I would like to explore placements for my release.\n\n';
-            msg += 'Name: ' + name + '\nAct: ' + act + '\nIG: @' + igRaw + '\n\n';
-            if (lines.length) { msg += 'Selected:\n' + lines.map(function (l) { return '- ' + l; }).join('\n') + '\n'; }
-            if (total > 0) msg += '\nPlaylist subtotal: ' + money(total) + '\n';
-            if (customBudget) msg += '\nMy budget: ₦' + customBudget + '\n';
-            msg += '\nPlease let me know the next steps.';
+            // Bare names and quantities, so the thank-you page can rebuild the
+            // lineup exactly. lead.placements keeps the "2x Name" form for the sheet.
+            lead.placementNames = selected.slice();
 
-            var waUrl = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(msg);
-            var wa = window.open(waUrl, '_blank');
+            try { sessionStorage.setItem('wts_lead', JSON.stringify(lead)); } catch (e) {}
 
-            postLead(lead).then(function () {
-                if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', lead_tier: 'placement' });
-            }).catch(function (err) {
+            postLead(lead).catch(function (err) {
                 console.error('Lead post failed:', err);
                 try { sessionStorage.setItem('wts_failed_lead', JSON.stringify(lead)); } catch (e) {}
             }).then(function () {
-                if (!wa) window.location.href = waUrl;
-                submitting = false;
-                btn.disabled = false;
-                btn.textContent = 'Chat with us on WhatsApp →';
+                if (window.dataLayer) window.dataLayer.push({ event: 'lead_submit', lead_tier: 'placement' });
+                window.location.href = '/thank-you/placements';
             });
         }
 
