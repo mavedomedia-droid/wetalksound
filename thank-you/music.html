@@ -6,6 +6,7 @@
     <title>Thank You — WeTalkSound</title>
     <meta name="description" content="You're in. We'll be in touch shortly." />
     <meta name="theme-color" content="#0A0A0A" />
+    <meta name="robots" content="noindex, nofollow" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -21,9 +22,6 @@
         })(window, document, 'script', 'dataLayer', 'GTM-N3KZ2K8R');
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Config -->
-    <script src="config.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
@@ -76,28 +74,9 @@
             z-index: 100;
             flex-shrink: 0;
         }
-        .brand img { height: 30px; display: block; }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
-        .nav-links a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s; }
-        .nav-links a:hover { color: #fff; }
-        .nav-cta {
-            background: var(--grad-sass);
-            color: #fff;
-            border: none;
-            padding: 7px 18px;
-            border-radius: 7px;
-            font: 700 0.8125rem 'Inter', sans-serif;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(255,107,74,0.35);
-            transition: transform .2s;
-        }
-        .nav-cta:hover { transform: translateY(-1px) scale(1.02); }
-        .hamburger { display: none; }
-        @media (max-width: 768px) {
-            .nav-links, .nav-cta { display: none; }
-            .hamburger { display: flex; }
-        }
+        .brand { display: inline-flex; align-items: center; text-decoration: none; }
+        .brand img { height: 18px; display: block; }
+        .brand-text { font-weight: 900; font-size: 1.05rem; color: #fff; letter-spacing: -0.01em; }
 
         /* ─── HERO (two-column) ─── */
         .hero-wrap {
@@ -363,12 +342,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3KZ2K8R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <nav>
-        <a href="#" class="brand"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound"></a>
-        <ul class="nav-links">
-            <li><a href="#">Work</a></li>
-            <li><a href="#">Services</a></li>
-        </ul>
-        <a href="#" class="nav-cta">Start your enquiry</a>
+        <a href="/" class="brand" aria-label="WeTalkSound home"><img src="https://www.wetalksound.co/assets/logo/wts_white.svg" alt="WeTalkSound" onerror="this.outerHTML='&lt;span class=&quot;brand-text&quot;&gt;WeTalkSound&lt;/span&gt;'" /></a>
     </nav>
 
     <div class="hero-wrap">
@@ -377,7 +351,7 @@
             <!-- Left column -->
             <div class="ty-left">
                 <div class="ty-badge"><b></b> Enquiry received</div>
-                <h1>You're in, <span class="grad" id="ty-name">there</span>.</h1>
+                <h1>You're in<span id="ty-name-wrap">, <span class="grad" id="ty-name"></span></span>.</h1>
                 <p class="sub" id="ty-release">Let's amplify your release. We'll be in touch within 24 hours.</p>
 
                 <div class="next-steps">
@@ -392,7 +366,7 @@
                     </div>
                     <div class="ns-step">
                         <div class="ns-num">3</div>
-                        <div class="ns-body"><b>We’ll reach out and start your enquiry.</b></div>
+                        <div class="ns-body">You get a <b>plan and pricing</b> built around your release.</div>
                     </div>
                 </div>
             </div>
@@ -406,7 +380,7 @@
                 <p class="card-sub">Send a quick message on WhatsApp and we'll pick it up right away.</p>
 
                 <div class="action-row">
-                    <a class="btn-wa" id="wa-btn" href="#" target="_blank">
+                    <a class="btn-wa" id="wa-btn" href="#" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Chat on WhatsApp
                     </a>
@@ -426,7 +400,7 @@
 
     <!-- Trust bar -->
     <div class="trust-bar">
-        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Grammy‑recognised</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Grammy-recognised</span>
         <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Lagos · London · New York</span>
         <span><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 360° music marketing</span>
     </div>
@@ -436,51 +410,66 @@
         <div class="fmark">WeTalkSound</div>
         <div class="fmeta">Lagos · London · New York · East Africa · <a href="mailto:thewtsagency@gmail.com">thewtsagency@gmail.com</a></div>
         <div class="social-links">
-            <a href="https://instagram.com/wetalksound" target="_blank">Instagram</a>
-            <a href="https://tiktok.com/@wetalksound" target="_blank">TikTok</a>
-            <a href="https://twitter.com/wetalksound" target="_blank">X</a>
+            <a href="https://instagram.com/wetalksound" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://tiktok.com/@wetalksound" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://twitter.com/wetalksound" target="_blank" rel="noopener">X</a>
         </div>
         <div class="fmeta" style="margin-top:6px;">© <span id="footer-year"></span> WeTalkSound. All rights reserved.</div>
     </footer>
 
     <script>
-        // Mobile menu
-        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-        document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open')));
+    (function () {
+        'use strict';
+        var WA_PHONE = '2348178007329';
 
-        // Lead data
-        var leadData = JSON.parse(sessionStorage.getItem('wts_lead') || '{}');
-        var firstName = leadData.name ? leadData.name.split(' ')[0] : 'there';
-        document.getElementById('ty-name').textContent = firstName;
-        var releaseType = leadData.releaseType || 'release';
-        var path = leadData.path || 'pre';
-        var releaseMsg = path === 'pre' ?
-            'Let\'s move your ' + releaseType + '. We\'ll be in touch within 24 hours.' :
-            'Let\'s amplify your ' + releaseType + '. We\'ll be in touch within 24 hours.';
-        document.getElementById('ty-release').textContent = releaseMsg;
-
-        // General WhatsApp chat button
-        function buildWaChatMessage() {
-            var msg = 'Hi WeTalkSound! I just completed the quiz.\n\n' +
-                'Name: ' + (leadData.name || '') + '\n' +
-                'Act: ' + (leadData.actName || '') + '\n' +
-                'IG: ' + (leadData.artistIg || '') + '\n' +
-                'Country: ' + (leadData.country || '') + '\n' +
-                'Stage: ' + (leadData.path || '') + '\n' +
-                'Release: ' + (leadData.releaseType || '') + '\n' +
-                'Goals: ' + ((leadData.goals || []).join(', ') || 'None') + '\n' +
-                'Budget: ' + (leadData.budget || '') + '\n' +
-                'Placements: ' + ((leadData.placements || []).join(', ') || 'None') + '\n' +
-                'Timeline: ' + (leadData.timeline || '') + '\n' +
-                'Add-ons: ' + ((leadData.addons || []).join(', ') || 'None');
-            return encodeURIComponent(msg);
+        // sessionStorage throws outright in Safari private mode, so never
+        // let it take the rest of the page down with it.
+        function readLead() {
+            try { return JSON.parse(sessionStorage.getItem('wts_lead') || '{}') || {}; }
+            catch (e) { return {}; }
         }
-        var waChatUrl = 'https://wa.me/2348178007329?text=' + buildWaChatMessage();
-        var waBtn = document.getElementById('wa-btn');
-        if (waBtn) waBtn.href = waChatUrl;
+        var lead = readLead();
 
-        // Footer year
-        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        function $(id) { return document.getElementById(id); }
+
+        // Greeting. With no name we drop the placeholder rather than saying "there".
+        var firstName = (lead.name || '').trim().split(/\s+/)[0];
+        if (firstName) { $('ty-name').textContent = firstName; }
+        else { $('ty-name-wrap').remove(); }
+
+        // Sub line
+        // "Single" -> "single", but "EP" stays "EP"
+        var rawType = String(lead.releaseType || '').trim();
+        var type = !rawType ? 'release'
+                 : (rawType === rawType.toUpperCase() ? rawType : rawType.toLowerCase());
+        var verb = lead.path === 'post' ? 'amplify' : 'move';
+        $('ty-release').textContent = "Let's " + verb + ' your ' + type + ". We'll be in touch within 24 hours.";
+
+        // WhatsApp message: only the lines we actually have, in plain language.
+        function waMessage() {
+            if (!lead.name && !lead.actName) {
+                return 'Hi WeTalkSound, I just sent an enquiry through your site.';
+            }
+            var out = ['Hi WeTalkSound, I just sent an enquiry through your site.', ''];
+            function add(label, val) {
+                if (val && String(val).trim()) out.push(label + ': ' + val);
+            }
+            add('Name', lead.name);
+            add('Act', lead.actName);
+            add('IG', lead.artistIg);
+            add('Release', lead.releaseType);
+            add('Stage', lead.path === 'post' ? 'Already out' : (lead.path === 'pre' ? 'Releasing soon' : ''));
+            add('Goals', (lead.goals || []).join(', '));
+            add('Budget', lead.budget);
+            add('Timeline', lead.timeline);
+            return out.join('\n');
+        }
+
+        var waBtn = $('wa-btn');
+        if (waBtn) waBtn.href = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(waMessage());
+
+        $('footer-year').textContent = new Date().getFullYear();
+    })();
     </script>
 </body>
 </html>
