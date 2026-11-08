@@ -890,10 +890,10 @@
             <div class="socials">
                 <a href="https://instagram.com/wetalksound" target="_blank" rel="noopener">@wetalksound</a>
                 <a href="https://instagram.com/agency.wts" target="_blank" rel="noopener">@agency.wts</a>
-                <a href="https://wa.me/2348178007329" target="_blank" rel="noopener">WhatsApp</a>
+                <a id="footer-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
             </div>
             <div style="margin-top:6px;font-size:0.68rem;">
-                <a href="mailto:hello@wetalksound.co">hello@wetalksound.co</a> · +234 817 800 7329 · &copy; <span id="footer-year"></span>
+                <a href="mailto:hello@wetalksound.co">hello@wetalksound.co</a> · <span id="footer-phone"></span> · &copy; <span id="footer-year"></span>
             </div>
         </div>
     </footer>
@@ -953,7 +953,8 @@
             'Creative Direction': { work: 'Reminisce, "ATSG"', metric: 'End to end creative direction', context: 'Album artwork, visual identity and full rollout.' }
         };
 
-        var WA_PHONE = '2348178007329';
+        var WA_PHONE   = '2349035903260';        // used in every wa.me link
+        var WA_DISPLAY = '+234 903 590 3260';   // shown in the footer
 
         // Add a country here once and both phone fields pick it up
         var DIAL_CODES = [
@@ -1529,6 +1530,8 @@
         buildPlaylists();
         buildDialCodes();
         $('footer-year').textContent = new Date().getFullYear();
+        $('footer-wa').href = 'https://wa.me/' + WA_PHONE;
+        $('footer-phone').textContent = WA_DISPLAY;
         render();
         booted = true;
 
